@@ -2,10 +2,11 @@ from typing import Tuple, List
 from uuid import UUID
 
 from .interface.repository import UserRepository
+from .interface.service import UserService
 from .models import UserManagement
 
 
-class UserServiceImpl:
+class UserServiceImpl(UserService):
 
     def __init__(self, user_repository: UserRepository):
         self.user_repository = user_repository
