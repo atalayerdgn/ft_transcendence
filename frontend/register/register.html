@@ -65,23 +65,26 @@
                                     <div class="text-center">
                                         <h4 class="mt-1 mb-5 pb-1">Create Your Account</h4>
                                     </div>
-                                    <form>
+                                    <form id="registerForm"> <!-- Form ID eklendi -->
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="nickname" class="form-control" placeholder="Nickname" />
-                                            <label class="form-label" for="nickname">Nickname</label>
+                                            <input type="text" id="username" name="username" class="form-control" placeholder="Nickname" />
+                                            <label class="form-label" for="username">Nickname</label>
+                                            <span class="error" id="usernameError"></span>
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <input type="email" id="email" class="form-control" placeholder="Email address" />
+                                            <input type="email" id="email" name="email" class="form-control" placeholder="Email address" />
                                             <label class="form-label" for="email">Email</label>
+                                            <span class="error" id="emailError"></span>
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <input type="password" id="password" class="form-control" />
+                                            <input type="password" id="password" name="password" class="form-control" />
                                             <label class="form-label" for="password">Password</label>
+                                            <span class="error" id="passwordError"></span>
                                         </div>
                                         <div class="text-center pt-1 mb-5 pb-1">
-                                            <button class="btn btn-primary gradient-custom-2" type="submit">Register</button>
+                                            <button class="btn btn-primary gradient-custom-2 nav-link" data-page="registerlogin">Register</button>
                                         </div>
-                                            <button class="btn btn-outline-secondary mt-4 nav-link button" data-page="login">Return to login page</button>
+                                        <button class="btn btn-outline-secondary mt-4 nav-link" data-page="login">Return to login page</button>
                                     </form>
                                 </div>
                             </div>
@@ -91,6 +94,22 @@
             </div>
         </div>
     </section>
+
+    <!--<script type="module">
+        import { FormDataStorage } from './register.js';
+    
+        const formDataStorage = new FormDataStorage('formData');
+    
+        // Formu kaydet
+        document.querySelector('#registerForm').addEventListener('submit', (event) => {
+            event.preventDefault(); // Formun varsayılan davranışını engelle
+            formDataStorage.saveData();
+        });
+    
+        // Formu geri yükle
+        formDataStorage.restoreData();
+    </script> -->
+
     <!-- Bootstrap JS -->
 
     <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

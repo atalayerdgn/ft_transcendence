@@ -9,7 +9,7 @@ from django.forms import BooleanField
 from transandancefirst.usermanagment.interface.service import UserService
 from transandancefirst.usermanagment.models import UserManagement
 
-class UserRepository():
+class UserRepository(UserService):
 
     @abstractmethod
     def get_by_id(self, id : int) -> Tuple[UserManagement, str]:

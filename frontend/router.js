@@ -6,10 +6,16 @@ export async function loadPage(page) {
     switch (page) {
         case 'login':
             pageUrl = 'login/login.html';
+            scriptUrl = 'login/login.js'; // Load the login script
             break;
         case 'register':
             pageUrl = 'register/register.html';
+            scriptUrl = 'register/register.js';
             break;
+        case 'registerlogin':
+            pageUrl = 'login/login.html';
+            scriptUrl = 'register/register.js';
+            break
         case 'forgot':
             pageUrl = 'forgot/forgot.html';
             break;
@@ -18,6 +24,10 @@ export async function loadPage(page) {
             break;
         case 'about':
             pageUrl = 'about/about.html';
+            break;
+        case 'logout':
+            pageUrl = 'login/login.html';
+            scriptUrl = 'login/login.js'; // Load the login script again
             break;
         case 'settings':
             pageUrl = 'settings/settings.html';
@@ -40,12 +50,12 @@ export async function loadPage(page) {
         const html = await response.text();
         content.innerHTML = html;
 
-        // Dynamically load the corresponding script
         if (scriptUrl) {
             const script = document.createElement('script');
             script.src = scriptUrl;
             document.body.appendChild(script);
         }
+
     } catch (error) {
         content.innerHTML = `<p>Error loading page: ${error.message}</p>`;
     }
