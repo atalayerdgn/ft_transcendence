@@ -1,243 +1,105 @@
-<div class="cont">
-<h1>Login</h1>
-<style>
-    /* Reset some default styles */
-body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd {
-    margin: 0;
-    padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .gradient-custom-2 {
+            /* fallback for old browsers */
+            background: #007BA7;
 
-div
-{
-    margin: 0;
-    padding: 0;
-    background-color: linear-gradient(#671d6d 40%, #154ba2 60%);
-}
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, #007BA7, #04809f);
 
-h1
-{
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    margin-right: auto;
-    margin-left: auto;
-    text-align: center;
-}
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, #007BA7, #04809f);
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(#671d6d 40%, #154ba2 60%);
-    color: #73b0a6;
-    margin: auto;
-    line-height: 1.6;
-}
+        .gradient-custom-3 {
+            /* fallback for old browsers */
+            background: #7F7FD5;
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, #007BA7, #4CC3D9, #00FCEF);
 
-.screen {
-    background: #4a496858;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-}
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, #007BA7, #4CC3D9, #00FCEF);
+        }
 
-.navbar {
-    background: #004d40;
-    padding: 1rem;
-    text-align: center;
-    
-}
+        @media (min-width: 768px) {
+            .gradient-form {
+                height: 100vh !important;
+            }
+        }
 
-.navbar-nav {
-    display: flex;
-    justify-content: space-around;
-}
-
-.nav-link {
-    background: #00796b;
-    border: none;
-    color: #00000065;
-    padding: 0.5rem 1rem;
-    border-radius: 166px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-    margin: 0.5rem; /* Add margin to create space between nav-links */
-}
-
-.nav-link:hover {
-    background: #115d53;
-    transform: scale(1.1);
-}
-
-.screen__content {
-    padding: 2rem;
-}
-
-.screen__background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-}
-
-.screen__background__shape {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.2;
-}
-
-.screen__background__shape1 {
-    background: #ff8a80;
-    width: 200px;
-    height: 200px;
-    top: -50px;
-    right: -50px;
-}
-
-.screen__background__shape2 {
-    background: #ff8a80;
-    width: 150px;
-    height: 150px;
-    bottom: -75px;
-    left: -75px;
-}
-
-.screen__background__shape3 {
-    background: #ff8a80;
-    width: 100px;
-    height: 100px;
-    bottom: -50px;
-    right: -50px;
-}
-
-.screen__background__shape4 {
-    background: #ff8a80;
-    width: 50px;
-    height: 50px;
-    top: -25px;
-    left: -25px;
-}
-
-form {
-    max-width: 400px;
-    margin: auto;
-    padding: 1rem;
-
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="email"] {
-    width: 90%;
-    padding: 0.5rem;
-    border: 1px solid #2e0505;
-    border-radius: 15px;
-}
-
-input[type="checkbox"] {
-    margin-right: 0.2rem;
-}
-
-button {
-    width: 100%;
-    padding: 0.75rem;
-    background: #02655a;
-    color: #ffffff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-}
-
-button:hover {
-    background: #428d80;
-    transform: scale(1.05);
-}
-
-button.primary {
-    background: #00796b;
-}
-
-button.secondary {
-    background: #339282;
-}
-
-.link {
-    display: block;
-    text-align: right;
-    margin-top: 1rem;
-    color: #007bff;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: #007bff;
-    transition: width 0.3s ease, left 0.3s ease;
-}
-
-.link:hover::after {
-    width: 100%;
-    left: 0;
-}
-
-.link:hover {
-    color: #0056b3;
-}
-</style>
-<title>ft_transcendence</title>
-<nav class="navbar">
-    <!-- Navigation Links -->
-    <div class="navbar-nav">
-        <button class="nav-link button" data-page="about">About Us</button>
-    </div>
-</nav>
-<form>
-    <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" autocomplete="on">
-    </div>
-    <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" autocomplete="on">
-    </div>
-    <div class="form-group">
-        <input type="checkbox" id="remember" name="remember" autocomplete="on">
-        <label for="remember">Remember Me</label>
-    </div>
-    <div class="form-group">
-    </div>
-</form>
-<button class="nav-link button" data-page="profile">Login</button>
-<button class="nav-link button" data-page="forgot">Forgot Password</button>
-<button class="nav-link button" data-page="register">Register</button>
-<button class="nav-link button" data-page="login42Api">Login With 42</button>
-</div>
+        @media (min-width: 769px) {
+            .gradient-custom-2 {
+                border-top-right-radius: .3rem;
+                border-bottom-right-radius: .3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="h-100 gradient-form" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-4">
+                                    <div class="text-center">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                                            style="width: 185px;" alt="logo">
+                                        <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                                    </div>
+                                    <form>
+                                        <p>Please login to your account</p>
+                                        <div class="form-outline mb-4">
+                                            <input type="email" id="form2Example11" class="form-control"
+                                                placeholder="Phone number or email address" />
+                                            <label class="form-label" for="form2Example11">Username</label>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="password" id="form2Example22" class="form-control" />
+                                            <label class="form-label" for="form2Example22">Password</label>
+                                        </div>
+                                        <div class="text-center pt-1 mb-5 pb-1">
+                                            <div class="d-flex justify-content-between">
+                                                <button class="btn btn-primary gradient-custom-3 me-2" type="button">Log in</button>
+                                                <button class="btn btn-outline-secondary" type="button">Forgot password?</button>
+                                            </div>
+                                                <button class="btn btn-outline-secondary mt-4" type="button">Login with 42 API</button>
+                                        </div>
+                                        
+                                        <div class="d-flex align-items-center justify-content-center pb-4">
+                                            <p class="mb-0 me-2">Don't have an account?</p>
+                                            <button type="button" class="btn btn-outline-danger">Create new</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                    <h4 class="mb-4">We are more than just a company</h4>
+                                    <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
