@@ -4,11 +4,12 @@ from uuid import UUID
 from .interface.repository import UserRepository
 from .interface.service import UserService
 from .models import UserManagement
+from .repositoryimpl import UserRepositoryImpl
 
 
 class UserServiceImpl(UserService):
 
-    def __init__(self, user_repository: UserRepository):
+    def __init__(self, user_repository: UserRepositoryImpl):
         self.user_repository = user_repository
 
     def get_user_by_id(self, id: int) -> Tuple[UserManagement, str]:

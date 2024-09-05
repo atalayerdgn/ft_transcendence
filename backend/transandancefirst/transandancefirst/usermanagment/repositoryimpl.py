@@ -1,55 +1,69 @@
-from abc import ABC
-from contextlib import nullcontext
-from typing import Tuple, Any
-
-from django.core.cache import cache
-from django.db.models import UUIDField
-from django.forms import BooleanField
+from typing import Tuple, List
+from uuid import UUID
+from django.db import models
 
 from transandancefirst.usermanagment.interface.repository import UserRepository
 from transandancefirst.usermanagment.models import UserManagement
+from transandancefirst.usermanagment.serializers import UserManagementSerializer
 
 
 class UserRepositoryImpl(UserRepository):
 
-    def get_by_id(self, id: int) -> tuple[UserManagement, str] :
+    def get_by_id(self, id: UUID) -> Tuple[dict, str]:
         try:
             model = UserManagement.objects.filter(id=id).first()
-            return model,""
+            if model:
+                serializer = UserManagementSerializer(model)
+                return serializer.data, ""
+            return None, "User not found"
         except Exception as e:
-            return None,str(e)
+            return None, str(e)
 
-    def create_user(self, user : UserManagement) -> Tuple[BooleanField,str]:
+    def create_user(self, user_data: dict) -> Tuple[bool, str]:
         try:
-            user.save()
-            return Tuple[True,nullcontext]
+            serializer = UserManagementSerializer(data=user_data)
+            if serializer.is_valid():
+                serializer.save()
+                return True, ""
+            return False, "Invalid data"
         except Exception as e:
             return False, str(e)
 
-    def delete_user(self, id : UUIDField) -> Tuple[BooleanField,str]:
+    def delete_user(self, id: UUID) -> Tuple[bool, str]:
         try:
-            UserManagement.objects.filter(id=id).first().delete()
-            return Tuple[True,nullcontext]
+            model = UserManagement.objects.filter(id=id).first()
+            if model:
+                model.delete()
+                return True, ""
+            return False, "User not found"
         except Exception as e:
             return False, str(e)
 
-    def get_all(self):
-        try :
-            model = UserManagement.objects.all()
-            return model
-        except  Exception as e:
-            return nullcontext
+    def get_all(self) -> List[dict]:
+        try:
+            models = UserManagement.objects.all()
+            serializer = UserManagementSerializer(models, many=True)
+            return serializer.data
+        except Exception as e:
+            print(str(e))
+            return []
 
-    def get_by_username(self, username: str) -> Tuple[UserManagement, str]:
-        try :
+    def get_by_username(self, username: str) -> Tuple[dict, str]:
+        try:
             model = UserManagement.objects.filter(username=username).first()
-            return model,""
+            if model:
+                serializer = UserManagementSerializer(model)
+                return serializer.data, ""
+            return None, "User not found"
         except Exception as e:
-            return None,str(e)
+            return None, str(e)
 
-    def get_by_email(self, email: str) -> Tuple[UserManagement, str]:
+    def get_by_email(self, email: str) -> Tuple[dict, str]:
         try:
             model = UserManagement.objects.filter(email=email).first()
-            return model,""
+            if model:
+                serializer = UserManagementSerializer(model)
+                return serializer.data, ""
+            return None, "User not found"
         except Exception as e:
-            return None,str(e)
+            return None, str(e)

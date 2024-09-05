@@ -22,7 +22,7 @@ class UserManagementHandler(viewsets.ViewSet):
         if not user_id:
             return Response({'error': 'User id is required'}, status=status.HTTP_400_BAD_REQUEST)
 
-        user, message = self.service.get_user_by_id(int(user_id))
+        user, message = self.service.get_user_by_id(UUID(user_id))
         if user:
             return Response(user, status=status.HTTP_200_OK)
         return Response({'error': message}, status=status.HTTP_404_NOT_FOUND)
@@ -33,7 +33,9 @@ class UserManagementHandler(viewsets.ViewSet):
             return Response({'error': 'Username is required'}, status=status.HTTP_400_BAD_REQUEST)
 
         user, message = self.service.get_user_by_username(username)
-        return Response(user, status=status.HTTP_200_OK)
+        if user:
+            return Response(user, status=status.HTTP_200_OK)
+        return Response({'error': message}, status=status.HTTP_404_NOT_FOUND)
 
     def get_user_by_email(self, request):
         email = request.query_params.get('email')
@@ -47,11 +49,16 @@ class UserManagementHandler(viewsets.ViewSet):
 
     def create_user(self, request):
         try:
-            serializers = UserManagementSerializer(data=request.data)
-            if serializers.is_valid():
-                success, message = self.service.create_user(serializers.data)
-            print(serializers.data)
-            return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
+            serializer = UserManagementSerializer(data=request.data)
+            if not serializer.is_valid():
+                return Response({'error': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+            user = serializer.save()
+
+            success, message = self.service.create_user(user)
+            if success:
+                return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
+            return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
