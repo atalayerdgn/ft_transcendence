@@ -10,7 +10,7 @@ from transandancefirst.usermanagment.interface.repository import UserRepository
 from transandancefirst.usermanagment.models import UserManagement
 
 
-class UserRepositoryImpl(UserRepository, ABC):
+class UserRepositoryImpl(UserRepository):
 
     def get_by_id(self, id: int) -> tuple[UserManagement, str] :
         try:
@@ -28,7 +28,7 @@ class UserRepositoryImpl(UserRepository, ABC):
 
     def delete_user(self, id : UUIDField) -> Tuple[BooleanField,str]:
         try:
-            model = UserManagement.objects.filter(id=id).first().delete()
+            UserManagement.objects.filter(id=id).first().delete()
             return Tuple[True,nullcontext]
         except Exception as e:
             return False, str(e)

@@ -4,7 +4,7 @@ from uuid import UUID
 
 from transandancefirst.usermanagment.models import UserManagement
 
-class UserService(ABC):
+class UserService:
 
     @abstractmethod
     def get_user_by_id(self, id: int) -> Tuple[UserManagement, str]:
