@@ -5,8 +5,10 @@ from django.http import HttpResponse
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
+from transandancefirst.usermanagment import serializers
 from transandancefirst.usermanagment.models import UserManagement
 from transandancefirst.usermanagment.repositoryimpl import UserRepositoryImpl
+from transandancefirst.usermanagment.serializers import UserManagementSerializer
 from transandancefirst.usermanagment.serviceimpl import UserServiceImpl
 
 class UserManagementHandler(viewsets.ViewSet):
@@ -31,9 +33,7 @@ class UserManagementHandler(viewsets.ViewSet):
             return Response({'error': 'Username is required'}, status=status.HTTP_400_BAD_REQUEST)
 
         user, message = self.service.get_user_by_username(username)
-        if user:
-            return Response(user, status=status.HTTP_200_OK)
-        return Response({'error': message}, status=status.HTTP_404_NOT_FOUND)
+        return Response(user, status=status.HTTP_200_OK)
 
     def get_user_by_email(self, request):
         email = request.query_params.get('email')
@@ -46,13 +46,12 @@ class UserManagementHandler(viewsets.ViewSet):
         return Response({'error': message}, status=status.HTTP_404_NOT_FOUND)
 
     def create_user(self, request):
-        data = request.data
         try:
-            user = UserManagement(**data)
-            success, message = self.service.create_user(user)
-            if success:
-                return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
-            return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
+            serializers = UserManagementSerializer(data=request.data)
+            if serializers.is_valid():
+                success, message = self.service.create_user(serializers.data)
+            print(serializers.data)
+            return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 

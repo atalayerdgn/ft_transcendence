@@ -25,6 +25,6 @@ urlpatterns = [
     path('users/id/', UserManagementHandler.as_view({'get': 'get_user_by_id'}), name='get_user_by_id'),
     path('users/username/', UserManagementHandler.as_view({'get': 'get_user_by_username'}), name='get_user_by_username'),
     path('users/email/', UserManagementHandler.as_view({'get': 'get_user_by_email'}), name='get_user_by_email'),
-    path('users/', UserManagementHandler.as_view({'post': 'create_user'}), name='create_user'),
+    path('users/test/', UserManagementHandler.as_view({'post': 'create_user'}), name='create_user'),
     path('users/id/', UserManagementHandler.as_view({'delete': 'delete_user'}), name='delete_user'),
 ]
