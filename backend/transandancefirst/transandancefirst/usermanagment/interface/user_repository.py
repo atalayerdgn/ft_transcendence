@@ -6,25 +6,25 @@ from django.db.models import UUIDField
 
 from django.forms import BooleanField
 
-from transandancefirst.usermanagment.interface.service import UserService
-from transandancefirst.usermanagment.models import UserManagement
+from transandancefirst.usermanagment.models.models import User
+
 
 class UserRepository():
 
     @abstractmethod
-    def get_by_id(self, id : int) -> Tuple[UserManagement, str]:
+    def get_by_id(self, id : int) -> Tuple[User, str]:
         pass
 
     @abstractmethod
-    def get_by_username(self, username: str) -> Tuple[UserManagement, str]:
+    def get_by_username(self, username: str) -> Tuple[User, str]:
         pass
 
     @abstractmethod
-    def get_by_email(self, email: str) -> Tuple[UserManagement, str]:
+    def get_by_email(self, email: str) -> Tuple[User, str]:
         pass
 
     @abstractmethod
-    def create_user (self, user : UserManagement) -> Tuple[BooleanField,str]:
+    def create (self, user : User) -> Tuple[BooleanField,str]:
         pass
 
     @abstractmethod

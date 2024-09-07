@@ -1,15 +1,12 @@
-from http import HTTPStatus
 from uuid import UUID
 
-from django.http import HttpResponse
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
-from transandancefirst.usermanagment import serializers
-from transandancefirst.usermanagment.models import UserManagement
-from transandancefirst.usermanagment.repositoryimpl import UserRepositoryImpl
-from transandancefirst.usermanagment.serializers import UserManagementSerializer
-from transandancefirst.usermanagment.serviceimpl import UserServiceImpl
+from transandancefirst.usermanagment.implementions.repositoryimpl import UserRepositoryImpl
+from transandancefirst.usermanagment.implementions.serviceimpl import UserServiceImpl
+from transandancefirst.usermanagment.serializers.serializers import UserSerializer, CreateUserSerializer
+
 
 class UserManagementHandler(viewsets.ViewSet):
 
@@ -23,18 +20,19 @@ class UserManagementHandler(viewsets.ViewSet):
             return Response({'error': 'User id is required'}, status=status.HTTP_400_BAD_REQUEST)
 
         user, message = self.service.get_user_by_id(UUID(user_id))
-        if user:
-            return Response(user, status=status.HTTP_200_OK)
+        if user :
+            serializer = UserSerializer(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({'error': message}, status=status.HTTP_404_NOT_FOUND)
 
     def get_user_by_username(self, request):
         username = request.query_params.get('username')
         if not username:
             return Response({'error': 'Username is required'}, status=status.HTTP_400_BAD_REQUEST)
-
         user, message = self.service.get_user_by_username(username)
         if user:
-            return Response(user, status=status.HTTP_200_OK)
+            serializer = UserSerializer(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({'error': message}, status=status.HTTP_404_NOT_FOUND)
 
     def get_user_by_email(self, request):
@@ -44,23 +42,19 @@ class UserManagementHandler(viewsets.ViewSet):
 
         user, message = self.service.get_user_by_email(email)
         if user:
-            return Response(user, status=status.HTTP_200_OK)
+            serializer = UserSerializer(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({'error': message}, status=status.HTTP_404_NOT_FOUND)
 
     def create_user(self, request):
-        try:
-            serializer = UserManagementSerializer(data=request.data)
-            if not serializer.is_valid():
-                return Response({'error': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        serializer = CreateUserSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response({'error': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
-            user = serializer.save()
-
-            success, message = self.service.create_user(user)
-            if success:
-                return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
-            return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        success, message = self.service.create_user(serializer.validated_data)
+        if success:
+            return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
+        return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
 
     def delete_user(self, request):
         user_id = request.query_params.get('id')
@@ -73,5 +67,8 @@ class UserManagementHandler(viewsets.ViewSet):
         return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
 
     def list_users(self, request):
-        users = self.service.get_all_users()
-        return Response(users, status=status.HTTP_200_OK)
+        user_list, message = self.service.get_all_users()
+        if user_list:
+            serializer = UserSerializer(user_list, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response({'message': "Not Found"}, status=status.HTTP_404_NOT_FOUND)
