@@ -1,8 +1,7 @@
 from uuid import UUID
-
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-
+import uuid
 from transandancefirst.usermanagment.implementions.repositoryimpl import UserRepositoryImpl
 from transandancefirst.usermanagment.implementions.serviceimpl import UserServiceImpl
 from transandancefirst.usermanagment.serializers.serializers import UserSerializer, CreateUserSerializer
@@ -18,7 +17,11 @@ class UserManagementHandler(viewsets.ViewSet):
         user_id = request.query_params.get('id')
         if not user_id:
             return Response({'error': 'User id is required'}, status=status.HTTP_400_BAD_REQUEST)
-
+        try:
+            if not uuid.UUID(user_id):
+                return Response({'error': 'Invalid user ID format. Please provide a valid UUID.'}, status=status.HTTP_400_BAD_REQUEST)
+        except ValueError:
+            return Response({'error': 'Invalid user ID format. Please provide a valid UUID.'}, status=status.HTTP_400_BAD_REQUEST)
         user, message = self.service.get_user_by_id(UUID(user_id))
         if user :
             serializer = UserSerializer(user)

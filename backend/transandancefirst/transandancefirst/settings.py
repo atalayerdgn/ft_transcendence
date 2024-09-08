@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'transandancefirst.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'User',
+        'NAME': 'UserManagement',
         'USER': 'postgres',
-        'PASSWORD': 'deepp123',
+        'PASSWORD': '2211',
         'HOST': 'localhost',
-        'PORT': '9931',
+        'PORT': '5432',
     }
 }
 
