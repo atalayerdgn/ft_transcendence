@@ -19,3 +19,15 @@ Services (services/): İş mantığını yönetir ve iş kurallarını uygular.
 Interfaces (interfaces/): Arayüzler ve soyutlamalar, dış katmanlarla etkileşimi tanımlar.
 Views (views/): HTTP isteklerini işler ve kullanıcıya yanıt döndürür.
 
+**GPT ONAYI 
+Bu dosya ve klasör yapısı, genellikle katmanlı mimari ya da temiz mimariye uygun bir yapıdır. Her bir bileşen belirli bir işlevi yerine getirir ve sorumlulukları ayrılmıştır:
+
+usermanagment: Ana proje dizini.
+auth_repository.py, user_repository.py: Veritabanı işlemleri ve veri erişim katmanı.
+auth_service.py, user_service.py: İş mantığı ve servis katmanı.
+models: Veritabanı modellerini tanımlar.
+serializers: Verilerin serileştirilmesi ve doğrulanmasını sağlar.
+views: API uç noktalarını tanımlar.
+utils.py: Yardımcı fonksiyonlar içerir.
+Bu yapı, projeyi modüler hale getirir ve bakımını kolaylaştırır. Ayrıca, test edilebilirliği artırır. **
+
