@@ -5,15 +5,16 @@ export async function loadPage(page) {
 
     switch (page) {
         case 'login':
-            pageUrl = '/static/login/login.html';  // Doğru yol
-            scriptUrl = '/static/login/login.js';  // Doğru yol
+            pageUrl = 'login'; //böyle olunca oluyor amk djangosu
+            scriptUrl = '/static/login/login.js';
             break;
+            
         case 'register':
-            pageUrl = '/static/register/register.html';
+            pageUrl = 'register';
             scriptUrl = '/static/register/register.js';
             break;
         case 'registerlogin':
-            pageUrl = '/static/login/login.html';
+            pageUrl = 'login';
             scriptUrl = '/static/register/register.js';
             break;
         case 'forgot':
