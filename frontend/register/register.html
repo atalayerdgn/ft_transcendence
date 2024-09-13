@@ -1,63 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .gradient-custom-2 {
-            /* fallback for old browsers */
-            background: #007BA7;
-
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to right, #007BA7, #04809f);
-
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, #007BA7, #04809f);
-        }
-
-        .gradient-custom-3 {
-            /* fallback for old browsers */
-            background: #7F7FD5;
-
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to right, #007BA7, #4CC3D9, #00FCEF);
-
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, #007BA7, #4CC3D9, #00FCEF);
-        }
-
-        @media (min-width: 768px) {
-            .gradient-form {
-                height: 100vh !important;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .gradient-custom-2 {
-                border-top-right-radius: .3rem;
-                border-bottom-right-radius: .3rem;
-            }
-        }
-    </style>
+    <link href="register.css" rel="stylesheet"> <!-- Your custom CSS file -->
+    
+    
 </head>
+
 <body>
     <section class="h-100 gradient-form">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-xl-10">
+                <div class="col-xl-10 col-lg-10">
                     <div class="card rounded-3 text-black">
                         <div class="row g-0">
-                            <div class="col-lg-6 d-flex align-items-center gradient-custom-3">
+                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                                    <h4 class="mb-4">Join Us and Start Your Journey</h4>
-                                    <p class="small mb-0">At Ecole 42, we are dedicated to pushing the limits of technology and creativity. Register now to become part of our innovative team and embark on a path of discovery and excellence.
-
-                                    Let's build a brighter future together. Welcome to a community where your ideas and skills are valued.
-
-                                    <a style="font-weight: bold; font-size: 120%;"><br>Let's get started!</a></p>
+                                    <h4 class="mb-4">Welcome to Ecole 42</h4>
+                                    <p class="small mb-0">At Ecole 42, we believe that coding is not just about writing lines of code; it’s about crafting innovative solutions that transform ideas into reality. Join us and be part of our mission to create exceptional digital experiences.
+                                        <strong style="font-weight: bold; font-size: 120%;"><br>Let's innovate together!</strong>
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -65,7 +32,8 @@
                                     <div class="text-center">
                                         <h4 class="mt-1 mb-5 pb-1">Create Your Account</h4>
                                     </div>
-                                    <form id="registerForm"> <!-- Form ID eklendi -->
+                                    <form id="registerForm">
+                                        <p>Fill in the details to create a new account</p>
                                         <div class="form-outline mb-4">
                                             <input type="text" id="username" name="username" class="form-control" placeholder="Nickname" />
                                             <label class="form-label" for="username">Nickname</label>
@@ -84,7 +52,10 @@
                                         <div class="text-center pt-1 mb-5 pb-1">
                                             <button class="btn btn-primary gradient-custom-2 nav-link" data-page="registerlogin">Register</button>
                                         </div>
-                                        <button class="btn btn-outline-secondary mt-4 nav-link" data-page="login">Return to login page</button>
+                                        <div class="d-flex align-items-center justify-content-center pb-4">
+                                            <p class="mb-0 me-2">Already have an account?</p>
+                                            <button class="btn btn-outline-secondary mt-4 nav-link" data-page="login">Login</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -95,25 +66,10 @@
         </div>
     </section>
 
-    <!--<script type="module">
-        import { FormDataStorage } from './register.js';
-    
-        const formDataStorage = new FormDataStorage('formData');
-    
-        // Formu kaydet
-        document.querySelector('#registerForm').addEventListener('submit', (event) => {
-            event.preventDefault(); // Formun varsayılan davranışını engelle
-            formDataStorage.saveData();
-        });
-    
-        // Formu geri yükle
-        formDataStorage.restoreData();
-    </script> -->
-
-    <!-- Bootstrap JS -->
-
-    <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

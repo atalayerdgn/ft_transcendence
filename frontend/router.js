@@ -15,7 +15,7 @@ export async function loadPage(page) {
         case 'registerlogin':
             pageUrl = 'login/login.html';
             scriptUrl = 'register/register.js';
-            break
+            break;
         case 'forgot':
             pageUrl = 'forgot/forgot.html';
             break;
@@ -27,7 +27,7 @@ export async function loadPage(page) {
             break;
         case 'logout':
             pageUrl = 'login/login.html';
-            scriptUrl = 'login/login.js'; // Load the login script again
+            scriptUrl = 'login/login.js';
             break;
         case 'settings':
             pageUrl = 'settings/settings.html';
@@ -41,7 +41,6 @@ export async function loadPage(page) {
         default:
             pageUrl = '404/404.html';
     }
-
     try {
         const response = await fetch(pageUrl);
         if (!response.ok) {

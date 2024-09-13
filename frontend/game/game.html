@@ -3,51 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>3D Oyun - OrbitControls</title>
     <style>
-        .gradient-custom-2 {
-            /* fallback for old browsers */
-            background: #007BA7;
-
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to right, #007BA7, #04809f);
-
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, #007BA7, #04809f);
+        .overlay.topLeft {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 80px;
+            z-index: 10;
+        }
+        .overlay.topRight {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 80px;
+            z-index: 10;
+        }
+        .overlay.topCenter {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 80px;
+            z-index: 10;
+        }
+        body {
+            background-image: url('background.png');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
         }
 
-        .gradient-custom-3 {
-            /* fallback for old browsers */
-            background: #7F7FD5;
-
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to right, #007BA7, #4CC3D9, #00FCEF);
-
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, #007BA7, #4CC3D9, #00FCEF);
+        .startGame {
+            background-color: #ff5733;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 15px 30px;
+            margin: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        @media (min-width: 768px) {
-            .gradient-form {
-                height: 100vh !important;
-            }
+        .startGame:hover {
+            background-color: #ff4d00;
+            transform: scale(1.05);
         }
 
-        @media (min-width: 769px) {
-            .gradient-custom-2 {
-                border-top-right-radius: .3rem;
-                border-bottom-right-radius: .3rem;
-            }
+        .startGame:active {
+            background-color: #e63946;
         }
     </style>
 </head>
 <body>
-    <h1>Game Page</h1>
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <div class="overlay topLeft" style="max-width: inherit;"></div>
+  <div class="overlay topCenter"></div>
+  <div class="overlay topRight"></div>
+  <button class="startGame startAgaintsAnotherPlayerGame">Play Against Another Player</button>
+  <button class="startGame startAgainstArtificalIntelligenceGame">Play Against Artifical Intelligence</button>
+  <script src="game.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
 </body>
 </html>
