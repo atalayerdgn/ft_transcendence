@@ -1,5 +1,4 @@
 import uuid
-from datetime import timezone
 
 from django.db import models
 
@@ -9,3 +8,4 @@ class Game(models.Model):
     player_two_score = models.IntegerField(default=0)
     user_name = models.CharField(max_length=50)
     match_date = models.DateTimeField(auto_now_add=True)
+
