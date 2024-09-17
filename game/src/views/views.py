@@ -32,3 +32,12 @@ class GameHandler(viewsets.ViewSet):
         if not success:
             return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'message': 'Success'}, status=status.HTTP_200_OK)
+
+    def delete_game(self, request):
+        match_id = request.query_params.get('match_id')
+        if not match_id:
+            return Response({'error': 'Match ID is required'}, status=status.HTTP_400_BAD_REQUEST)
+        result, message = self.service.delete_game(match_id)
+        if message:
+            return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(result, status=status.HTTP_200_OK)

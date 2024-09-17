@@ -22,3 +22,7 @@ class GameServiceImpl(GameService):
         if game_list:
             return game_list, message
         return [], message
+
+    def delete_game(self, game_id) -> Tuple[bool, str]:
+        return self.game_repository.delete(game_id)
+

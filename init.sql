@@ -1,6 +1,7 @@
 -- Veritabanı oluşturma (Zaten varsa hata vermez)
 CREATE DATABASE usermanagement_db;
 CREATE DATABASE game_db;
+CREATE DATABASE friend_service_db;
 
 -- Kullanıcı oluşturma (Zaten varsa hata vermez)
 DO $$
@@ -16,6 +17,8 @@ $$;
 -- Kullanıcıya gerekli izinleri verme
 GRANT ALL PRIVILEGES ON DATABASE usermanagement_db TO postgres;
 GRANT ALL PRIVILEGES ON DATABASE game_db TO postgres;
+GRANT ALL PRIVILEGES ON DATABASE friend_service_db TO postgres;
+
 
 -- PostgreSQL'de dil desteği ekleme (opsiyonel, bazı durumlarda gerekebilir)
 ALTER ROLE postgres SET client_encoding TO 'utf8';

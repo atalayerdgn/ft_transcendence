@@ -18,3 +18,7 @@ class GameRepository:
     @abstractmethod
     def list(self, user_name: CharField) -> Tuple[List[Game], str]:
         pass
+
+    @abstractmethod
+    def delete(self, game_id: UUID) -> Tuple[bool,str]:
+        pass

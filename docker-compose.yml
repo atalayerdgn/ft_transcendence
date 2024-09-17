@@ -22,15 +22,6 @@ services:
   usermanagement:
     build: ./user_management/
     container_name: usermanagementc
-    command: >
-      sh -c "
-      until pg_isready -h postgres -U postgres; do
-        echo 'Waiting for PostgreSQL to be ready...';
-        sleep 3;
-      done;
-      python manage.py makemigrations &&
-      python manage.py runserver 0.0.0.0:8000
-      "
     depends_on:
       postgres:
         condition: service_healthy
@@ -51,15 +42,6 @@ services:
   game:
     build: ./game/
     container_name: game_service
-    command: >
-      sh -c "
-      until pg_isready -h postgres -U postgres; do
-        echo 'Waiting for PostgreSQL to be ready...';
-        sleep 3;
-      done;
-      python manage.py makemigrations &&
-      python manage.py runserver 0.0.0.0:8001
-      "
     depends_on:
       postgres:
         condition: service_healthy
@@ -75,5 +57,24 @@ services:
       DATABASE_HOST: postgres
     env_file:
       - ./game/.env
+
+  friend_service:
+    build: ./friend_service/
+    container_name: friend_service
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./friend_service:/app
+    working_dir: /app
+    ports:
+      - "8006:8002"
+    environment:
+      DATABASE_NAME: friend_service_db
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: 1234
+      DATABASE_HOST: postgres
+    env_file:
+      - ./friend_service/.env
 volumes:
   postgres_data:

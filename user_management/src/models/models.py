@@ -17,4 +17,3 @@ class User(models.Model):
 
     def hash_password(self, raw_password):
         self.password = make_password(raw_password)
-

@@ -22,3 +22,12 @@ class GameRepositoryImpl(GameRepository):
             return game_list, ""
         except Exception as e:
             return [], str(e)
+
+    def delete(self, game_id: UUID) -> Tuple[bool, str]:
+        try:
+            game = Game.objects.get(match_id=game_id)
+            if game:
+                game.delete()
+            return True, ""
+        except Exception as e:
+            return False, str(e)
