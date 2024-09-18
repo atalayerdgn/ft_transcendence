@@ -76,12 +76,16 @@ services:
       - ./friend_service/.env
 
   nginx:
-      build: ./frontendservice/
+      build: 
+        context: ./frontendservice/
+        args:
+          NGINX_SSL_CN: localhost
       container_name: nginx
       ports:
-        - "8007:80"
+        - "8007:443"
       volumes:
         - ./frontendservice/frontend:/usr/share/nginx/html
+        - ./frontendservice/nginx.conf:/etc/nginx/conf.d/default.conf
       networks:
         - frontend_network
 

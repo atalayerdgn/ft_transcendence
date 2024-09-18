@@ -2,6 +2,10 @@ FROM nginx:latest
 
 COPY ./frontend /usr/share/nginx/html
 
-EXPOSE 80
+EXPOSE 80 443
 
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./start.sh /start.sh
+
+ENTRYPOINT ["sh", "./start.sh"]
 
