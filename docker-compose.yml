@@ -15,7 +15,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-      
 
   usermanagement:
     build: ./user_management/
@@ -35,7 +34,6 @@ services:
       DATABASE_HOST: postgres
     env_file:
       - ./user_management/.env
-
 
   game:
     build: ./game/
@@ -75,6 +73,20 @@ services:
     env_file:
       - ./friend_service/.env
 
+  # Yeni API Gateway servisi
+  apigateway:
+    build: ./apigateway
+    container_name: apigateway
+    depends_on:
+      - usermanagement
+      - game
+      - friend_service
+    ports:
+      - "8007:8007"
+    volumes:
+      - ./apigateway:/app
+    working_dir: /app
+
   nginx:
       build: 
         context: ./frontendservice/
@@ -82,7 +94,7 @@ services:
           NGINX_SSL_CN: localhost
       container_name: nginx
       ports:
-        - "8007:443"
+        - "8008:443"
       volumes:
         - ./frontendservice/frontend:/usr/share/nginx/html
         - ./frontendservice/nginx.conf:/etc/nginx/conf.d/default.conf
@@ -93,7 +105,8 @@ services:
 volumes:
   postgres_data:
 
-
 networks:
+  default:
+      name: ft_transcendence
   frontend_network:
-    driver: bridge
+      driver: bridge

@@ -1,6 +1,6 @@
 /* Genel arka plan */
 body {
-    background: linear-gradient(135deg, #2c3e50, #1a252f);
+    background: #1a252f;
     /* Daha koyu renk geçişi */
 }
 
@@ -10,10 +10,17 @@ body {
     /* Daha koyu renk geçişi */
     font-size: large;
 }
+/*login buttton*/
+.gradient-custom-3 {
+    border-color: #8f94fb;
+    color: #8f94fb;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
 /* Kart tasarımı */
 .card {
-    background: linear-gradient(to right, #157497, #60929b, #295250);
+    background: linear-gradient(to right, #15749775, #60929b8a, #295250);
     /* Daha koyu arka plan */
     border-radius: 1rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
@@ -53,7 +60,7 @@ body {
 
 /* Kenarlı buton */
 .btn-custom {
-    background-color: #5459bd;
+    background: linear-gradient(to left, #2c3e50, #1a252f);
     /* Koyu mor renkte ana buton */
     border-color: #4e54c8;
     color: white;
@@ -63,7 +70,7 @@ body {
     padding: 10px 20px;
     /* Butonun iç boşlukları */
     transition: background-color 0.3s ease;
-    /* Yumuşak geçiş efekti */
+    /* Yumuşak geçiş efekti */;
 }
 
 .btn-custom:hover {
@@ -73,7 +80,10 @@ body {
 
 /* Create new butonu */
 .btn-outline-danger {
-    margin-left: 10px;
+    border-color: #dc3545;
+    color: #dc3545;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 20px;;
 }
 
 /* Sayfa başlığı ve metin */

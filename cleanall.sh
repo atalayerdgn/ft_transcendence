@@ -2,7 +2,7 @@
 
 # Docker konteynerlerini durdur ve sil
 echo "Stopping and removing all Docker containers..."
-docker compose down --volumes --remove-orphans
+docker-compose down --volumes --remove-orphans
 
 # Kullanılmayan ağları sil
 echo "Removing unused Docker networks..."

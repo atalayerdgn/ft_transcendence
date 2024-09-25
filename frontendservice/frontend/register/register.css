@@ -1,18 +1,16 @@
 body {
    /* background: linear-gradient(135deg, #2c3e50, #1a252f);*/
-   background: linear-gradient(240deg, black, #3a093f);
+    background: #1a252f;
 }
 
 .gradient-custom-2 {
-    /* Koyu renk geçişi */
-    /*background: linear-gradient(to right, #236d88, #5a878f, #5caaa6);*/
-    background: linear-gradient(to right, #4d2c5000, #4d2c5000, #000808);
+    background: linear-gradient(to left, #2c3e50, #1a252f);
+    /* Daha koyu renk geçişi */
     font-size: large;
-    
 }
 
 .card {
-    background: linear-gradient(0, #2c3e50, #4d2c50); /* Koyu renk geçişi */
+    background: linear-gradient(to left, #15749775, #60929b8a, #295250); /* Koyu renk geçişi */
     border-radius: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Daha belirgin gölge efekti */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
