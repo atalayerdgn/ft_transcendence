@@ -1,16 +1,17 @@
 import uuid
 from uuid import UUID
-
 from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.response import Response
+
+import datetime
 
 from src.implementions.auth_repository import AuthRepositoryImpl
 from src.implementions.auth_service import AuthServiceImpl
 from src.implementions.user_repository import UserRepositoryImpl
 from src.implementions.user_service import UserServiceImpl
 from src.serializers.serializers import UserSerializer, CreateUserSerializer, \
-    LoginSerializer
+    LoginSerializer, TwoFASerializer
 
 
 class AuthHandler(viewsets.ViewSet):
@@ -19,15 +20,32 @@ class AuthHandler(viewsets.ViewSet):
         self.service = AuthServiceImpl(AuthRepositoryImpl())
 
     def login(self, request):
+        #gelen isteği LoginSerializer ile kontrol et
         serializer = LoginSerializer(data=request.data)
         if not serializer.is_valid():
+            #Eğer istek uygun değilse hata döndür
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+        #Eğer istek uygunsa login fonksiyonunu çağır
         token, success = self.service.login(serializer.validated_data)
         if success:
             return Response({'token': token}, status=status.HTTP_200_OK)
         return Response({'error': token}, status=status.HTTP_400_BAD_REQUEST)
 
+    def validate_twofa(self, request):#eozdur
+        #gelen isteği TwoFASerializer ile kontrol et
+        serializer = TwoFASerializer(data=request.data)
+        if not serializer.is_valid():#Eğer istek uygun değilse hata döndür
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        email = serializer.validated_data.get('email')#E-posta adresini al
+        twofa_code = serializer.validated_data.get('twofa_code')#2fa kodunu al
+        #2fa kodunu kontrol et
+        success, message = self.service.validate_twofa(email, twofa_code)
+        if success:
+            return Response({'message': message}, status=status.HTTP_200_OK)
+        return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
+    
+        
+    '''
     def validate_token(self, request):
         token = request.query_params.get('token')
         if not token:
@@ -37,6 +55,23 @@ class AuthHandler(viewsets.ViewSet):
             return Response({'token': token, 'message': message}, status=status.HTTP_200_OK)
 
         return Response({'error': message}, status=status.HTTP_401_UNAUTHORIZED)
+    '''
+    
+    def verify_2fa_code(self, request):
+        user_id = request.data.get('user_id')
+        code = request.data.get('code')
+
+        user = self.service.get_user_by_id(UUID(user_id))  # Kullanıcıyı bul
+        if not user:
+            return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        if user.twofa_code == code and datetime.datetime.now() < user.twofa_code_expiry:
+            # Kod geçerliyse
+            token = self.service.generate_token(user)  # Token oluştur
+            return Response({'token': token}, status=status.HTTP_200_OK)
+
+        return Response({'error': 'Invalid or expired 2FA code'}, status=status.HTTP_401_UNAUTHORIZED)
+
 
 
 class UserManagementHandler(viewsets.ViewSet):
@@ -109,18 +144,3 @@ class UserManagementHandler(viewsets.ViewSet):
             serializer = UserSerializer(user_list, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({'message': "Not Found"}, status=status.HTTP_404_NOT_FOUND)
-
-from django.http import HttpResponse
-
-from django.shortcuts import render
-
-def index(request):
-    return render(request, 'index.html')
-
-def login(request):
-    return render(request, 'login/login.html')
-
-def register(request):
-    return render(request, 'register/register.html')
-
-# Diğer view fonksiyonları

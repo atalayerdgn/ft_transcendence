@@ -31,3 +31,8 @@ class UserSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True)
+
+
+class TwoFASerializer(serializers.Serializer):
+    twofa_code = serializers.CharField(required=True)
+    email = serializers.EmailField(required=True)

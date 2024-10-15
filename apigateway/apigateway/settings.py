@@ -22,6 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-v@a%a#8o574zdyp40*oa9d3$eb84u0tld-xmam5lb%8uf_ew2q'
 
+USER_SECRET_KEY = 'django-insecure-ox31j0@8g2fi@o$^&y@8gy+&qljbuzzq3u+$b+c-7&r3jd$p5z'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -39,20 +41,20 @@ SERVICE_ROUTES = {
   "friend/": "http://friend_service:8002"
 }
 
+import logging
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
         'console': {
-            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
         'apigateway': {
-            'handlers': ['console'],  # Sadece konsola loglama
+            'handlers': ['console'],
             'level': 'DEBUG',
-            'propagate': True,
         },
     },
 }
@@ -95,6 +97,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',  # CORS middleware
+    'routes.middleware.JWTAuthenticationMiddleware',  # JWT doğrulama middleware
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True  # Geliştirme aşamasında tüm kaynaklara izin veriyoruz

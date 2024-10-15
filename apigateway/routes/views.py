@@ -43,12 +43,16 @@ class APIGatewayView(APIView):
 
         # Tam URL'yi oluşturur
         full_url = f"{base_url}/{path}"
-        
+
+        logger.info(f"Forwarding request to: {full_url}")
+
         # İstek parametrelerini alır
         request_params = self.get_request_params(request)
+        logger.info(f"Forwarding request to: {full_url} with params: {request_params}")
         
         # İsteği ilgili servise yönlendirir
         response = self.forward_request(request, full_url, request_params)
+        logger.info(f"Response received: {response.status_code}")
         
         # Gelen yanıtı işler ve geri döner
         return self.handle_response(response)
@@ -106,13 +110,13 @@ class APIGatewayView(APIView):
             logger.error("Request error: %s", e)
             return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    # Gelen servisten alınan yanıtı işleyen metod
     def handle_response(self, response):
-        # Yanıt JSON ise, JSON formatında geri döner
-        if response.headers.get('content-type') == 'application/json':
-            return Response(response.json(), status=response.status_code)
-        # Aksi takdirde, yanıtı olduğu gibi döner
-        return Response(response.content, status=response.status_code)
+            # Yanıt JSON ise, JSON formatında geri döner
+            if response.headers.get('content-type') == 'application/json':
+                return Response(response.json(), status=response.status_code)
+            # Aksi takdirde, yanıtı olduğu gibi döner
+            return Response(response.content, status=response.status_code)
+
 
 #Kod ilk olarak gerekli isteklerin yönlendirilmesi için APIGatewayView adında bir sınıf oluşturur. 
 #Bu sınıf, Django'nun APIView sınıfından türetilmiştir ve HTTP GET, POST, PUT, PATCH ve DELETE isteklerini yönlendirmek için beş ayrı metoda sahiptir.

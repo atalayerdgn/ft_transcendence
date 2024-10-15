@@ -14,3 +14,17 @@ class AuthRepository:
     @abstractmethod
     def generate_token(self, user : User) -> str:
         pass
+    
+    @abstractmethod
+    def generate_2fa_code(self) -> str:
+        pass
+    
+    @abstractmethod
+    def set_twofa_code(self, user : User) -> str:
+        pass
+    
+    @abstractmethod
+    def send_2fa_code(self, email : str, code : str) -> bool:
+        pass
+    
+    

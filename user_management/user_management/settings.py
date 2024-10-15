@@ -129,3 +129,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Gmail için
+EMAIL_PORT = 587  # Gmail için
+EMAIL_USE_TLS = True  # TLS kullan
+EMAIL_HOST_USER = 'transtest4242@gmail.com'  # E-posta adresiniz
+EMAIL_HOST_PASSWORD = 'eycg rkhj ifas vgfq'  # E-posta şifreniz (Uygulama şifresi olmalı)
