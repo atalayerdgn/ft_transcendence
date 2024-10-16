@@ -1,3 +1,5 @@
+import { loadPage } from '../router.js';
+
 export async function authenticateUser() {
     const form = document.getElementById('loginForm');
 
@@ -9,35 +11,36 @@ export async function authenticateUser() {
             data[key] = value;
         });
 
+        const email = formData.get('username');
+
         console.log(data["username"] + " " + data["password"]);
-        /*try {
-            const response = await fetch('http://localhost:5500/', {
+
+        try {
+            const response = await fetch('http://localhost:8007/users/login/', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(data),
             });
 
-            const result = await response.json();
-
-            if (result.success) {
-                // Handle successful authentication
-                console.log('Authentication successful!');
-                // Optionally redirect to another page or show a success message
-                alert('Login successful!');
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log('Başarılı login');
+                localStorage.setItem('token', responseData.token); // Token'ı localStorage'a kaydet
+                localStorage.setItem('email', responseData.email); // Email'i localStorage'a kaydet
+                loadPage('validate'); // validate sayfasını yükle
             } else {
-                // Handle failed authentication
-                console.log('Authentication failed:', result.message);
-                // Optionally show an error message
-                alert('Login failed: ' + result.message);
+                console.log('Başarısız login');
             }
         } catch (error) {
-            console.error('Error during authentication:', error);
-            alert('An error occurred during authentication.');
-        }*/
+            console.error('There was a problem with the fetch operation:', error);
+        }
     }
 }
+
+
+
 /*
 export function handleRegisterData(savedData) {
     if (!savedData)

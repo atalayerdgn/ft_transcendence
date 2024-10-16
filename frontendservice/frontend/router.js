@@ -11,6 +11,10 @@ export async function loadPage(page) {
             pageUrl = 'register/register.html';
             //scriptUrl = 'register/register.js';
             break;
+        case 'validate':
+            pageUrl = 'validate/validate.html';
+            //scriptUrl = 'register/register.js';
+            break;
         case 'registerlogin':
             pageUrl = 'login/login.html';
             //scriptUrl = 'register/register.js';
