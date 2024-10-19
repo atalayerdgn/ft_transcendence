@@ -27,7 +27,7 @@ class AuthRepositoryImpl(AuthRepository):
                 success = self.send_2fa_code(saved_user.email, twofa_code)#eozdur
                 if not success:
                     return "2FA code sent but failed", False  # Hata durumunu yanıtla
-                return token, True # token ve başarılı yanıtı döndür
+                return token, saved_user.email, True # token ve başarılı yanıtı döndür
             return "Wrong password", False
         except User.DoesNotExist:
             return "User not found", False

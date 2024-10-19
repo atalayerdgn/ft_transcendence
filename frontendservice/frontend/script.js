@@ -1,6 +1,7 @@
 import { loadPage } from './router.js';
 import { saveData } from './register/register.js';
 import { /*handleRegisterData,*/ authenticateUser } from './login/login.js';
+import { validateUser } from './validate/validate.js';
 
 function setupEventListeners() {
     document.addEventListener('DOMContentLoaded', () => {
@@ -72,7 +73,7 @@ function setupEventListeners() {
             }
         });
     });
-    
+
 
     document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('click', (event) => {
@@ -81,8 +82,35 @@ function setupEventListeners() {
                 //if (event.target.getAttribute('data-page') === 'login')
                 authenticateUser();
             }
+
+            if (event.target.matches('.validateButton')) {
+                event.preventDefault(); // Varsayılan davranışı engelle
+                validateUser();
+            }
+
         });
     });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const app = document.getElementById('app');
+    
+        // Validate butonuna tıklandığında
+        const validateButton = document.querySelector('.validateButton');
+        validateButton.addEventListener('click', async (event) => {
+            event.preventDefault(); // Varsayılan davranışı engelle
+    
+            const form = document.getElementById('validateForm');
+            const formData = new FormData(form);
+            const validateCode = formData.get('twofa_code'); // İki faktörlü kodu al
+            const email = localStorage.getItem('email'); // E-postayı localStorage'dan al
+            const token = localStorage.getItem('token'); // Token'ı localStorage'dan al
+    
+            // Validate user fonksiyonunu çağır
+            await validateUser(validateCode, token, email);
+        });
+    });
+
 }
 
 setupEventListeners();

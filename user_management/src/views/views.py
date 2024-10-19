@@ -26,9 +26,9 @@ class AuthHandler(viewsets.ViewSet):
             #Eğer istek uygun değilse hata döndür
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         #Eğer istek uygunsa login fonksiyonunu çağır
-        token, success = self.service.login(serializer.validated_data)
+        token, email, success = self.service.login(serializer.validated_data)
         if success:
-            return Response({'token': token}, status=status.HTTP_200_OK)
+            return Response({'token': token, 'email': email}, status=status.HTTP_200_OK)
         return Response({'error': token}, status=status.HTTP_400_BAD_REQUEST)
 
     def validate_twofa(self, request):#eozdur
