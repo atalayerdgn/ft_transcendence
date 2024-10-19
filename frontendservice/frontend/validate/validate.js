@@ -31,7 +31,7 @@ export async function validateUser() {
             if (response.ok) {
                 console.log('Başarılı validate');
                 // İsteğe bağlı: validate sayfasını yükle
-                loadPage('game'); 
+                loadPage('profile'); 
             } else {
                 console.log('Başarısız validate');
                 loadPage('login');
