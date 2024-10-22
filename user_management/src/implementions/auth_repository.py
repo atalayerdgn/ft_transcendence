@@ -13,45 +13,43 @@ logger = logging.getLogger(__name__)
 
 class AuthRepositoryImpl(AuthRepository):
     #login methodu, kullanıcı adı ve şifre alır ve kullanıcıyı veritabanında arar
-    def login(self, username: str, password: str) -> Tuple[str, bool]:
+    def login(self, username: str, password: str) -> dict:
         try:
-            logger.info(f"Trying to login with username: {username}")
-            #Kullanıcıyı veritabanında ara
-            saved_user = User.objects.get(username=username)
-            if check_password(password, saved_user.password):
-                #şiifre doğruysa token oluştur
-                token = self.generate_token(saved_user)
-                #2fa kodu oluştur
-                twofa_code = self.set_twofa_code(saved_user)#eozdur
-                #2fa kodunu kullanıcıya gönder
-                success = self.send_2fa_code(saved_user.email, twofa_code)#eozdur
+            user = User.objects.get(username=username)
+            if check_password(password, user.password):
+                temp_token = self.generate_token(user, is_2fa_validated=False) #değişiklik yapıldı
+                twofa_code = self.set_twofa_code(user) #eozdur
+                success = self.send_2fa_code(user.email, twofa_code)#eozdur
                 if not success:
-                    return "2FA code sent but failed", False  # Hata durumunu yanıtla
-                return token, saved_user.email, True # token ve başarılı yanıtı döndür
-            return "Wrong password", False
+                    return {'success': False, 'error': "2FA code sent but failed to deliver"}
+                return {
+                    'success': True,
+                    'temp_token': temp_token
+                }
+            return {'success': False, 'error': "Wrong password"}
         except User.DoesNotExist:
-            return "User not found", False
+            return {'success': False, 'error': "User not found"}
         except Exception as e:
-            logger.error(f"Error during login: {str(e)}")  # Hata logla
-            return f"Error: {str(e)}", False
+            logger.error(f"Error during login: {str(e)}")
+            return {'success': False, 'error': f"Error: {str(e)}"}
 
-    def generate_token(self, user: User) -> str: #eozdur
-        #Token oluştur
-        payload = {#Token içeriği
-            'username': user.username,#Kullanıcı adı
-            'user_id': str(user.id),#user_id
-        }#burada yapılan işlemler token içeriğini oluşturur
+    def generate_token(self, user: User, is_2fa_validated: bool = False) -> str:
+        payload = {
+            'username': user.username,
+            'user_id': str(user.id),
+            'is_2fa_validated': is_2fa_validated
+        }
         return Utils.create_token(payload)
 
     def generate_2fa_code(self) -> str: #eozdur
         return str(random.randint(100000, 999999))
 
     def set_twofa_code(self, user: User) -> str: #eozdur
-        code = self.generate_2fa_code()#random 2fa kodu oluştur
-        user.twofa_code = code #2fa kodunu kullanıcıya ata
-        user.twofa_code_expiry = timezone.now() + datetime.timedelta(minutes=5)  # 5 dakika geçerli
-        user.save() #kullanıcıyı kaydet
-        return code# 2fa kodunu döndür
+        code = self.generate_2fa_code()
+        user.twofa_code = code
+        user.twofa_code_expiry = timezone.now() + datetime.timedelta(minutes=5)
+        user.save()
+        return code
 
     def send_2fa_code(self, email: str, code: str) -> bool: #eozdur
         logger.debug(f"Sending 2FA code {code} to {email}")
@@ -65,19 +63,16 @@ class AuthRepositoryImpl(AuthRepository):
             logger.error("E-posta gönderiminde bir hata oluştu.")
         return success
 
-    def validate_twofa(self, email: str, twofa_code: str) -> Tuple[bool, str]: #eozdur
+    def validate_twofa(self, user: User, twofa_code: str) -> bool: #eozdur
         try:
-            #Kullanıcıyı veritabanında ara
-            user = User.objects.get(email=email)
-            #2fa kodunu kontrol et
-            if user.twofa_code == twofa_code:
-                #2fa kodu doğruysa
-                user.save()#kullanıcıyı kaydet
-                return True, "2FA code is valid."
-            return False, "Invalid or expired 2FA code."
-        except User.DoesNotExist:
-            logger.error(f"Trying to validate 2FA code {twofa_code} for {email}")
-            return False, "User not fouyyynd."
+            if user.twofa_code == twofa_code and user.twofa_code_expiry > timezone.now():
+                user.twofa_code = None
+                user.twofa_code_expiry = None
+                user.save()
+                return True
+            return False
         except Exception as e:
+            #user.twofa_code logla
+            logger.info(f"User 2FA code: {user.twofa_code}")
             logger.error(f"Error during 2FA validation: {str(e)}")
-            return False, f"Error: {str(e)}"
+            return False

@@ -35,4 +35,3 @@ class LoginSerializer(serializers.Serializer):
 
 class TwoFASerializer(serializers.Serializer):
     twofa_code = serializers.CharField(required=True)
-    email = serializers.EmailField(required=True)

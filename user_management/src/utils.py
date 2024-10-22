@@ -22,18 +22,16 @@ class Utils:
         token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
         return token
 
-    '''
-    bunlar apigatewayde yapilacak!!!
+    #token oluşturulduktan sonra decode_token fonksiyonu çağrılır
     @staticmethod
     def decode_token(token: str) -> dict:
         try:
-            decoded_payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
-            return decoded_payload
+            payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+            return payload
         except jwt.ExpiredSignatureError:
-            raise Exception("Token has expired")
+            raise ValueError("Token has expired")
         except jwt.InvalidTokenError:
-            raise Exception("Invalid token")
-    '''
+            raise ValueError("Invalid token")
 
     @staticmethod
     def send_email(to_email, subject, body) -> bool: #eozdur

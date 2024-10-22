@@ -11,9 +11,10 @@ export async function validateUser() {
             data[key] = value;
         });
 
-        const token = localStorage.getItem('token'); // Token'ı localStorage'dan al
-        const email = localStorage.getItem('email'); // E-postayı localStorage'dan al
+        const token = localStorage.getItem('temp_token'); // Token'ı localStorage'dan al
         const validateCode = data["twofa_code"]; // Formdan alınan iki faktörlü kod
+
+        console.log('Token alınan:', token); // Token'ı kontrol et
 
         try {
             const response = await fetch('http://localhost:8007/users/validate/', {
@@ -24,16 +25,18 @@ export async function validateUser() {
                 },
                 body: JSON.stringify({
                     twofa_code: validateCode,
-                    email: email
                 }),
             });
 
             if (response.ok) {
                 console.log('Başarılı validate');
-                // İsteğe bağlı: validate sayfasını yükle
+                document.cookie = `token=${token}; path=/; max-age=1500`; // 1 saat geçerlilik süresi
+                localStorage.removeItem('temp_token'); // Token'ı localStorage'dan sil
+                console.log('Token silindi:', localStorage.getItem('temp_token'));
                 loadPage('profile'); 
             } else {
                 console.log('Başarısız validate');
+                localStorage.removeItem('temp_token'); // Token'ı localStorage'dan sil
                 loadPage('login');
             }
         } catch (error) {

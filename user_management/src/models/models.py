@@ -15,6 +15,7 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     twofa_code = models.CharField(max_length=10, null=True)#eozdur
+    twofa_code_expiry = models.DateTimeField(null=True)#eozdur
 
     def hash_password(self, raw_password):
         self.password = make_password(raw_password)

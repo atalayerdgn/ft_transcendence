@@ -2,10 +2,21 @@ import { loadPage } from './router.js';
 import { saveData } from './register/register.js';
 import { authenticateUser } from './login/login.js';
 import { validateUser } from './validate/validate.js';
+import { loadUserInfo } from './profile/profile.js';
 
 function setupEventListeners() {
     document.addEventListener('DOMContentLoaded', () => {
-        loadPage('login');
+
+        const cookies = document.cookie.split('; ');
+        const tokenCookie = cookies.find(cookie => cookie.startsWith('token='));
+
+        if (tokenCookie) {
+            // Token mevcut, profile sayfasını yükle
+            loadPage('profile');
+        } else {
+            // Token yok, login sayfasını yükle
+            loadPage('login');
+        }
 
         const app = document.getElementById('app');
         
@@ -54,6 +65,13 @@ function setupEventListeners() {
                 authenticateUser();
             }
 
+            if (event.target.matches('.buttonLogout')) {
+                event.preventDefault(); // Varsayılan form gönderimini engelle
+                localStorage.removeItem('user');
+                document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; // Token'ı sil
+                loadPage('login');
+            }
+
             if (event.target.matches('.validateButton')) {
                 event.preventDefault(); // Varsayılan davranışı engelle
                 const validateButton = event.target;
@@ -61,17 +79,25 @@ function setupEventListeners() {
                 const form = document.getElementById('validateForm');
                 const formData = new FormData(form);
                 const validateCode = formData.get('twofa_code'); // İki faktörlü kodu al
-                const email = localStorage.getItem('email'); // E-postayı localStorage'dan al
                 const token = localStorage.getItem('token'); // Token'ı localStorage'dan al
 
                 // Validate user fonksiyonunu çağır
-                validateUser(validateCode, token, email);
+                validateUser(validateCode, token);
             }
         });
 
         // Validate butonunun varlığını kontrol et
         
     });
+
+    
 }
+
+
+
+
+// Sayfa yüklendiğinde kullanıcı bilgilerini yükle
+
+
 
 setupEventListeners();
