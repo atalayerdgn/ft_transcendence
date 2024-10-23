@@ -2,11 +2,12 @@ import { loadPage } from './router.js';
 import { saveData } from './register/register.js';
 import { authenticateUser } from './login/login.js';
 import { validateUser } from './validate/validate.js';
-import { loadUserInfo } from './profile/profile.js';
+
 
 function setupEventListeners() {
     document.addEventListener('DOMContentLoaded', () => {
 
+        //sayfa yeni yüklendiğinde token kontrolü yapıyor
         const cookies = document.cookie.split('; ');
         const tokenCookie = cookies.find(cookie => cookie.startsWith('token='));
 
@@ -17,7 +18,8 @@ function setupEventListeners() {
             // Token yok, login sayfasını yükle
             loadPage('login');
         }
-
+        // burada token kontrolu bitiyor
+        
         const app = document.getElementById('app');
         
         app.addEventListener('click', async (event) => {
@@ -81,7 +83,6 @@ function setupEventListeners() {
                 const validateCode = formData.get('twofa_code'); // İki faktörlü kodu al
                 const token = localStorage.getItem('token'); // Token'ı localStorage'dan al
 
-                // Validate user fonksiyonunu çağır
                 validateUser(validateCode, token);
             }
         });

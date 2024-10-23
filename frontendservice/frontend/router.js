@@ -1,3 +1,5 @@
+import { loadUserInfo } from './profile/profile.js';
+
 export async function loadPage(page) {
     let pageUrl = '';
     //let scriptUrl = '';
@@ -19,7 +21,8 @@ export async function loadPage(page) {
     pageUrl = pageMap.get(page);
     // Geçerli bir sayfa yoksa 404 sayfasını yükleyin
     if (!pageUrl) {
-        pageUrl = '404/404.html'; 
+        pageUrl = '404/404.html';
+    
 }
     try {
         if (page == 'loginWith42') {
@@ -29,8 +32,21 @@ export async function loadPage(page) {
             if (!response.ok) {
                 throw new Error(`Failed to load page: ${response.statusText}`);
             }
+            
+            // Eğer profile sayfası yükleniyorsa html yüklendikten sonra js çalışır çünkü 3g hızında önce js çalışıyor ve html 
+            // yüklenmeden js çalıştığı için html'de bulunan elementler tanımlanamıyor hata veriyor. Bu yüzden profile sayfası
+            // yüklenirken kullanıcı bilgileri doldurulmuyor
+            if (pageUrl === 'profile/profile.html') {
+               // import('./profile/profile.js')
+                content.innerHTML = await response.text();
+                 // İçindeki fonksiyonu çağır
+                //await module.loadUserInfo();
+                loadUserInfo();
+                return;
+            }
             content.innerHTML = await response.text();
         }
+
         /*if (scriptUrl) {
             const script = document.createElement('script');
             script.src = scriptUrl;

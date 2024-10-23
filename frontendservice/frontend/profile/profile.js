@@ -1,16 +1,19 @@
 export async function loadUserInfo() {
-
-   /* const storedUser = localStorage.getItem('user');
-
-    if (storedUser) {
-        document.getElementById('username').textContent = user.username;
-        document.getElementById('user-role').textContent = user.first_name;
-        document.getElementById('user-location').textContent = user.email;
-        //loadingMessage.style.display = 'none'; // Yükleniyor mesajını gizle
-        return;
-    }*/
-
     try {
+        //localde user bilgileri var ise istek atmadan localden user bilgilerini al
+        /*const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            const userr = JSON.parse(storedUser);
+
+            //bu arada html sayfası yüklenmesi lazım çünkü html sayfası yüklenmeden elementler tanımlanamaz
+
+            document.getElementById('username').textContent = userr.username;
+            document.getElementById('user-role').textContent = userr.first_name;
+            document.getElementById('user-location').textContent = userr.email;
+            //loadingMessage.style.display = 'none'; // Yükleniyor mesajını gizle
+            return;
+        }*/
+
         const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1]; // Token'ı al
         const response = await fetch('http://localhost:8007/users/username/', {
             method: 'GET',
@@ -42,5 +45,6 @@ export async function loadUserInfo() {
         console.error('Hata:', error);
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', loadUserInfo);
