@@ -8,13 +8,13 @@ from src.models.models import User
 import jwt
 from django.conf import settings
 import datetime
-
+from src.utils import Utils
 from src.implementions.auth_repository import AuthRepositoryImpl
 from src.implementions.auth_service import AuthServiceImpl
 from src.implementions.user_repository import UserRepositoryImpl
 from src.implementions.user_service import UserServiceImpl
 from src.serializers.serializers import UserSerializer, CreateUserSerializer, \
-    LoginSerializer, TwoFASerializer
+    LoginSerializer, TwoFASerializer , UpdateUserSerializer
 
 
 class AuthHandler(viewsets.ViewSet):
@@ -28,11 +28,13 @@ class AuthHandler(viewsets.ViewSet):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
         result = self.service.login(serializer.validated_data)
+        
         if result['success']:
             return Response({
                 'message': '2FA code sent to your email, please validate',
                 'temp_token': result['temp_token']
             }, status=status.HTTP_200_OK)
+            
         return Response({'error': result['error']}, status=status.HTTP_400_BAD_REQUEST)
     
     def validate_twofa(self, request): #eozdur
@@ -58,16 +60,15 @@ class AuthHandler(viewsets.ViewSet):
         validation_result = self.service.validate_twofa(user, twofa_code)
         if validation_result:
             return Response({'message': '2FA validation successful'}, status=status.HTTP_200_OK)
+        
         return Response({'error': 'Invalid 2FA code'}, status=status.HTTP_400_BAD_REQUEST)
 
     def get_user_from_token(self, token): #eozdur
         try:
-            decoded_token = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
+            decoded_token = Utils.decode_token(token)  # Burada decode_token metodunu kullanıyoruz
             user_id = decoded_token.get('user_id')  # Burada user_id alanını kullanıyoruz
             return User.objects.get(id=user_id)  # Kullanıcıyı veritabanından al
-        except (jwt.ExpiredSignatureError, jwt.InvalidTokenError):
-            return None
-        except User.DoesNotExist:
+        except (ValueError, User.DoesNotExist):
             return None
             
 
@@ -94,14 +95,14 @@ class UserManagementHandler(viewsets.ViewSet):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({'error': message}, status=status.HTTP_404_NOT_FOUND)
 
-    def get_user_by_username(self, request):
-        token = request.META.get('HTTP_AUTHORIZATION', '').split(' ')[1]  # Token'ı al
+    def get_user_by_username(self, request): #eozdur değişiklik yapıldı
+        token = request.META.get('HTTP_AUTHORIZATION', '').split(' ')[-1]  # Token'ı al
         if not token:
             return Response({'error': 'Token is required'}, status=status.HTTP_401_UNAUTHORIZED)
 
         try:
-        # Token'ı çözümle ve username'i al
-            decoded = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])  # 'your_secret_key' yerine gerçek anahtarını koy
+            # Token'ı çözümle ve username'i al
+            decoded = Utils.decode_token(token)  # Burada decode_token metodunu kullanıyoruz
             username = decoded.get('username')  # Token'dan username'i al
             
             if not username:
@@ -113,12 +114,9 @@ class UserManagementHandler(viewsets.ViewSet):
                 return Response(serializer.data, status=status.HTTP_200_OK)
         
             return Response({'error': message}, status=status.HTTP_404_NOT_FOUND)
-    
-        except jwt.ExpiredSignatureError:
-            return Response({'error': 'Token has expired'}, status=status.HTTP_401_UNAUTHORIZED)
-        except jwt.InvalidTokenError:
-            return Response({'error': 'Invalid token'}, status=status.HTTP_401_UNAUTHORIZED)
-
+        
+        except ValueError as e:
+            return Response({'error': str(e)}, status=status.HTTP_401_UNAUTHORIZED)
 
     def get_user_by_email(self, request):
         email = request.query_params.get('email')
@@ -157,3 +155,49 @@ class UserManagementHandler(viewsets.ViewSet):
             serializer = UserSerializer(user_list, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({'message': "Not Found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    from rest_framework import status
+
+    def update_user(self, request): #eozdur
+        # Authorization başlığından token'ı al
+        token = request.META.get('HTTP_AUTHORIZATION')
+        if not token or not token.startswith('Bearer '):
+            return Response({'error': 'Authorization token is missing or invalid.'}, status=status.HTTP_401_UNAUTHORIZED)
+
+        token = token.split()[1]  # Bearer kısmını atla
+        try:
+            # Token'ı çözümle
+            decoded_token = Utils.decode_token(token)
+            current_user = decoded_token.get('username')  # Token'dan kullanıcı adını al
+        except ValueError as e:
+            return Response({'error': str(e)}, status=status.HTTP_401_UNAUTHORIZED)
+
+        # Kullanıcı bilgilerini güncellemek için gelen verileri doğrula
+        serializer = UpdateUserSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response({'error': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Eğer token'dan alınan kullanıcı ile güncellenmek istenen kullanıcı eşleşmiyorsa hata ver
+        if current_user != serializer.validated_data['current_username']:
+            return Response({'error': 'You do not have permission to update this user.'}, status=status.HTTP_403_FORBIDDEN)
+
+        # Güncelleme işlemini gerçekleştirin
+        success, message = self.service.update_user(serializer.validated_data)
+        if success:
+            # Yeni token için payload oluştur
+            user = User.objects.get(username=serializer.validated_data['username'])
+            payload = {
+                'username': user.username,
+                'user_id': str(user.id)
+            }
+            
+            # Yeni token oluştur
+            new_token = Utils.create_token(payload)
+            
+            return Response({
+                'message': 'User updated successfully',
+                'token': new_token
+            }, status=status.HTTP_200_OK)
+
+        return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
+    

@@ -56,3 +56,27 @@ class UserRepositoryImpl(UserRepository):
             return None, "User not found"
         except Exception as e:
             return None, str(e)
+        
+    def update_user(self, validated_data: dict) -> Tuple[bool, str]:
+        try:
+            current_username = validated_data['current_username']
+            username = validated_data['username']
+            
+            # Kullanıcıyı current_username ile bul
+            user = User.objects.filter(username=current_username).first()
+            if user:
+                # Eğer yeni username mevcutsa ve farklıysa kontrol et
+                if username != current_username and User.objects.filter(username=username).exists():
+                    return False, "New username already exists"
+                
+                # Kullanıcı bilgilerini güncelle
+                user.username = username  # Yeni kullanıcı adını güncelleyebilirsiniz
+                user.first_name = validated_data['first_name']
+                user.last_name = validated_data['last_name']
+                user.email = validated_data['email']
+                user.save()
+                return True, ""
+            
+            return False, "User not found"
+        except Exception as e:
+            return False, f"Error: {str(e)}"

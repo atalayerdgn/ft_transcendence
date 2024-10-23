@@ -2,7 +2,7 @@ import { loadPage } from './router.js';
 import { saveData } from './register/register.js';
 import { authenticateUser } from './login/login.js';
 import { validateUser } from './validate/validate.js';
-
+import { updateUserInfo } from './profile/updateProfile.js';
 
 function setupEventListeners() {
     document.addEventListener('DOMContentLoaded', () => {
@@ -26,7 +26,7 @@ function setupEventListeners() {
             event.preventDefault();
 
             if (event.target.matches('.nav-link, #app[data-page]')) {
-                const page = event.target.getAttribute('data-page');
+                let page = event.target.getAttribute('data-page');
                 
                 if (page === 'registerlogin') {
                     const form = document.getElementById('registerForm');
@@ -55,7 +55,16 @@ function setupEventListeners() {
                         console.error('Hata:', error);
                     }
                 }
-                
+
+                if(page === 'updateProfile') {
+                   // console.log('updateProfile');
+                    updateUserInfo();
+                    //console.log('updateProfilesonrasi in script.js');
+                    page = 'profile';
+                    console.log('update sonrasi page:', page);
+                }
+
+
                 loadPage(page);
             }
         });
@@ -85,6 +94,16 @@ function setupEventListeners() {
 
                 validateUser(validateCode, token);
             }
+
+            if(event.target.matches('.updateProfileBtn')) {
+                event.preventDefault();
+                document.getElementById('updateProfileBtn').addEventListener('click', updateUserInfo);
+                console.log('updateProfileBtn');
+                // Kullanıcı bilgilerini güncelle
+                updateUserInfo()
+            }
+
+
         });
 
         // Validate butonunun varlığını kontrol et

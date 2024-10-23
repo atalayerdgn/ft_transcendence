@@ -33,3 +33,7 @@ class UserRepository():
     @abstractmethod
     def get_all(self):
         pass
+    
+    @abstractmethod
+    def update_user(self, validated_data: dict) -> Tuple[BooleanField,str]:
+        pass

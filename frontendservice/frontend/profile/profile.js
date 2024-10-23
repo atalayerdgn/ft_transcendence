@@ -28,6 +28,11 @@ export async function loadUserInfo() {
             document.getElementById('username').textContent = user.username; // Kullanıcı adını güncelle
             document.getElementById('user-role').textContent = user.first_name; // Kullanıcı rolünü güncelle
             document.getElementById('user-location').textContent = user.email; // Kullanıcı konumunu güncelle
+            
+            document.getElementById('first-name').value = user.first_name; // Kullanıcı emailini güncelle
+            document.getElementById('last-name').value = user.last_name; // Kullanıcı telefonunu güncelle
+            document.getElementById('email').value = user.email; // Kullanıcı emailini güncelle
+            document.getElementById('userrname').value = user.username; // Kullanıcı username'ini güncelle
 
             const usernameElem = document.getElementById('username');
             if (usernameElem) {
@@ -45,6 +50,5 @@ export async function loadUserInfo() {
         console.error('Hata:', error);
     }
 }
-
 
 document.addEventListener('DOMContentLoaded', loadUserInfo);

@@ -32,4 +32,7 @@ class UserServiceImpl(UserService):
 
     def get_all_users(self) -> Tuple[List[User], str]:
         return self.user_repository.get_all()
+    
+    def update_user(self, validated_data: dict) -> Tuple[bool, str]:
+        return self.user_repository.update_user(validated_data)
 

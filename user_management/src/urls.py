@@ -13,7 +13,8 @@ urlpatterns = [
     #login isteği auth_handler sınıfının login fonksiyonuna yönlendirilir.
     path('login/', AuthHandler.as_view({'post': 'login'}), name='login'),
     #2fa validate
-    path('validate/', AuthHandler.as_view({'post': 'validate_twofa'}), name='validate_twofa')#eozdur
+    path('validate/', AuthHandler.as_view({'post': 'validate_twofa'}), name='validate_twofa'),#eozdur
+    path('update/', UserManagementHandler.as_view({'put': 'update_user'}), name='update_user'),
     #burası apigatewayde yapılacak!!!
     #path('validate/', AuthHandler.as_view({'post': 'validate_token'}), name='validate_token'),
 ]

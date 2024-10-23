@@ -1,127 +1,88 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    height: 100vh;
-    background-color: #f4f6f9;
-    overflow: hidden;
-}
-.navbar {
-    background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
-    color: white;
-    padding: 0 30px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 70px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background: #e2e5e9; /* Açık gri arka plan */
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
 }
 
-.navbar h1 {
-    font-size: 26px;
-    font-weight: 700;
-    margin: 0;
+.card {
+    border-radius: 0.75rem; /* Yuvarlatılmış köşeler */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd; /* Gri kenar rengi */
+    background-color: #ffffff; /* Beyaz arka plan */
 }
 
-.sidebar {
-    background: #2c3e50;
-    width: 260px;
-    height: 100%;
-    position: fixed;
-    top: 70px;
-    left: 0;
-    padding-top: 30px;
-    overflow-y: auto;
-    color: white;
-    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.3);
+.avatar {
+    border: 4px solid #007bff; /* Mavi border */
+    border-radius: 50%;
 }
 
-.sidebar h2 {
-    font-size: 22px;
-    margin-bottom: 40px;
-    text-align: center;
-    color: #ecf0f1;
-    font-weight: 700;
-    letter-spacing: 1px;
+.btn-primary {
+    background-color: #007bff; /* Mavi */
+    border-color: #007bff;
 }
 
-.sidebar button {
-    display: block;
-    width: calc(100% - 30px);
-    color: #bdc3c7;
-    background: none;
-    padding: 15px 20px;
-    margin: 10px 15px;
-    text-decoration: none;
+.btn-primary:hover {
+    background-color: #0056b3; /* Koyu mavi hover rengi */
+    border-color: #004494;
+}
+
+.text-secondary {
+    color: #6c757d; /* Koyu gri */
+}
+
+.list-group-item {
     border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    text-align: left;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s;
+    padding: 0.75rem 1rem; /* Padding */
+    background-color: #f8f9fa; /* Açık gri arka plan */
 }
 
-.sidebar button:hover {
-    background: #1abc9c;
-    color: white;
-}
-
-.main-content {
-    margin-left: 260px;
-    margin-top: 70px;
-    padding: 40px;
-    background: white;
-    flex-grow: 1;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-}
-
-.container {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-.container h1 {
-    font-size: 32px;
+.rank-card {
+    background: #007bff; /* Mavi */
+    color: #ffffff;
+    border-radius: 0.75rem;
+    padding: 1rem;
     text-align: center;
-    display: block;
-    font-weight: 700;
 }
 
-.container p {
-    font-size: 18px;
-    line-height: 1.7;
-    color: #7f8c8d;
+.rank-card h5 {
+    margin: 0;
+    font-size: 1.5rem; /* Büyük başlık */
 }
 
-.container p::first-letter {
-    font-size: 120%;
-    font-weight: bold;
-    color: #34495e;
+.contact-info {
+    border-left: 4px solid #007bff; /* Mavi border */
+    padding-left: 1rem;
+    margin-bottom: 1rem;
 }
 
-.container::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    right: -20px;
-    bottom: -20px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
-    z-index: -1;
-    opacity: 0.8;
-    filter: blur(20px);
-    border-radius: 20px;
+.contact-info .icon {
+    font-size: 1.5rem;
+    color: #007bff; /* Mavi ikon rengi */
+}
+
+.navbar {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd; /* Alt çizgi */
+}
+
+.navbar-nav .nav-link {
+    color: #007bff !important; /* Mavi bağlantı rengi */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #0056b3 !important; /* Hover rengi */
+}
+
+.navbar-nav {
+    flex-direction: row; /* Yatay hizalama */
+}
+
+.navbar-nav .nav-item {
+    margin-right: 1rem; /* Boşluk */
+}
+
+.navbar-brand {
+    flex-grow: 1; /* Sola yaslama */
+    text-align: center; /* Ortalama */
 }

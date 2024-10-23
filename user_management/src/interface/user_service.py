@@ -30,3 +30,7 @@ class UserService:
     @abstractmethod
     def get_all_users(self) -> List[User]:
         pass
+    
+    @abstractmethod
+    def update_user(self, validated_data: dict) -> Tuple[bool, str]:
+        pass
