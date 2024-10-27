@@ -59,6 +59,7 @@ function setupEventListeners() {
                 if(page === 'updateProfile') {
                    // console.log('updateProfile');
                     updateUserInfo();
+                    return;
                     //console.log('updateProfilesonrasi in script.js');
                     page = 'profile';
                     console.log('update sonrasi page:', page);
