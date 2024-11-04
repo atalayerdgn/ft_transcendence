@@ -3,6 +3,7 @@ import { saveData } from './register/register.js';
 import { authenticateUser } from './login/login.js';
 import { validateUser } from './validate/validate.js';
 import { updateUserInfo } from './profile/updateProfile.js';
+import { updateProfilePicture } from './profile/updateProfile.js';
 
 function setupEventListeners() {
     document.addEventListener('DOMContentLoaded', () => {
@@ -60,9 +61,6 @@ function setupEventListeners() {
                    // console.log('updateProfile');
                     updateUserInfo();
                     return;
-                    //console.log('updateProfilesonrasi in script.js');
-                    page = 'profile';
-                    console.log('update sonrasi page:', page);
                 }
 
 
@@ -84,6 +82,11 @@ function setupEventListeners() {
                 loadPage('login');
             }
 
+            if(event.target.matches('.buttonPpChange')) {
+                event.preventDefault();
+                updateProfilePicture();
+            }
+
             if (event.target.matches('.validateButton')) {
                 event.preventDefault(); // Varsayılan davranışı engelle
                 const validateButton = event.target;
@@ -96,13 +99,13 @@ function setupEventListeners() {
                 validateUser(validateCode, token);
             }
 
-            if(event.target.matches('.updateProfileBtn')) {
+            /*if(event.target.matches('.updateProfileBtn')) {
                 event.preventDefault();
                 document.getElementById('updateProfileBtn').addEventListener('click', updateUserInfo);
                 console.log('updateProfileBtn');
                 // Kullanıcı bilgilerini güncelle
                 updateUserInfo()
-            }
+            }*/
 
 
         });

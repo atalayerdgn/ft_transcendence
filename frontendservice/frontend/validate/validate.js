@@ -32,7 +32,7 @@ export async function validateUser() {
                 console.log('Başarılı validate');
                 document.cookie = `token=${token}; path=/; max-age=1500`; // 1 saat geçerlilik süresi
                 localStorage.removeItem('temp_token'); // Token'ı localStorage'dan sil
-                console.log('Token silindi:', localStorage.getItem('temp_token'));
+                console.log('Token local storage den silindi:', localStorage.getItem('temp_token'));
                 //loadPage('profile'); 
                 const cookies = document.cookie.split('; ');
                 const tokenCookie = cookies.find(cookie => cookie.startsWith('token='));

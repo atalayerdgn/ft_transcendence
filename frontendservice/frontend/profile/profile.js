@@ -47,6 +47,7 @@ export async function loadUserInfo() {
             console.error('Kullanıcı bilgileri yüklenemedi.');
         }
     } catch (error) {
+        return; // token olmadığında console.error hatası vermesin diye return ekledim	
         console.error('Hata:', error);
     }
 }

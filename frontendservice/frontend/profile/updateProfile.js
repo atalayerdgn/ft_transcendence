@@ -28,7 +28,7 @@ export async function updateUserInfo() {
         
         // Assuming the new token is returned in the response
         const newToken = result.token;
-        document.cookie = `token=${newToken}; path=/;`;
+        document.cookie = `token=${newToken}; path=/; max-age=1500`; 
         localStorage.setItem('user', JSON.stringify(result));
 
         document.getElementById('username').textContent = result.username; // Kullanıcı adını güncelle
@@ -45,4 +45,31 @@ export async function updateUserInfo() {
     } else {
         console.error('Profile update failed.');
     }
+}
+
+
+export async function updateProfilePicture() {
+    console.log('updateProfilePicture');
+    const fileInput = document.getElementById('file-input');
+    const avatarImg = document.getElementById('avatar-img');
+    const changePPButton = document.getElementById('change-pp-btn');
+
+    // Dosya yüklendiğinde resmi değiştir
+    fileInput.addEventListener('change', (event) => {
+        console.log('fileInput changed');
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                avatarImg.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // PP Change butonuna tıklama eylemi
+    changePPButton.addEventListener('click', () => {
+        console.log('changePPButton clicked');
+        fileInput.click(); // Kullanıcı etkileşimi ile tetikleniyor
+    });
 }
