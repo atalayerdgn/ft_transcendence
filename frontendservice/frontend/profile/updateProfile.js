@@ -49,27 +49,24 @@ export async function updateUserInfo() {
 
 
 export async function updateProfilePicture() {
-    console.log('updateProfilePicture');
+    console.log('updateProfilePicture function called');
+
     const fileInput = document.getElementById('file-input');
-    const avatarImg = document.getElementById('avatar-img');
     const changePPButton = document.getElementById('change-pp-btn');
 
-    // Dosya yüklendiğinde resmi değiştir
-    fileInput.addEventListener('change', (event) => {
-        console.log('fileInput changed');
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                avatarImg.src = e.target.result;
-            }
-            reader.readAsDataURL(file);
-        }
-    });
-
-    // PP Change butonuna tıklama eylemi
+    console.log('fileInput:', fileInput);
+    console.log('changePPButton:', changePPButton);
+    
+    // Dosya yüklendiğinde dosya seçme ekranını aç
     changePPButton.addEventListener('click', () => {
-        console.log('changePPButton clicked');
-        fileInput.click(); // Kullanıcı etkileşimi ile tetikleniyor
+        console.log('changePPButton clicked2');
+        console.log(fileInput.click());
+        fileInput.click();
     });
 }
+
+
+// <!-- w---------------------------------------------------------- -->
+
+
+// <!-- w---------------------------------------------------------- -->

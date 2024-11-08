@@ -24,9 +24,10 @@ function setupEventListeners() {
         const app = document.getElementById('app');
         
         app.addEventListener('click', async (event) => {
-            event.preventDefault();
+            
 
             if (event.target.matches('.nav-link, #app[data-page]')) {
+                event.preventDefault();
                 let page = event.target.getAttribute('data-page');
                 
                 if (page === 'registerlogin') {
@@ -63,13 +64,18 @@ function setupEventListeners() {
                     return;
                 }
 
-
                 loadPage(page);
             }
         });
-
+        const fileInput = document.getElementById('file-input');
+                    if (fileInput) {
+                        console.log('fileInput saaaa:', fileInput);
+                        fileInput.click();
+                    }
+                
         // Login butonuna tıklandığında
         document.addEventListener('click', (event) => {
+
             if (event.target.matches('.buttonLogin')) {
                 event.preventDefault(); // Varsayılan form gönderimini engelle
                 authenticateUser();
@@ -82,10 +88,10 @@ function setupEventListeners() {
                 loadPage('login');
             }
 
-            if(event.target.matches('.buttonPpChange')) {
+            /*if(event.target.matches('.buttonPpChange')) {
                 event.preventDefault();
                 updateProfilePicture();
-            }
+            }*/
 
             if (event.target.matches('.validateButton')) {
                 event.preventDefault(); // Varsayılan davranışı engelle
@@ -99,13 +105,19 @@ function setupEventListeners() {
                 validateUser(validateCode, token);
             }
 
-            /*if(event.target.matches('.updateProfileBtn')) {
+            if(event.target.matches('.updateProfileBtn')) {
                 event.preventDefault();
                 document.getElementById('updateProfileBtn').addEventListener('click', updateUserInfo);
                 console.log('updateProfileBtn');
                 // Kullanıcı bilgilerini güncelle
                 updateUserInfo()
-            }*/
+            }
+
+            if(event.target.matches('.buttonPpChange')) {
+               // event.preventDefault();
+                updateProfilePicture();
+            }
+           
 
 
         });

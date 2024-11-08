@@ -44,13 +44,24 @@
                     <div class="card">
                         <div class="card-body text-center">
                             <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Avatar" class="avatar img-fluid" width="150" id="avatar-img" style="cursor: pointer;">
-                            <input type="file" accept="image/*" id="file-input"/>
+                            <form class="ismail" id="file-inputform">
+                                <input type="file" id="file-input"/>
+                            </form>
                             <div class="mt-3" id="user-info">
                                 <h4 id="username">Loading..</h4>
                                 <p class="text-secondary mb-1" id="user-role">Pong Player</p>
                                 <p class="text-muted font-size-sm" id="user-location">San Francisco, CA</p>
                                 <div class="d-flex justify-content-center">
                                     <button class="btn btn-secondary me-2 buttonPpChange" id="change-pp-btn">PP Change</button>
+                        
+
+                                    <!-- Hidden file input for selecting the picture -->
+                                    <input type="file" id="profilePictureInput" style="display:none;" accept="image/*">
+
+                                    <!-- Optional: To show feedback on image selection -->
+                                    <img id="preview" src="" alt="Image preview" style="display:none; width: 100px; height: 100px; object-fit: cover;">
+
+
                                     <button class="btn btn-primary buttonLogout" id="logout-btn">Logout</button>
                                 </div>
                             </div>

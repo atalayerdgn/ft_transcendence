@@ -398,7 +398,7 @@ function game(againstAnotherPlayer = true) {
     scene.add(starField);
 
     // 17. Animasyon Döngüsü
-    const speed = 0.4;
+    const speed = 1.4;
 
     function animate() {
         requestAnimationFrame(animate);

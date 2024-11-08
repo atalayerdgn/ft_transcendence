@@ -12,6 +12,10 @@ body {
     background-color: #ffffff; /* Beyaz arka plan */
 }
 
+#file-input {
+    display: inline-block; /* Görünür ve interaktif hale getir */
+}
+
 .avatar {
     border: 4px solid #007bff; /* Mavi border */
     border-radius: 50%;

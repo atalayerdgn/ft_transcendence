@@ -1,5 +1,5 @@
 import { loadUserInfo } from './profile/profile.js';
-
+import { updateProfilePicture } from './profile/updateProfile.js';
 export async function loadPage(page) {
     let pageUrl = '';
     //let scriptUrl = '';
@@ -37,13 +37,24 @@ export async function loadPage(page) {
             // yüklenmeden js çalıştığı için html'de bulunan elementler tanımlanamıyor hata veriyor. Bu yüzden profile sayfası
             // yüklenirken kullanıcı bilgileri doldurulmuyor
             if (pageUrl === 'profile/profile.html') {
-               // import('./profile/profile.js')
                 content.innerHTML = await response.text();
-                 // İçindeki fonksiyonu çağır
-                //await module.loadUserInfo();
                 loadUserInfo();
+
+                /*document.addEventListener('DOMContentLoaded', () => {
+                    const fileInput = document.getElementById('file-input');
+                    if (fileInput) {
+                        fileInput.addEventListener('change', (event) => {
+                            const file = event.target.files[0];
+                            if (file) {
+                                updateProfilePicture(file);
+                            }
+                        });
+                    }
+                });
+                return;*/
                 return;
             }
+            
             content.innerHTML = await response.text();
         }
 
