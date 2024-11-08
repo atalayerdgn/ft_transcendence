@@ -48,25 +48,49 @@ export async function updateUserInfo() {
 }
 
 
+// Profil resmini güncelleme fonksiyonu
+// Profil resmini güncelleme fonksiyonu
 export async function updateProfilePicture() {
     console.log('updateProfilePicture function called');
 
     const fileInput = document.getElementById('file-input');
-    const changePPButton = document.getElementById('change-pp-btn');
-
-    console.log('fileInput:', fileInput);
-    console.log('changePPButton:', changePPButton);
     
-    // Dosya yüklendiğinde dosya seçme ekranını aç
-    changePPButton.addEventListener('click', () => {
-        console.log('changePPButton clicked2');
-        console.log(fileInput.click());
-        fileInput.click();
+    // Dosya seçildiyse işlemi başlat
+    fileInput.click(); // Dosya input'unu tetikle
+
+    // Dosya input'unun değiştiğini kontrol et
+    fileInput.addEventListener('change', async (event) => {
+        const file = event.target.files[0];  // Seçilen dosya
+        if (file) {
+            const formData = new FormData();
+            formData.append('profile_picture', file);  // Dosyayı formData'ya ekle
+
+            // Bearer token (Örnek: localStorage'dan alınıyor)
+            const token = localStorage.getItem('access_token'); // Token'ı buradan alıyoruz
+
+            // Fetch ile dosyayı sunucuya gönder
+            try {
+                const response = await fetch('/upload-avatar/', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Authorization': `Bearer ${token}`, // Bearer token'ı başlığa ekle
+                    },
+                });
+
+                if (response.ok) {
+                    const data = await response.json(); // Backend'den dönen yanıtı al
+                    console.log('Başarıyla yüklendi:', data);
+                    // Yeni profil resmini güncelle
+                    document.getElementById('avatar-img').src = data.new_avatar_url;
+                } else {
+                    console.error('Yükleme başarısız:', response.status);
+                }
+            } catch (error) {
+                console.error('Hata oluştu:', error);
+            }
+        }
     });
 }
 
 
-// <!-- w---------------------------------------------------------- -->
-
-
-// <!-- w---------------------------------------------------------- -->

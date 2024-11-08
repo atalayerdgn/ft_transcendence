@@ -1,5 +1,5 @@
 import { loadUserInfo } from './profile/profile.js';
-import { updateProfilePicture } from './profile/updateProfile.js';
+//import { updateProfilePicture } from './profile/updateProfile.js';
 export async function loadPage(page) {
     let pageUrl = '';
     //let scriptUrl = '';

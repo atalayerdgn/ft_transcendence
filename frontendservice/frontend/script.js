@@ -67,11 +67,11 @@ function setupEventListeners() {
                 loadPage(page);
             }
         });
-        const fileInput = document.getElementById('file-input');
+        /*const fileInput = document.getElementById('file-input');
                     if (fileInput) {
                         console.log('fileInput saaaa:', fileInput);
                         fileInput.click();
-                    }
+                    }*/
                 
         // Login butonuna tıklandığında
         document.addEventListener('click', (event) => {
@@ -113,14 +113,13 @@ function setupEventListeners() {
                 updateUserInfo()
             }
 
-            if(event.target.matches('.buttonPpChange')) {
+            if(event.target.matches('.img-fluid')) {
                // event.preventDefault();
                 updateProfilePicture();
             }
-           
-
-
         });
+
+        
 
         // Validate butonunun varlığını kontrol et
         
