@@ -36,22 +36,22 @@ class APIGatewayView(APIView):
     def proxy_request(self, request, path):
         # Yönlendirme yapılacak temel URL'yi alır
         base_url = self.get_service_url(path)
-        
+        #base url -> http://usermanagementc:8000
         # Eğer geçerli bir URL bulunamazsa hata döner
         if not base_url:
             return Response({'error': 'Invalid path'}, status=status.HTTP_404_NOT_FOUND)
 
         # Tam URL'yi oluşturur
-        full_url = f"{base_url}/{path}"
+        full_url = f"{base_url}/{path}" # http://usermanagementc:8000/users/create/
 
         logger.info(f"Forwarding request to: {full_url}")
 
         # İstek parametrelerini alır
-        request_params = self.get_request_params(request)
+        request_params = self.get_request_params(request) # {'json': {'name': 'John Doe', 'email': '
         logger.info(f"Forwarding request to: {full_url} with params: {request_params}")
         
         # İsteği ilgili servise yönlendirir
-        response = self.forward_request(request, full_url, request_params)
+        response = self.forward_request(request, full_url, request_params) # {'json': {'name': 'John Doe', 'email': '
         logger.info(f"Response received: {response.status_code}")
         
         # Gelen yanıtı işler ve geri döner
@@ -59,9 +59,9 @@ class APIGatewayView(APIView):
 
     # URL yolu ile ilgili mikro servisin temel URL'sini bulur
     def get_service_url(self, path):
-        for route, url in settings.SERVICE_ROUTES.items():
-            if path.startswith(route):
-                return url
+        for route, url in settings.SERVICE_ROUTES.items(): # settings.py dosyasındaki SERVICE_ROUTES değişkenindeki tüm mikro servislerin URL'lerini döner
+            if path.startswith(route): # Eğer path, route ile başlıyorsa örnk -> /users/create/ -> /users/
+                return url # İlgili servisin URL'sini döner örn -> users: http://usermanagementc:8000
         
         # Geçerli bir URL bulunamazsa hata loglar
         logger.error("No matching service URL found for path: %s", path)
@@ -72,48 +72,53 @@ class APIGatewayView(APIView):
         params = {}
         # Eğer istek POST, PUT veya PATCH ise, json verisini alır
         if request.method.lower() in ['post', 'put', 'patch']:
-            params['json'] = request.data if request.data else None
+            # Eğer dosya varsa, files parametresiyle gönderilir
+            if request.FILES:
+                params['files'] = request.FILES
+            else:
+                params['json'] = request.data if request.data else None
         else:
-            # GET veya DELETE isteği ise, sorgu parametrelerini alır
             params['params'] = request.query_params.dict()
+
         return params
 
     # İsteği ilgili servise ileten metod
     def forward_request(self, request, url, params):
-        # Gelen isteğin metodunu küçük harfe çevirir
         method = request.method.lower()
-        
-        # Gelen isteğin header bilgilerini alır
+
         headers = dict(request.headers)
-        
-        # Debug logları ile isteğin detaylarını kaydeder
-        logger.debug("*** Forwarding request ***")
-        logger.debug("HTTP Method: %s", method)
-        logger.debug("Request URL: %s", url)
-        logger.debug("Request Headers: %s", headers)
-        logger.debug("Request Params: %s", params)
-        logger.debug("***************************")
-        
-        try:
-            # HTTP isteğini gönderir
+
+        # Dosya yükleme işlemi için Content-Type'ı multipart/form-data olarak ayarlıyoruz
+        if request.FILES:
+            headers['Content-Type'] = 'multipart/form-data'
+
+        # İstek parametrelerini kontrol ediyoruz
+        logger.debug(f"Request params: {params}")
+        if 'files' in params:
+            files = params['files']
+            # 'files' parametresi ile dosyayı ilgili servise ilettiğimizden emin olun
             response = requests.request(
                 method=method,
                 url=url,
                 headers=headers,
-                **params
+                files=files  # 'files' parametresini burada kullanıyoruz
             )
-            # İstek başarılı ise log kaydeder
-            logger.info("Request successful: %s", url)
-            return response
-        except requests.exceptions.RequestException as e:
-            # İstek sırasında hata olursa log kaydeder ve hata yanıtı döner
-            logger.error("Request error: %s", e)
-            return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            response = requests.request(
+                method=method,
+                url=url,
+                headers=headers,
+                json=params.get('json', None)  # Eğer dosya yoksa JSON veri gönderiyoruz
+            )
+
+        logger.info(f"Response received: {response.status_code}")
+        return response
+
 
     def handle_response(self, response):
             # Yanıt JSON ise, JSON formatında geri döner
             if response.headers.get('content-type') == 'application/json':
-                return Response(response.json(), status=response.status_code)
+                return Response(response.json(), status=response.status_code) # response.json() -> {'id': 1, 'name': 'John Doe', 'email': '
             # Aksi takdirde, yanıtı olduğu gibi döner
             return Response(response.content, status=response.status_code)
 
@@ -128,3 +133,15 @@ class APIGatewayView(APIView):
 #daha sonra gelen isteklerinin parametrelerini ayarlar -> get_request_params
 #ve bu isteği ilgili servise yönlendirir -> forward_request
 #son olarak gelen yanıtı işler ve geri döner -> handle_response
+
+
+#Genel olarak olan senaryo şu şekildedir:
+#1. Kullanıcı bir istekte bulunur.
+#2. Django uygulaması, gelen isteği APIGatewayView sınıfına yönlendirir.
+#3. APIGatewayView sınıfı, gelen isteği ilgili mikro servise yönlendirir.
+#4. Mikro servis, gelen isteği işler ve bir yanıt döner.
+#5. APIGatewayView sınıfı, gelen yanıtı işler ve kullanıcıya geri döner.
+#6. Kullanıcı, mikro servisin yanıtını alır ve işlemine devam eder.
+#Bu süreç, Django uygulaması ve mikro servisler arasında bir aracı olarak APIGatewayView sınıfını kullanarak gerçekleştirilir.
+#Bu sınıf, gelen istekleri doğru mikro servise yönlendirir ve gelen yanıtları işler. Bu sayede, Django uygulaması ve mikro servisler arasındaki iletişim sağlanmış olur.
+#Bu sayede, Django uygulaması ve mikro servisler arasındaki iletişim sağlanmış olur. Bu sınıf, Django uygulaması ve mikro servisler arasındaki iletişimi kolaylaştırır ve yönetir.

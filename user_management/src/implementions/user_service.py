@@ -6,6 +6,9 @@ from django.db.models import CharField
 from src.interface.user_service import UserService
 from .user_repository import UserRepositoryImpl
 from ..models.models import User
+from src.implementions.user_repository import UserRepository
+from src.utils import Utils
+from src.serializers.serializers import UpdateUserSerializer
 
 
 class UserServiceImpl(UserService):
@@ -33,6 +36,37 @@ class UserServiceImpl(UserService):
     def get_all_users(self) -> Tuple[List[User], str]:
         return self.user_repository.get_all()
     
-    def update_user(self, validated_data: dict) -> Tuple[bool, str]:
-        return self.user_repository.update_user(validated_data)
+    def update_user(self, token: str, user_data: dict):
+        # Token'dan geçerli kullanıcıyı al
+        current_user = Utils.get_current_user(token)
+        if current_user is None:
+            #debug yap
+            return False, "Invalid token or user.", None
 
+        # Gelen verileri doğrula
+        serializer = UpdateUserSerializer(data=user_data)
+        if not serializer.is_valid():
+            return False, serializer.errors, None
+
+        # Kullanıcı adı eşleşmesini doğrula
+        if current_user != serializer.validated_data['current_username']:
+            return False, "You do not have permission to update this user.", None
+
+        # Güncelleme işlemi
+        success, message = self.user_repository.update_user(serializer.validated_data)
+        if success:
+            new_token = Utils.create_new_token(serializer.validated_data['username'])
+            return True, "", new_token
+
+        return False, message, None
+    
+    def update_avatar(self, user_id: UUID, avatar_file) -> Tuple[bool, str]:
+        try:
+            user, message = self.user_repository.get_by_id(user_id)
+            if user:
+                user.avatar = avatar_file
+                user.save()
+                return True, "Avatar updated successfully."
+            return False, message
+        except Exception as e:
+            return False, f"Error updating avatar: {str(e)}"

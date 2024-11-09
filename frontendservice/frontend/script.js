@@ -19,6 +19,7 @@ function setupEventListeners() {
             // Token yok, login sayfasını yükle
             loadPage('login');
         }
+        
         // burada token kontrolu bitiyor
         
         const app = document.getElementById('app');

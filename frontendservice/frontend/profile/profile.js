@@ -33,6 +33,7 @@ export async function loadUserInfo() {
             document.getElementById('last-name').value = user.last_name; // Kullanıcı telefonunu güncelle
             document.getElementById('email').value = user.email; // Kullanıcı emailini güncelle
             document.getElementById('userrname').value = user.username; // Kullanıcı username'ini güncelle
+            document.getElementById('avatar-img').src = `.${user.avatar}`; // Kullanıcı profil resmini güncelle
 
             const usernameElem = document.getElementById('username');
             if (usernameElem) {

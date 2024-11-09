@@ -28,7 +28,7 @@ export async function updateUserInfo() {
         
         // Assuming the new token is returned in the response
         const newToken = result.token;
-        document.cookie = `token=${newToken}; path=/; max-age=1500`; 
+        document.cookie = `token=${newToken}; path=/; max-age=1500`;
         localStorage.setItem('user', JSON.stringify(result));
 
         document.getElementById('username').textContent = result.username; // Kullanıcı adını güncelle
@@ -38,6 +38,7 @@ export async function updateUserInfo() {
         document.getElementById('last-name').value = result.last_name; // Kullanıcı telefonunu güncelle
         document.getElementById('email').value = result.email; // Kullanıcı emailini güncelle
         document.getElementById('userrname').value = result.username; // Kullanıcı username'ini güncel
+        document.getElementById('avatar-img').src = `.${result.avatar}`; // Kullanıcı profil resmini güncelle
          // Kaydedilen veriyi kontrol et
         const storedUser = JSON.parse(localStorage.getItem('user'));
         console.log('Stored user:', storedUser); // Bu satırda veriyi kontrol edebilirsiniz
@@ -66,13 +67,17 @@ export async function updateProfilePicture() {
             formData.append('profile_picture', file);  // Dosyayı formData'ya ekle
 
             // Bearer token (Örnek: localStorage'dan alınıyor)
-            const token = localStorage.getItem('access_token'); // Token'ı buradan alıyoruz
+            const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1]; // Token'ı al
+            const user = JSON.parse(localStorage.getItem('user'));
+            const userId = user.id; // Kullanıcı ID'si
+
+            const url = `http://127.0.0.1:8004/users/upload_avatar/?id=${userId}`; // URL'ye user_id ekleyin
 
             // Fetch ile dosyayı sunucuya gönder
             try {
-                const response = await fetch('/upload-avatar/', {
+                const response = await fetch(url, {
                     method: 'POST',
-                    body: formData,
+                    body: formData, // Sadece formData'yı gönder
                     headers: {
                         'Authorization': `Bearer ${token}`, // Bearer token'ı başlığa ekle
                     },
@@ -82,7 +87,8 @@ export async function updateProfilePicture() {
                     const data = await response.json(); // Backend'den dönen yanıtı al
                     console.log('Başarıyla yüklendi:', data);
                     // Yeni profil resmini güncelle
-                    document.getElementById('avatar-img').src = data.new_avatar_url;
+                    document.getElementById('avatar-img').src = `./avatars/${data.avatar}`;
+                    console.log('Avatar güncellendi:', data.avatar);
                 } else {
                     console.error('Yükleme başarısız:', response.status);
                 }
@@ -92,5 +98,3 @@ export async function updateProfilePicture() {
         }
     });
 }
-
-

@@ -5,6 +5,10 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from django.conf import settings
 import logging
+import random
+from src.models.models import User
+from django.utils import timezone
+
 
 # Logger'i ayarla
 logger = logging.getLogger(__name__)
@@ -53,6 +57,60 @@ class Utils:
         except Exception as e:
             logger.error(f"E-posta gönderimi başarisiz: {str(e)}")  # Hata logla
             return False
+        
+    @staticmethod
+    def generate_token(user: User, is_2fa_validated: bool = False) -> str:
+        payload = {
+            'username': user.username,
+            'user_id': str(user.id),
+            'is_2fa_validated': is_2fa_validated
+        }
+        return Utils.create_token(payload)
+    
+    @staticmethod
+    def generate_2fa_code() -> str: #eozdur
+        return str(random.randint(100000, 999999))
+    
+    @staticmethod
+    def set_twofa_code(user: User) -> str: #eozdur
+        code = Utils.generate_2fa_code()
+        user.twofa_code = code
+        user.twofa_code_expiry = timezone.now() + datetime.timedelta(minutes=5)
+        user.save()
+        return code
+    
+    @staticmethod
+    def send_2fa_code(email: str, code: str) -> bool: #eozdur
+        logger.debug(f"Sending 2FA code {code} to {email}")
+        subject = "Your 2FA Code"
+        body = f"Your 2FA code is: {code}"
+        #içeriği oluşturulan e-posta gönderilir
+        success = Utils.send_email(email, subject, body)  # E-posta gönderme
+        if success:
+            logger.info("E-posta başarıyla gönderildi.")
+        else:
+            logger.error("E-posta gönderiminde bir hata oluştu.")
+        return success
+    
+    @staticmethod
+    def create_new_token(username: str) -> str: # eozdur
+        # Kullanıcı adına göre kullanıcıyı bul
+        user = User.objects.get(username=username)
+        payload = {
+            'username': user.username,
+            'user_id': str(user.id)
+        }
+        return Utils.create_token(payload)
+    
+    @staticmethod
+    def get_current_user(token: str):
+        try:
+            token = token.split()[1]  # 'Bearer' kısmını atla
+            decoded_token = Utils.decode_token(token)
+            return decoded_token.get('username')
+        except (ValueError, IndexError):
+            return None
+
 
 '''
 1. Kullanici Login İsteği Gönderir

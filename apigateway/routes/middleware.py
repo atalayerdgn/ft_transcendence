@@ -1,32 +1,32 @@
-import jwt
-from django.conf import settings
-from django.http import JsonResponse
-import logging
+import jwt  # JSON Web Token (JWT) modülü, token'ı çözümlemek ve doğrulamak için kullanılır
+from django.conf import settings  # Django ayarlarına erişim sağlamak için kullanılır (örneğin, SECRET_KEY)
+from django.http import JsonResponse  # JSON formatında HTTP yanıtları döndürmek için kullanılır
+import logging  # İşlem adımlarını ve hataları kaydetmek için kullanılan Python modülü
 
-# Logger ayarları
+# 'apigateway' adında bir logger oluşturuluyor ve DEBUG seviyesinde log kaydediliyor
 logger = logging.getLogger('apigateway')
 logger.setLevel(logging.DEBUG)
 
 class JWTAuthenticationMiddleware:
     def __init__(self, get_response):
-        self.get_response = get_response
+        self.get_response = get_response  # Middleware işlemi sonrası bir sonraki işleme devam etmek için `get_response` fonksiyonu alınır
 
     def __call__(self, request):
-        # Giriş yapılmadan erişilebilecek yolları tanımla (login ve register gibi)
-        exempt_paths = ['/users/create/', '/users/login/']
+        # Giriş yapılmadan erişilebilecek yolları tanımla (örneğin, login ve register gibi)
+        exempt_paths = ['/users/create/', '/users/login/' , '/users/login_with_42/', '/users/oauth_callback/' , '/favicon.ico']
         if request.path in exempt_paths:
-            return self.get_response(request)
+            return self.get_response(request)  # Eğer istek bu yollardan birine yapılmışsa, doğrulama yapılmadan işleme devam edilir
 
         # Header'dan Authorization kısmından token'ı al
         token = request.headers.get('Authorization')
         if not token:
-            logger.debug('Missing token')  # Token yoksa logla
-            return JsonResponse({'error': 'Missing token'}, status=401)
+            logger.debug('Missing token')  # Token yoksa hata mesajı loglanır
+            return JsonResponse({'error': 'Missing token'}, status=401)  # 401 Unauthorized yanıtı ile kullanıcı bilgilendirilir
 
         try:
             # Bearer token formatında gelen token'ı "Bearer <token>" olarak ayır
             token = token.split(' ')[1]
-            logger.debug('Token: %s', token)
+            logger.debug('Token: %s', token) # Ayrıştırılan token'ı logla
 
             # Token'ı çöz ve içindeki kullanıcı bilgilerini al
             decoded_token = jwt.decode(token, settings.USER_SECRET_KEY, algorithms=['HS256'])
@@ -53,6 +53,7 @@ class JWTAuthenticationMiddleware:
 
         # Eğer token geçerliyse, isteği bir sonraki middleware'e gönder
         return self.get_response(request)
+    
 '''
 Middleware, her gelen isteği inceleyerek önce token olup olmadığını kontrol eder.
 Token varsa, JWT modülü kullanarak token'ı çözer ve içindeki bilgileri doğrular.

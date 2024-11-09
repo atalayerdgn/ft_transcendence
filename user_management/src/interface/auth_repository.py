@@ -12,19 +12,10 @@ class AuthRepository:
         pass
 
     @abstractmethod
-    def generate_token(self, user : User) -> str:
+    def validate_twofa(self, user: User):
         pass
     
     @abstractmethod
-    def generate_2fa_code(self) -> str:
+    def get_user_by_id(self, user_id: int) -> User:
         pass
-    
-    @abstractmethod
-    def set_twofa_code(self, user : User) -> str:
-        pass
-    
-    @abstractmethod
-    def send_2fa_code(self, email : str, code : str) -> bool:
-        pass
-    
     

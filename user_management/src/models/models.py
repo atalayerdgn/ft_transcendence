@@ -1,7 +1,7 @@
-import uuid
-from enum import unique
+# models.py
 
-from django.contrib.auth.hashers import make_password, check_password
+import uuid
+from django.contrib.auth.hashers import make_password
 from django.db import models
 
 
@@ -12,10 +12,15 @@ class User(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
+    avatar = models.ImageField(upload_to='avatars/', default='default_avatar.jpg')#yeni
+    friends = models.ManyToManyField('self', symmetrical=False, related_name='user_friends')#yeni
+    is_online = models.BooleanField(default=False)#yeni
+    win_count = models.IntegerField(default=0)#yeni
+    loss_count = models.IntegerField(default=0)#yeni
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    twofa_code = models.CharField(max_length=10, null=True)#eozdur
-    twofa_code_expiry = models.DateTimeField(null=True)#eozdur
+    twofa_code = models.CharField(max_length=10, null=True)
+    twofa_code_expiry = models.DateTimeField(null=True)
 
     def hash_password(self, raw_password):
         self.password = make_password(raw_password)
