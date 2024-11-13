@@ -34,6 +34,6 @@ class FriendServiceImpl(FriendService):
         response = requests.get(f"http://usermanagementc:8000/users/id/?id={user_id}")
         logger.error(f"rRRRRRRRRRRRRRRRRRRRRRRRResponse: {response.json()}")
         if response.status_code == 200:
-            return response.json().get("exists", True)
+            return True
         return False
 
