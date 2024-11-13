@@ -15,6 +15,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
 
 
+
 class UserSerializer(serializers.ModelSerializer):
     friends = serializers.PrimaryKeyRelatedField(many=True, read_only=True)  # Arkadaş ID'leri listesi olarak dönecek
 
@@ -73,3 +74,8 @@ class UpdateAvatarSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['avatar']
+        
+
+class AddFriendSerializer(serializers.Serializer):
+    from_user_id = serializers.UUIDField(required=True)
+    to_user_id = serializers.UUIDField(required=True)

@@ -37,3 +37,7 @@ class UserRepository():
     @abstractmethod
     def update_user(self, validated_data: dict) -> Tuple[BooleanField,str]:
         pass
+    
+    @abstractmethod
+    def update_avatar(self, user, avatar_file):
+        pass

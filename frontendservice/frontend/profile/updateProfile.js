@@ -4,13 +4,12 @@ export async function updateUserInfo() {
     const email = document.getElementById('email').value;
     const username = document.getElementById('userrname').value;
     const currentUserName = JSON.parse(localStorage.getItem('user')).username;
-    const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1]; // Token'ı al
-    console.log('token:', token);
-    console.log('currentUserName:', currentUserName);
+    const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
+
     const response = await fetch('http://localhost:8007/users/update/', {
         method: 'PUT',
         headers: {
-            'Authorization': `Bearer ${token}`, // Kullanıcının token'ını ekle
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -26,28 +25,34 @@ export async function updateUserInfo() {
         const result = await response.json();
         console.log('Profile updated:', result);
         
-        // Assuming the new token is returned in the response
+        // Yeni token'ı güncelle
         const newToken = result.token;
         document.cookie = `token=${newToken}; path=/; max-age=1500`;
-        localStorage.setItem('user', JSON.stringify(result));
 
-        document.getElementById('username').textContent = result.username; // Kullanıcı adını güncelle
-        document.getElementById('user-role').textContent = result.first_name; // Kullanıcı rolünü güncelle
-        document.getElementById('user-location').textContent = result.email; // Kullanıcı konumunu güncelle 
-        document.getElementById('first-name').value = result.first_name; // Kullanıcı emailini güncelle
-        document.getElementById('last-name').value = result.last_name; // Kullanıcı telefonunu güncelle
-        document.getElementById('email').value = result.email; // Kullanıcı emailini güncelle
-        document.getElementById('userrname').value = result.username; // Kullanıcı username'ini güncel
-        document.getElementById('avatar-img').src = `.${result.avatar}`; // Kullanıcı profil resmini güncelle
-         // Kaydedilen veriyi kontrol et
+        // Eski kullanıcı bilgilerini localStorage'dan alıp güncelle
         const storedUser = JSON.parse(localStorage.getItem('user'));
-        console.log('Stored user:', storedUser); // Bu satırda veriyi kontrol edebilirsiniz
+        const updatedUser = {
+            ...storedUser,      // Mevcut bilgileri koru
+            ...result           // Yalnızca gelen veriyi güncelle
+        };
+        
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+
+        // HTML elemanlarını güncelle
+        document.getElementById('username').textContent = updatedUser.username;
+        document.getElementById('user-role').textContent = updatedUser.first_name;
+        document.getElementById('user-location').textContent = updatedUser.email;
+        document.getElementById('first-name').value = updatedUser.first_name;
+        document.getElementById('last-name').value = updatedUser.last_name;
+        document.getElementById('email').value = updatedUser.email;
+        document.getElementById('userrname').value = updatedUser.username;
+        //document.getElementById('avatar-img').src = `.${updatedUser.avatar}`;
+        console.log('Stored user after update:', updatedUser);
 
     } else {
         console.error('Profile update failed.');
     }
 }
-
 
 // Profil resmini güncelleme fonksiyonu
 // Profil resmini güncelleme fonksiyonu
@@ -89,8 +94,13 @@ export async function updateProfilePicture() {
                     // Yeni profil resmini güncelle
                     document.getElementById('avatar-img').src = `./avatars/${data.avatar}`;
                     console.log('Avatar güncellendi:', data.avatar);
-                } else {
-                    console.error('Yükleme başarısız:', response.status);
+                    // Yeni avatarı locale kaydet
+                    const storedUser = JSON.parse(localStorage.getItem('user'));
+                    storedUser.avatar = `./avatars/${data.avatar}`;
+                    localStorage.setItem('user', JSON.stringify(storedUser));
+                } else 
+                {
+                    console.error('Yükleme başarisiz:', response.status);
                 }
             } catch (error) {
                 console.error('Hata oluştu:', error);

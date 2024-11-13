@@ -8,6 +8,7 @@ import logging
 import random
 from src.models.models import User
 from django.utils import timezone
+from datetime import timedelta
 
 
 # Logger'i ayarla
@@ -111,7 +112,12 @@ class Utils:
         except (ValueError, IndexError):
             return None
 
-
+    @staticmethod
+    def check_user_activity():
+        offline_threshold = timezone.now() - timedelta(minutes=3)  # 3 dakika aktif değilse offline
+        inactive_users = User.objects.filter(is_online=True, last_activity__lt=offline_threshold)
+        inactive_users.update(is_online=False)
+        
 '''
 1. Kullanici Login İsteği Gönderir
 

@@ -1,8 +1,6 @@
 import { loadUserInfo } from './profile/profile.js';
-//import { updateProfilePicture } from './profile/updateProfile.js';
+
 export async function loadPage(page) {
-    let pageUrl = '';
-    //let scriptUrl = '';
     const content = document.getElementById('content');
     const pageMap = new Map([
         ['login', 'login/login.html'],
@@ -18,52 +16,28 @@ export async function loadPage(page) {
         ['send', 'forgot/forgot.html'],
     ]);
 
-    pageUrl = pageMap.get(page);
-    // Geçerli bir sayfa yoksa 404 sayfasını yükleyin
-    if (!pageUrl) {
-        pageUrl = '404/404.html';
-    
-}
+    // URL'yi al ve geçerli değilse 404 sayfasına yönlendir
+    let pageUrl = pageMap.get(page) || '404/404.html';
+
     try {
-        if (page == 'loginWith42') {
-
-        } else {
-            const response = await fetch(pageUrl);
-            if (!response.ok) {
-                throw new Error(`Failed to load page: ${response.statusText}`);
-            }
-            
-            // Eğer profile sayfası yükleniyorsa html yüklendikten sonra js çalışır çünkü 3g hızında önce js çalışıyor ve html 
-            // yüklenmeden js çalıştığı için html'de bulunan elementler tanımlanamıyor hata veriyor. Bu yüzden profile sayfası
-            // yüklenirken kullanıcı bilgileri doldurulmuyor
-            if (pageUrl === 'profile/profile.html') {
-                content.innerHTML = await response.text();
-                loadUserInfo();
-
-                /*document.addEventListener('DOMContentLoaded', () => {
-                    const fileInput = document.getElementById('file-input');
-                    if (fileInput) {
-                        fileInput.addEventListener('change', (event) => {
-                            const file = event.target.files[0];
-                            if (file) {
-                                updateProfilePicture(file);
-                            }
-                        });
-                    }
-                });
-                return;*/
-                return;
-            }
-            
-            content.innerHTML = await response.text();
+        if (page === 'loginWith42') {
+            return; // Bu durumda herhangi bir işlem yapılmaz
         }
 
-        /*if (scriptUrl) {
-            const script = document.createElement('script');
-            script.src = scriptUrl;
-            script.type = "module";
-            document.body.appendChild(script);
-        }*/
+        const response = await fetch(pageUrl);
+        if (!response.ok) {
+            throw new Error(`Failed to load page: ${response.statusText}`);
+        }
+
+        // Profil sayfası yükleniyorsa, kullanıcı bilgilerini yükle
+        if (page === 'profile') {
+            content.innerHTML = await response.text();
+            loadUserInfo(); // Kullanıcı bilgilerini yükler
+            return;
+        }
+
+        // Diğer sayfalar için içerik yükle
+        content.innerHTML = await response.text();
     } catch (error) {
         content.innerHTML = `<p>Error loading page: ${error.message}</p>`;
     }

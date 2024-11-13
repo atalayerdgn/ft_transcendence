@@ -25,6 +25,7 @@ class AuthRepositoryImpl(AuthRepository):
 
     def validate_twofa(self, user: User) -> None:
         try:
+            user.is_online = True # Kullanıcıyı çevrimiçi yap
             user.save() # Kullanıcıyı veritabanına kaydet
         except Exception as e:
             logger.error(f"Error during 2FA validation: {str(e)}")
@@ -38,3 +39,4 @@ class AuthRepositoryImpl(AuthRepository):
         except Exception as e:
             logger.error(f"Error during user retrieval: {str(e)}")
             return None  # Hata durumunda None döndür
+        

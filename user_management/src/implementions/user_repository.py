@@ -1,10 +1,12 @@
 from abc import ABC
 from typing import Tuple, List
 from uuid import UUID
+from venv import logger
 
 
 from src.interface.user_repository import UserRepository
 from src.models.models import User
+import json
 
 class UserRepositoryImpl(UserRepository):
     def get_by_id(self, id: UUID) -> Tuple[User, str]:
@@ -80,3 +82,25 @@ class UserRepositoryImpl(UserRepository):
             return False, "User not found"
         except Exception as e:
             return False, f"Error: {str(e)}"
+    
+    def update_avatar(self, user, avatar_file):
+        try:
+            user.avatar = avatar_file
+            user.save()
+            return True, "Avatar updated successfully."
+        except Exception as e:
+            return False, f"Error updating avatar: {str(e)}"
+        
+    def add_friend(self, user, friend):
+        
+            logger.error(f"UUUUUUUUUUUUUUUUUUUUser: {user}, Friend: {friend}")
+            model = User.objects.filter(id=user).first()
+            if not model:
+                return False, "User not found"
+            logger.error(f"UUUUUUUUUUUUUUUUUUUModel: {model}")
+            if model:
+                model.friends.add(friend)
+                model.save()
+                return True, "Friend added successfully."
+            return False, "User not found"
+    

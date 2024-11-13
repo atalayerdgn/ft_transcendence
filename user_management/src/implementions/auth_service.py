@@ -47,6 +47,7 @@ class AuthServiceImpl(AuthService):
                 user.twofa_code = None # 2FA kodunu temizle neden ? -> önceki 2FA kodu ile tekrar doğrulama yapılmasın
                 user.twofa_code_expiry = None # 2FA kodunun süresini temizle
                 self.auth_repository.validate_twofa(user) # 2FA doğrulamasını yap
+                logger.info(f"User {user.username} validated 2FA successfully.")
                 return True
             return False
         except Exception as e:
@@ -61,3 +62,18 @@ class AuthServiceImpl(AuthService):
         except (ValueError, Exception) as e:
             logger.error(f"Error during token decoding: {str(e)}")
             return None
+        
+    #logout işlemi
+    def logout(self, user: User) -> tuple:
+        try:
+            user.is_online = False  # Kullanıcıyı çevrimdışı yap
+            user.save()  # Veritabanında güncelle
+            
+            logger.info(f"User {user.username} logged out successfully.")
+            logger.info(f"User {user.username} is online: {user.is_online}")
+            
+            return True, "User logged out successfully."
+        
+        except Exception as e:
+            logger.error(f"Error during logout: {str(e)}")
+            return False, "An error occurred during logout."

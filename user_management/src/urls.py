@@ -36,6 +36,17 @@ urlpatterns = [
     #path('oauth_callback/', AuthHandler.as_view({'get': 'oauth_callback'}), name='oauth_callback'),
     
     path('upload_avatar/', UserManagementHandler.as_view({'post': 'upload_avatar'}), name='upload_avatar'),
+    
+    #logout
+    path('logout/', AuthHandler.as_view({'post': 'logout'}), name='logout'),
+    
+    #heartbeat
+    path('heartbeat/', AuthHandler.as_view({'post': 'heartbeat'}), name='heartbeat'),
+    
+    #beonline
+    path('beonline/', AuthHandler.as_view({'post': 'beonline'}), name='beonline'),
+    
+    path('add_friend/', UserManagementHandler.as_view({'post': 'add_friend'}), name='add_friend'),
 
 
 ]

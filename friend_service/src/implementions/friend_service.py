@@ -1,5 +1,8 @@
+import requests
 import uuid
 from typing import Tuple, List
+from venv import logger
+
 
 from ..implementions.friend_repository import FriendRepositoryImpl
 from ..interface.friend_service import FriendService
@@ -25,5 +28,12 @@ class FriendServiceImpl(FriendService):
 
     def get_friendship_requests(self, user_id: uuid.UUID) -> Tuple[List[FriendRequest], str]:
         return self.repository.list_requests(user_id)
-
+    
+    def user_exists(self, user_id: uuid.UUID) -> bool:
+        logger.error(f"Checking if user exists with user_id: {user_id}")
+        response = requests.get(f"http://usermanagementc:8000/users/id/?id={user_id}")
+        logger.error(f"rRRRRRRRRRRRRRRRRRRRRRRRResponse: {response.json()}")
+        if response.status_code == 200:
+            return response.json().get("exists", True)
+        return False
 

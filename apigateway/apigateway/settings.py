@@ -50,14 +50,20 @@ LOGGING = {
         'console': {
             'class': 'logging.StreamHandler',
         },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'apigateway.log',
+        },
     },
     'loggers': {
         'apigateway': {
-            'handlers': ['console'],
+            'handlers': ['console', 'file'],
             'level': 'DEBUG',
+            'propagate': True,
         },
     },
 }
+
 
 # settings.py
 # Django Rest Framework ayarları

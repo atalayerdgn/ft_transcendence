@@ -70,7 +70,7 @@ WSGI_APPLICATION = 'friend_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DATABASE_NAME', 'friend_service_db'),
+        'NAME': os.getenv('DATABASE_NAME', 'usermanagement_db'),
         'USER': os.getenv('DATABASE_USER', 'postgres'),
         'PASSWORD': os.getenv('DATABASE_PASSWORD', '1234'),
         'HOST': os.getenv('DATABASE_HOST', 'postgres'),

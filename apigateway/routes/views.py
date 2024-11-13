@@ -72,48 +72,43 @@ class APIGatewayView(APIView):
         params = {}
         # Eğer istek POST, PUT veya PATCH ise, json verisini alır
         if request.method.lower() in ['post', 'put', 'patch']:
-            # Eğer dosya varsa, files parametresiyle gönderilir
-            if request.FILES:
-                params['files'] = request.FILES
-            else:
-                params['json'] = request.data if request.data else None
+            params['json'] = request.data if request.data else None
         else:
+            # GET veya DELETE isteği ise, sorgu parametrelerini alır
             params['params'] = request.query_params.dict()
-
         return params
 
     # İsteği ilgili servise ileten metod
     def forward_request(self, request, url, params):
+        # Gelen isteğin metodunu küçük harfe çevirir
         method = request.method.lower()
-
+        
+        # Gelen isteğin header bilgilerini alır
         headers = dict(request.headers)
-
-        # Dosya yükleme işlemi için Content-Type'ı multipart/form-data olarak ayarlıyoruz
-        if request.FILES:
-            headers['Content-Type'] = 'multipart/form-data'
-
-        # İstek parametrelerini kontrol ediyoruz
-        logger.debug(f"Request params: {params}")
-        if 'files' in params:
-            files = params['files']
-            # 'files' parametresi ile dosyayı ilgili servise ilettiğimizden emin olun
+        
+        # Debug logları ile isteğin detaylarını kaydeder
+        logger.debug("*** Forwarding request ***")
+        logger.debug("HTTP Method: %s", method)
+        logger.debug("Request URL: %s", url)
+        logger.debug("Request Headers: %s", headers)
+        logger.debug("Request Params: %s", params)
+        logger.debug("***************************")
+        
+        try:
+            # HTTP isteğini gönderir
             response = requests.request(
                 method=method,
                 url=url,
                 headers=headers,
-                files=files  # 'files' parametresini burada kullanıyoruz
+                **params
             )
-        else:
-            response = requests.request(
-                method=method,
-                url=url,
-                headers=headers,
-                json=params.get('json', None)  # Eğer dosya yoksa JSON veri gönderiyoruz
-            )
-
-        logger.info(f"Response received: {response.status_code}")
-        return response
-
+            # İstek başarılı ise log kaydeder
+            logger.info("Request successful: %s", url)
+            return response
+        except requests.exceptions.RequestException as e:
+            # İstek sırasında hata olursa log kaydeder ve hata yanıtı döner
+            logger.error("Request error: %s", e)
+            return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def handle_response(self, response):
             # Yanıt JSON ise, JSON formatında geri döner

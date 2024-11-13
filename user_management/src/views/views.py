@@ -1,25 +1,36 @@
-import uuid
+# Standart ve Üçüncü Parti Kütüphaneler
+from flask import Flask, jsonify # type: ignore
+
+import uuid, datetime, jwt, requests
 from uuid import UUID
-from venv import logger
-from django.shortcuts import render
+from django.conf import settings
+from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
+
+# DRF Kütüphaneleri
 from rest_framework import viewsets, status
 from rest_framework.response import Response
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.decorators import action
+
+# Projeye Özel Modüller
 from src.models.models import User
-import jwt
-from django.conf import settings
-import datetime
 from src.utils import Utils
+from src.serializers.serializers import (
+    AddFriendSerializer, UserSerializer, CreateUserSerializer, LoginSerializer, 
+    TwoFASerializer
+)
+
+# Servis ve Repository Katmanları
 from src.implementions.auth_repository import AuthRepositoryImpl
 from src.implementions.auth_service import AuthServiceImpl
 from src.implementions.user_repository import UserRepositoryImpl
 from src.implementions.user_service import UserServiceImpl
-from src.serializers.serializers import UserSerializer, CreateUserSerializer, \
-    LoginSerializer, TwoFASerializer , UpdateUserSerializer
-import requests
-from django.shortcuts import redirect
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework.decorators import action
+
+from django.utils import timezone
+
+# Logger
+from venv import logger
 
 class AuthHandler(viewsets.ViewSet):
     def __init__(self, **kwargs):
@@ -67,80 +78,80 @@ class AuthHandler(viewsets.ViewSet):
         # 2FA kodunu kontrol et
         validation_result = self.service.validate_twofa(user, twofa_code)
         if validation_result:
+            logger.error(f"Is online: {user.is_online}")
             return Response({'message': '2FA validation successful'}, status=status.HTTP_200_OK)
         
         return Response({'error': 'Invalid 2FA code'}, status=status.HTTP_400_BAD_REQUEST)
     
-     # 42 OAuth giriş yönlendirmesi
+    #logout
+    def logout(self, request):
+        token_header = request.META.get('HTTP_AUTHORIZATION', '')
+        logger.error(f"Gelen Authorization Header: {token_header}")
+
+        if not token_header or not token_header.startswith('Bearer '):
+            return Response({'error': 'Authorization token is missing or invalid.'}, status=status.HTTP_401_UNAUTHORIZED)
+
+        token = token_header.split(' ')[-1]
+        user = self.service.get_user_from_token(token)
+        if not user:
+            return Response({'error': 'User not found or invalid token.'}, status=status.HTTP_401_UNAUTHORIZED)
+
+        result, message = self.service.logout(user)
+        if result:
+            logger.error(f"Is online: {user.is_online}")
+            return Response({'message': message}, status=status.HTTP_200_OK)
+        return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
     
-    @csrf_exempt
-    def login_with_42(self, request):
-        logger.error("Login with 42")
-        logger.debug("Login with 42")
-        client_id = "u-s4t2ud-f0a16fd8008b548e10e481a206cb0700607774c18bb30aca8d7208d9f1a93bf5"
-        redirect_uri = "http://localhost:8004/users/oauth_callback/"
-        authorize_url = f"https://api.intra.42.fr/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope=public&prompt=consent"
-        return redirect(authorize_url)
+    def heartbeat(self, request):
+        token_header = request.META.get('HTTP_AUTHORIZATION', '')
+        
+        if not token_header or not token_header.startswith('Bearer '):
+            return Response(
+                {'error': 'Authorization token is missing.'}, 
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
+        token = token_header.split(' ')[-1]
+        user = self.service.get_user_from_token(token)
+        
+        if not user:
+            return Response(
+                {'error': 'Invalid token.'}, 
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
+        user.is_online = True
+        user.last_heartbeat = timezone.now()
+        user.save()
+
+        logger.error(f"Heartbeat received from user: {user.username}")
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
     
-    # OAuth callback işlemi
-    @csrf_exempt
-    def oauth_callback(self, request):
-        code = request.query_params.get('code')
-        if not code:
-            return Response({'error': 'Authorization code is missing'}, status=status.HTTP_400_BAD_REQUEST)
-
-        # Token almak için 42 API'ye istek gönderin
-        client_id = "u-s4t2ud-f0a16fd8008b548e10e481a206cb0700607774c18bb30aca8d7208d9f1a93bf5"
-        client_secret = "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"
-        redirect_uri = "https://www.google.com"
+    #beonline
+    def beonline(self, request):
+        token_header = request.META.get('HTTP_AUTHORIZATION', '')
         
-        # Token almak için POST isteği oluşturun
-        token_response = requests.post(
-            "https://api.intra.42.fr/oauth/token",
-            data={
-                "grant_type": "authorization_code",
-                "client_id": client_id,
-                "client_secret": client_secret,
-                "code": code,
-                "redirect_uri": redirect_uri,
-            },
-        )
+        if not token_header or not token_header.startswith('Bearer '):
+            return Response(
+                {'error': 'Authorization token is missing.'}, 
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
+        token = token_header.split(' ')[-1]
+        user = self.service.get_user_from_token(token)
         
-        if token_response.status_code != 200:
-            return Response({'error': 'Failed to obtain access token'}, status=status.HTTP_400_BAD_REQUEST)
+        if not user:
+            return Response(
+                {'error': 'Invalid token.'}, 
+                status=status.HTTP_401_UNAUTHORIZED
+            )
 
-        access_token = token_response.json().get('access_token')
-        
-        # 42 API'den kullanıcı bilgilerini almak için token kullanın
-        user_info_response = requests.get(
-            "https://api.intra.42.fr/v2/me",
-            headers={"Authorization": f"Bearer {access_token}"}
-        )
+        user.is_online = True
+        user.save()
 
-        if user_info_response.status_code != 200:
-            return Response({'error': 'Failed to fetch user information'}, status=status.HTTP_400_BAD_REQUEST)
-
-        user_info = user_info_response.json()
-        
-        # Kullanıcıyı veritabanına kaydetme veya güncelleme işlemi
-        user, created = User.objects.get_or_create(
-            username=user_info.get('login'),
-            defaults={
-                "first_name": user_info.get('first_name'),
-                "last_name": user_info.get('last_name'),
-                "email": user_info.get('email')
-            }
-        )
-
-        if not created:
-            user.first_name = user_info.get('first_name')
-            user.last_name = user_info.get('last_name')
-            user.email = user_info.get('email')
-            user.save()
-
-        # JWT token ile kullanıcıya döndürme
-        jwt_token = Utils.generate_token(user)
-        return Response({'token': jwt_token, 'message': 'User logged in successfully'}, status=status.HTTP_200_OK)
+        logger.error(f"User {user.username} is online.")
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+    
 
 
 class UserManagementHandler(viewsets.ViewSet):
@@ -269,21 +280,45 @@ class UserManagementHandler(viewsets.ViewSet):
     @action(detail=True, methods=['post'], parser_classes=[MultiPartParser, FormParser])
     @csrf_exempt    
     def upload_avatar(self, request):
-        user_id = request.query_params.get('id')  # Kullanıcı ID'sini alın
+        user_id = request.query_params.get('id')
         if not user_id:
             return Response({'error': 'User id is required'}, status=status.HTTP_400_BAD_REQUEST)
 
-        user, _ = self.service.get_user_by_id(UUID(user_id))
-        if not user:
-            return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
-
-        # Avatar dosyasını al
         avatar_file = request.FILES.get('profile_picture')
         if not avatar_file:
             return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Servis katmanında güncelleme işlemini yap
+        # Service katmanına isteği ilet
         success, message = self.service.update_avatar(UUID(user_id), avatar_file)
         if success:
             return Response({'message': message, 'avatar': avatar_file.name}, status=status.HTTP_200_OK)
         return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
+        
+        
+    def add_friend(self, request):
+        serisi = AddFriendSerializer(data=request.data)
+        if not serisi.is_valid():
+            return Response(serisi.errors, status=status.HTTP_400_BAD_REQUEST)
+        from_user_id = serisi.validated_data.get('from_user_id')
+        to_user_id = serisi.validated_data.get('to_user_id')
+
+        
+        
+        logger.error(f"From user ID: {from_user_id}, To user ID: {to_user_id}")
+        if not from_user_id or not to_user_id:
+            return Response({'error': 'Both from_user_id and to_user_id are required'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        
+        from_user = self.service.get_user_by_id((from_user_id))[0]
+        to_user = self.service.get_user_by_id((to_user_id))[0]
+
+        
+        
+        logger.error("BIKTIMLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN")
+        
+        try:
+            self.service.add_friend(from_user.id, to_user.id)
+            self.service.add_friend(to_user.id, from_user.id)
+            return Response({'message': 'Users are now friends'}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)

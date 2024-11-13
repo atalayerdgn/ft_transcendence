@@ -1,5 +1,6 @@
 from typing import Tuple, List
 from uuid import UUID
+from venv import logger
 
 from django.db.models import CharField
 
@@ -61,12 +62,31 @@ class UserServiceImpl(UserService):
         return False, message, None
     
     def update_avatar(self, user_id: UUID, avatar_file) -> Tuple[bool, str]:
-        try:
-            user, message = self.user_repository.get_by_id(user_id)
-            if user:
-                user.avatar = avatar_file
-                user.save()
-                return True, "Avatar updated successfully."
-            return False, message
-        except Exception as e:
-            return False, f"Error updating avatar: {str(e)}"
+        # Repository üzerinden kullanıcıyı getir
+        user, message = self.user_repository.get_by_id(user_id)
+        if not user:
+            return False, "User not found."
+
+        # Avatar güncelleme işlemini repository'e yönlendir
+        success, message = self.user_repository.update_avatar(user, avatar_file)
+        if success:
+            return True, "Avatar updated successfully."
+        return False, message
+    
+    def add_friend(self, user_id, friend_id) -> Tuple[bool, str]:
+        # Repository üzerinden kullanıcıyı getir
+        #user id ve friend id yi logger olarak yazdır
+        logger.error(f"User ID: {user_id}, Friend ID: {friend_id}")
+        
+        
+        user, message = self.user_repository.get_by_id(user_id)
+        friend, message = self.user_repository.get_by_id(friend_id)
+        if not user:
+            return False, "User not found."
+        logger.error("DELIRTTTINIZILANANANBIEIEBIEBEIBIBEIBE")
+        logger.error(f"User: {user}") 
+        # Arkadaş ekleme işlemini repository'e yönlendir
+        success, message = self.user_repository.add_friend(user.id, friend.id)
+        if success:
+            return True, "Friend added successfully."
+        return False, message

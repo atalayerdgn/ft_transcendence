@@ -7,3 +7,4 @@ psycopg2
 psycopg
 PyJWT
 Pillow
+flask

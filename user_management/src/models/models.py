@@ -3,7 +3,7 @@
 import uuid
 from django.contrib.auth.hashers import make_password
 from django.db import models
-
+from django.utils import timezone
 
 class User(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -15,6 +15,7 @@ class User(models.Model):
     avatar = models.ImageField(upload_to='avatars/', default='default_avatar.jpg')#yeni
     friends = models.ManyToManyField('self', symmetrical=False, related_name='user_friends')#yeni
     is_online = models.BooleanField(default=False)#yeni
+    last_hearbeat = models.DateTimeField(default=timezone.now)#yeni
     win_count = models.IntegerField(default=0)#yeni
     loss_count = models.IntegerField(default=0)#yeni
     created_at = models.DateTimeField(auto_now_add=True)

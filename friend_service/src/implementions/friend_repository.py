@@ -55,3 +55,6 @@ class FriendRepositoryImpl(FriendRepository):
             return list(model), ""
         except Exception as e:
             return [], str(e)
+
+    def user_exists(self, user_id: uuid.UUID) -> bool:
+        return Friend.objects.filter(user_id=user_id).exists()

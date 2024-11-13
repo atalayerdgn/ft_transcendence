@@ -34,3 +34,9 @@ class UserService:
     @abstractmethod
     def update_user(self, validated_data: dict) -> Tuple[bool, str]:
         pass
+    
+    @abstractmethod
+    def update_avatar(self, user_id: UUID, avatar_file) -> Tuple[bool, str]:
+        pass
+    
+    
