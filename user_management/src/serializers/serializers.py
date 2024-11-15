@@ -15,7 +15,6 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
 
 
-
 class UserSerializer(serializers.ModelSerializer):
     friends = serializers.PrimaryKeyRelatedField(many=True, read_only=True)  # Arkadaş ID'leri listesi olarak dönecek
 

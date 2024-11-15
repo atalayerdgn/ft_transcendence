@@ -13,5 +13,3 @@ class FriendService:
     @abstractmethod
     def get_friend_list(self, user_id : uuid.UUID) -> Tuple[List[Friend], str]:
         pass
-
-

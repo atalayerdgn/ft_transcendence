@@ -12,7 +12,7 @@ class FriendServiceHandler(viewsets.ViewSet):
         self.service = FriendServiceImpl(FriendRepositoryImpl())
 
     def add_as_friend(self, request):
-        serializer = FriendRequestSerializer(data=request.data)
+        serializer = FriendSerializer(data=request.data)
         if not serializer.is_valid():
             return Response(serializer.errors ,status=status.HTTP_400_BAD_REQUEST)
 
@@ -28,10 +28,8 @@ class FriendServiceHandler(viewsets.ViewSet):
         friends, message = self.service.get_friend_list(user_id)
         if message:
             return Response(message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        friend_list = list(friends)
-        serializers = FriendSerializer(data=friend_list, many=True)
-        if not serializers.is_valid():
-            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        serializers = FriendSerializer(instance=friends, many=True)
         return Response(serializers.data, status=status.HTTP_200_OK)
 
 
