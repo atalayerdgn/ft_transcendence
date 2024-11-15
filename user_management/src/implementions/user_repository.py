@@ -90,17 +90,4 @@ class UserRepositoryImpl(UserRepository):
             return True, "Avatar updated successfully."
         except Exception as e:
             return False, f"Error updating avatar: {str(e)}"
-        
-    def add_friend(self, user, friend):
-        
-            logger.error(f"UUUUUUUUUUUUUUUUUUUUser: {user}, Friend: {friend}")
-            model = User.objects.filter(id=user).first()
-            if not model:
-                return False, "User not found"
-            logger.error(f"UUUUUUUUUUUUUUUUUUUModel: {model}")
-            if model:
-                model.friends.add(friend)
-                model.save()
-                return True, "Friend added successfully."
-            return False, "User not found"
     

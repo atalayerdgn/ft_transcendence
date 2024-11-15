@@ -17,7 +17,7 @@ from rest_framework.decorators import action
 from src.models.models import User
 from src.utils import Utils
 from src.serializers.serializers import (
-    AddFriendSerializer, UserSerializer, CreateUserSerializer, LoginSerializer, 
+     UserSerializer, CreateUserSerializer, LoginSerializer, 
     TwoFASerializer
 )
 
@@ -101,31 +101,6 @@ class AuthHandler(viewsets.ViewSet):
             logger.error(f"Is online: {user.is_online}")
             return Response({'message': message}, status=status.HTTP_200_OK)
         return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
-    
-    def heartbeat(self, request):
-        token_header = request.META.get('HTTP_AUTHORIZATION', '')
-        
-        if not token_header or not token_header.startswith('Bearer '):
-            return Response(
-                {'error': 'Authorization token is missing.'}, 
-                status=status.HTTP_401_UNAUTHORIZED
-            )
-
-        token = token_header.split(' ')[-1]
-        user = self.service.get_user_from_token(token)
-        
-        if not user:
-            return Response(
-                {'error': 'Invalid token.'}, 
-                status=status.HTTP_401_UNAUTHORIZED
-            )
-
-        user.is_online = True
-        user.last_heartbeat = timezone.now()
-        user.save()
-
-        logger.error(f"Heartbeat received from user: {user.username}")
-        return Response({'status': 'success'}, status=status.HTTP_200_OK)
     
     #beonline
     def beonline(self, request):
@@ -293,32 +268,35 @@ class UserManagementHandler(viewsets.ViewSet):
         if success:
             return Response({'message': message, 'avatar': avatar_file.name}, status=status.HTTP_200_OK)
         return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
-        
-        
-    def add_friend(self, request):
-        serisi = AddFriendSerializer(data=request.data)
-        if not serisi.is_valid():
-            return Response(serisi.errors, status=status.HTTP_400_BAD_REQUEST)
-        from_user_id = serisi.validated_data.get('from_user_id')
-        to_user_id = serisi.validated_data.get('to_user_id')
-
-        
-        
-        logger.error(f"From user ID: {from_user_id}, To user ID: {to_user_id}")
-        if not from_user_id or not to_user_id:
-            return Response({'error': 'Both from_user_id and to_user_id are required'}, status=status.HTTP_400_BAD_REQUEST)
-        
-        
-        from_user = self.service.get_user_by_id((from_user_id))[0]
-        to_user = self.service.get_user_by_id((to_user_id))[0]
-
-        
-        
-        logger.error("BIKTIMLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN")
-        
+    
+    def check_username(self, request):
         try:
-            self.service.add_friend(from_user.id, to_user.id)
-            self.service.add_friend(to_user.id, from_user.id)
-            return Response({'message': 'Users are now friends'}, status=status.HTTP_200_OK)
+            # Query parametresinden username al
+            username = request.query_params.get('username')
+            
+            if not username:
+                return Response(
+                    {'error': 'Username is required'}, 
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            # Direkt model üzerinden sorgu yap
+            user = User.objects.filter(username=username).first()
+            
+            if user:
+                return Response(
+                    #başarılı oldu yazdır
+                    {'id': str(user.id)}, 
+                    status=status.HTTP_200_OK
+                )
+            
+            return Response(
+                {'error': 'User not found'}, 
+                status=status.HTTP_404_NOT_FOUND
+            )
+
         except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {'error': str(e)}, 
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )

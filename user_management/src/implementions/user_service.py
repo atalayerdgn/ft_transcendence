@@ -72,21 +72,3 @@ class UserServiceImpl(UserService):
         if success:
             return True, "Avatar updated successfully."
         return False, message
-    
-    def add_friend(self, user_id, friend_id) -> Tuple[bool, str]:
-        # Repository üzerinden kullanıcıyı getir
-        #user id ve friend id yi logger olarak yazdır
-        logger.error(f"User ID: {user_id}, Friend ID: {friend_id}")
-        
-        
-        user, message = self.user_repository.get_by_id(user_id)
-        friend, message = self.user_repository.get_by_id(friend_id)
-        if not user:
-            return False, "User not found."
-        logger.error("DELIRTTTINIZILANANANBIEIEBIEBEIBIBEIBE")
-        logger.error(f"User: {user}") 
-        # Arkadaş ekleme işlemini repository'e yönlendir
-        success, message = self.user_repository.add_friend(user.id, friend.id)
-        if success:
-            return True, "Friend added successfully."
-        return False, message

@@ -9170,3 +9170,296 @@ Request successful: http://usermanagementc:8000/users/beonline/
 Request successful: http://usermanagementc:8000/users/username/
 Response received: 200
 Response received: 200
+Missing token
+Forwarding request to: http://usermanagementc:8000/users/create/
+Forwarding request to: http://usermanagementc:8000/users/create/ with params: {'json': {'username': 't4kinra', 'first_name': 'Mehmet', 'last_name': 'Aydın', 'email': 'yucem.29@gmail.com', 'password': 'deepp123'}}
+*** Forwarding request ***
+HTTP Method: post
+Request URL: http://usermanagementc:8000/users/create/
+Request Headers: {'Content-Length': '116', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'json': {'username': 't4kinra', 'first_name': 'Mehmet', 'last_name': 'Aydın', 'email': 'yucem.29@gmail.com', 'password': 'deepp123'}}
+***************************
+Request successful: http://usermanagementc:8000/users/create/
+Response received: 201
+Forwarding request to: http://usermanagementc:8000/users/login/
+Forwarding request to: http://usermanagementc:8000/users/login/ with params: {'json': {'username': 't4kinra', 'password': 'deepp123'}}
+*** Forwarding request ***
+HTTP Method: post
+Request URL: http://usermanagementc:8000/users/login/
+Request Headers: {'Content-Length': '44', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'json': {'username': 't4kinra', 'password': 'deepp123'}}
+***************************
+Request successful: http://usermanagementc:8000/users/login/
+Response received: 200
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+********** Token is valid **********
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for username t4kinra
+************************************
+Forwarding request to: http://usermanagementc:8000/users/validate/
+Forwarding request to: http://usermanagementc:8000/users/validate/ with params: {'json': {'twofa_code': '497471'}}
+*** Forwarding request ***
+HTTP Method: post
+Request URL: http://usermanagementc:8000/users/validate/
+Request Headers: {'Content-Length': '23', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'json': {'twofa_code': '497471'}}
+***************************
+Request successful: http://usermanagementc:8000/users/validate/
+Response received: 200
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+********** Token is valid **********
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for username t4kinra
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+********** Token is valid **********
+********** Token is valid **********
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for username t4kinra
+Token is valid for username t4kinra
+************************************
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+Forwarding request to: http://usermanagementc:8000/users/beonline/ with params: {'json': None}
+*** Forwarding request ***
+*** Forwarding request ***
+HTTP Method: get
+HTTP Method: post
+Request URL: http://usermanagementc:8000/users/username/
+Request URL: http://usermanagementc:8000/users/beonline/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+Request Params: {'json': None}
+***************************
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/beonline/
+Response received: 200
+Response received: 200
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+********** Token is valid **********
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for username t4kinra
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+********** Token is valid **********
+********** Token is valid **********
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for username t4kinra
+Token is valid for username t4kinra
+************************************
+************************************
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/beonline/ with params: {'json': None}
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+*** Forwarding request ***
+*** Forwarding request ***
+HTTP Method: post
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/beonline/
+Request URL: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'json': None}
+Request Params: {'params': {}}
+***************************
+***************************
+Request successful: http://usermanagementc:8000/users/beonline/
+Response received: 200
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+********** Token is valid **********
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for username t4kinra
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+********** Token is valid **********
+********** Token is valid **********
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for username t4kinra
+Token is valid for username t4kinra
+************************************
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+Forwarding request to: http://usermanagementc:8000/users/beonline/ with params: {'json': None}
+*** Forwarding request ***
+*** Forwarding request ***
+HTTP Method: get
+HTTP Method: post
+Request URL: http://usermanagementc:8000/users/username/
+Request URL: http://usermanagementc:8000/users/beonline/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+Request Params: {'json': None}
+***************************
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200
+Request successful: http://usermanagementc:8000/users/beonline/
+Response received: 200
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+********** Token is valid **********
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for username t4kinra
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+********** Token is valid **********
+********** Token is valid **********
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for username t4kinra
+Token is valid for username t4kinra
+************************************
+************************************
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/beonline/ with params: {'json': None}
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+*** Forwarding request ***
+*** Forwarding request ***
+HTTP Method: post
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/beonline/
+Request URL: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'json': None}
+Request Params: {'params': {}}
+***************************
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200
+Request successful: http://usermanagementc:8000/users/beonline/
+Response received: 200
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+********** Token is valid **********
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for username t4kinra
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+********** Token is valid **********
+********** Token is valid **********
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for username t4kinra
+Token is valid for username t4kinra
+************************************
+************************************
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/beonline/ with params: {'json': None}
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+*** Forwarding request ***
+*** Forwarding request ***
+HTTP Method: post
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/beonline/
+Request URL: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'json': None}
+Request Params: {'params': {}}
+***************************
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/beonline/
+Response received: 200
+Response received: 200
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ
+Decoded Token: {'username': 't4kinra', 'user_id': '3e6d66df-99d5-46fb-b9f4-6d2b49d55987', 'is_2fa_validated': False, 'exp': 1731781942}
+********** Token is valid **********
+Token is valid for user_id: 3e6d66df-99d5-46fb-b9f4-6d2b49d55987
+Token is valid for username t4kinra
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InQ0a2lucmEiLCJ1c2VyX2lkIjoiM2U2ZDY2ZGYtOTlkNS00NmZiLWI5ZjQtNmQyYjQ5ZDU1OTg3IiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMTc4MTk0Mn0.yfj2Kk2gd-ttCXpHPzU37kEfDACSAqZ-gbx3RQZ0TUQ', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200

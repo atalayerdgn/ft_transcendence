@@ -75,7 +75,3 @@ class UpdateAvatarSerializer(serializers.ModelSerializer):
         model = User
         fields = ['avatar']
         
-
-class AddFriendSerializer(serializers.Serializer):
-    from_user_id = serializers.UUIDField(required=True)
-    to_user_id = serializers.UUIDField(required=True)

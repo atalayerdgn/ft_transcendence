@@ -29,26 +29,15 @@ urlpatterns = [
     # Kullanıcı bilgilerini güncelleme isteği `update_user` metoduna yönlendirilir
     path('update/', UserManagementHandler.as_view({'put': 'update_user'}), name='update_user'),
     
-    # Kullanıcıyı 42 OAuth giriş ekranına yönlendiren URL
-    #path('login_with_42/', AuthHandler.as_view({'get': 'login_with_42'}), name='login_with_42'),
-    
-    # OAuth callback endpointi
-    #path('oauth_callback/', AuthHandler.as_view({'get': 'oauth_callback'}), name='oauth_callback'),
-    
     path('upload_avatar/', UserManagementHandler.as_view({'post': 'upload_avatar'}), name='upload_avatar'),
     
     #logout
     path('logout/', AuthHandler.as_view({'post': 'logout'}), name='logout'),
     
-    #heartbeat
-    path('heartbeat/', AuthHandler.as_view({'post': 'heartbeat'}), name='heartbeat'),
-    
     #beonline
     path('beonline/', AuthHandler.as_view({'post': 'beonline'}), name='beonline'),
     
-    path('add_friend/', UserManagementHandler.as_view({'post': 'add_friend'}), name='add_friend'),
-
-
+    path('check_username/', UserManagementHandler.as_view({'get': 'check_username'}), name='check_username'),
 ]
 '''
 Asviews() fonksiyonu, bir sınıf tabanlı görünümü işlev tabanlı bir görünüme dönüştürür.
