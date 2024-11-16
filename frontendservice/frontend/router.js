@@ -30,10 +30,11 @@ export async function loadPage(page) {
             throw new Error(`Failed to load page: ${response.statusText}`);
         }
         
-        const pageContent = await response.text(); // response.text() çağrısını yalnızca bir kez yapın
+         // response.text() çağrısını yalnızca bir kez yapın
         
         // Profil sayfası yükleniyorsa, kullanıcı bilgilerini yükle
         if (page === 'profile') {
+            const pageContent = await response.text();
             content.innerHTML = pageContent;
             loadUserInfo(); // Kullanıcı bilgilerini yükler
             loadFriendList();
@@ -41,6 +42,7 @@ export async function loadPage(page) {
         }
         
         if (page === 'game') {
+            const pageContent = await response.text();
             content.innerHTML = pageContent;
 
                 // CSS dosyasını yükle
@@ -65,6 +67,7 @@ export async function loadPage(page) {
             document.head.appendChild(script);
             return;
         }
+        //const pageContent = await response.text();
 
         // Diğer sayfalar için içerik yükle
         content.innerHTML = await response.text();
