@@ -108,3 +108,58 @@ export async function updateProfilePicture() {
         }
     });
 }
+
+export async function addFriend() {
+    console.log('addFriend function called');
+    const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userId = user.id;
+    const friendName = document.getElementById('friend-username').value;
+
+    const checkUsernameUrl = `http://127.0.0.1:8007/users/check_username/?username=${friendName}`;
+    let friendId = null;
+    try {
+        const response = await fetch(checkUsernameUrl, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            friendId = data.id;
+            console.log('Friend ID:', friendId);
+        } else {
+            console.error('Username check failed:', response.status);
+        }
+    } catch (error) {
+        console.error('Error occurred:', error);
+    }
+
+    const addFriendUrl = `http://127.0.0.1:8006/friend/add/?id=${friendId}`;
+
+    try {
+        const addFriendResponse = await fetch(addFriendUrl, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                user_id: userId,
+                second_user_id: friendId,
+            }),
+        });
+
+        if (addFriendResponse.ok) {
+            console.log('Friend added successfully');
+        } else {
+            console.error('Failed to add friend:', addFriendResponse.status);
+        }
+    } catch (error) {
+        console.error('Error occurred while adding friend:', error);
+    }
+
+}

@@ -1,4 +1,5 @@
 import { loadUserInfo } from './profile/profile.js';
+import { loadFriendList } from './profile/profile.js';
 
 export async function loadPage(page) {
     const content = document.getElementById('content');
@@ -18,12 +19,12 @@ export async function loadPage(page) {
 
     // URL'yi al ve geçerli değilse 404 sayfasına yönlendir
     let pageUrl = pageMap.get(page) || '404/404.html';
-
+    console.log('Page:', page, 'URL:', pageUrl);
     try {
         if (page === 'loginWith42') {
             return; // Bu durumda herhangi bir işlem yapılmaz
         }
-
+        
         const response = await fetch(pageUrl);
         if (!response.ok) {
             throw new Error(`Failed to load page: ${response.statusText}`);
@@ -33,6 +34,7 @@ export async function loadPage(page) {
         if (page === 'profile') {
             content.innerHTML = await response.text();
             loadUserInfo(); // Kullanıcı bilgilerini yükler
+            loadFriendList();
             return;
         }
 

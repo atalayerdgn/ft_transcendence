@@ -4,6 +4,7 @@ import { saveData } from './register/register.js';
 import { authenticateUser } from './login/login.js';
 import { validateUser } from './validate/validate.js';
 import { updateUserInfo, updateProfilePicture } from './profile/updateProfile.js';
+import { addFriend } from './profile/updateProfile.js';
 
 // Ana event listener kurma fonksiyonu
 function setupEventListeners() {
@@ -24,39 +25,6 @@ function onDOMContentLoaded() {
     // Tıklama olaylarını dinle
     document.addEventListener('click', handleButtonClicks);
 
-    
-    // Kullanıcı sayfayı kapattığında logout isteğini gönder
-    window.onunload = function() {
-    // onbeforeunload çağrısını kontrol etmek için konsola yazdır
-    console.log("onbeforeunload");
-
-    // Cookie'den token'ı güvenli bir şekilde al
-    const tokenCookie = document.cookie.split('; ').find(cookie => cookie.startsWith('token='));
-    if (tokenCookie) {
-        const token = tokenCookie.split('=')[1];
-
-        // Logout isteği için URL ve yapılandırma
-        const url = 'http://localhost:8007/users/logout/';
-
-        // fetch ile çıkış isteği gönder
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({})
-        }).then(response => {
-            if (response.ok) {
-                console.log("Logout başarılı bir şekilde gönderildi.");
-            } else {
-                console.error("Logout isteği başarısız:", response.statusText);
-            }
-        }).catch(error => {
-            console.error("Logout isteğinde hata oluştu:", error);
-        });
-    }
-};
 }
 
 // Kullanıcı token'ını kontrol edip, uygun sayfayı yükler
@@ -102,7 +70,16 @@ async function handleAppClick(event) {
             handleRegisterForm();
         } else if (page === 'updateProfile') {
             updateUserInfo();
-        } else {
+        } else if (page === 'game') {
+            import('./game/game.js').then(module => {
+            console.log('Game module loaded:', module);
+            }).catch(error => {
+            console.error('Game module could not be loaded:', error);
+            });
+            
+            loadPage(page);
+        }
+        else {
             loadPage(page);
         }
     }
@@ -149,6 +126,9 @@ function handleButtonClicks(event) {
         updateUserInfo(); // Profil güncelleme
     } else if (event.target.matches('.img-fluid')) {
         updateProfilePicture(); // Profil resmi güncelleme
+    } else if (event.target.matches('.buttonAddFriend')) {
+        event.preventDefault();
+        addFriend(); // Arkadaş ekleme
     }
 }
 
@@ -201,3 +181,40 @@ function validateUserCode() {
 
 // Ana fonksiyonu çağırarak event listener'ları başlat
 setupEventListeners();
+
+window.addEventListener('beforeunload', function(event) {
+    // onbeforeunload çağrısını kontrol etmek için konsola yazdır
+    console.log("onbeforeunload");
+
+    // Cookie'den token'ı güvenli bir şekilde al
+    const tokenCookie = document.cookie.split('; ').find(cookie => cookie.startsWith('token='));
+    if (tokenCookie) {
+        const token = tokenCookie.split('=')[1];
+
+        // Logout isteği için URL ve yapılandırma
+        const url = 'http://localhost:8007/users/logout/';
+
+        // fetch ile çıkış isteği gönder
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+        }).then(response => {
+            if (response.ok) {
+                console.log("Logout başarılı bir şekilde gönderildi.");
+            } else {
+                console.error("Logout isteği başarısız:", response.statusText);
+            }
+        }).catch(error => {
+            console.error("Logout isteğinde hata oluştu:", error);
+        });
+    }
+
+    // Kullanıcının sayfadan ayrılmasını engellemek için bir mesaj döndür
+    const message = 'Sayfadan ayrılmak istediğinize emin misiniz?';
+    event.returnValue = message; // Eski tarayıcılar için
+    return message; // Modern tarayıcılar için
+});

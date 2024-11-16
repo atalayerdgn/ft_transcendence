@@ -24,10 +24,10 @@
                     <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">GAME</a>
+                    <button class="btn btn-link nav-link" data-page="game">GAME</button>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">PROFILE</a>
+                    <button class="btn btn-link nav-link" data-page="profile">PROFILE</button>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">ABOUT</a>
@@ -76,6 +76,28 @@
                             </li>
                         </ul>
                     </div>
+                    <!-- Add Friend Card -->
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="d-flex align-items-center mb-3">Add Friend</h5>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Enter friend's username" id="friend-username">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary buttonAddFriend" type="button" id="add-friend-btn">Add Friend</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Friend List Card -->
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="d-flex align-items-center mb-3">Friend List</h5>
+                            <ul class="list-group list-group-flush" id="friend-list">
+                                
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-lg-8">
                    <!-- Contact Information Card -->
@@ -118,10 +140,10 @@
                     </div>
 
                     <!-- Match History Card -->
-                    <div class="card mt-4">
+                    <div class="card mt-4" id="match-history-container">
                         <div class="card-body">
                             <h5 class="d-flex align-items-center mb-3">Match History</h5>
-                            <ul class="list-group list-group-flush">
+                            <ul class="list-group list-group-flush" id="match-history-list">
                                 <li class="list-group-item">Match 1: Won</li>
                                 <li class="list-group-item">Match 2: Lost</li>
                                 <li class="list-group-item">Match 3: Won</li>
