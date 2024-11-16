@@ -1,4 +1,4 @@
-function game(againstAnotherPlayer = true) {
+export async function game(againstAnotherPlayer = true) {
     document.querySelector('.topLeft').innerHTML = "Self : <i class=\"self\"></i>";
     document.querySelector('.topRight').innerHTML = "Opposite : <i class=\"opposite\"></i>";
     // 1. Sahne (Scene)

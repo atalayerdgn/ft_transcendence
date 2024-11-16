@@ -5,6 +5,7 @@ import { authenticateUser } from './login/login.js';
 import { validateUser } from './validate/validate.js';
 import { updateUserInfo, updateProfilePicture } from './profile/updateProfile.js';
 import { addFriend } from './profile/updateProfile.js';
+import { game } from './game/game.js';
 
 // Ana event listener kurma fonksiyonu
 function setupEventListeners() {
@@ -71,13 +72,10 @@ async function handleAppClick(event) {
         } else if (page === 'updateProfile') {
             updateUserInfo();
         } else if (page === 'game') {
-            import('./game/game.js').then(module => {
-            console.log('Game module loaded:', module);
-            }).catch(error => {
-            console.error('Game module could not be loaded:', error);
-            });
-            
+            console.log('game ifi içerisinde page:', page);
             loadPage(page);
+
+            return;
         }
         else {
             loadPage(page);
@@ -129,6 +127,26 @@ function handleButtonClicks(event) {
     } else if (event.target.matches('.buttonAddFriend')) {
         event.preventDefault();
         addFriend(); // Arkadaş ekleme
+    } else if(event.target.matches('.playWithPlayer')){
+        event.preventDefault();
+        console.log('playWithPlayer butonuna tıklandı');
+        const button = document.querySelector(".startAgaintsAnotherPlayerGame");
+    button.addEventListener("click", function() {
+        game();
+        button.style.display = "none";
+        document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
+    });
+        //game(false);
+    } else if(event.target.matches('.playWithAi')){
+        event.preventDefault();
+        console.log('playWithAi butonuna tıklandı');
+        const button = document.querySelector(".startAgainstArtificalIntelligenceGame");
+    button.addEventListener("click", function() {
+        game(false);
+        button.style.display = "none";
+        document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "none";
+    });
+        //game(true);
     }
 }
 

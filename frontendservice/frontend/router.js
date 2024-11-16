@@ -29,12 +29,40 @@ export async function loadPage(page) {
         if (!response.ok) {
             throw new Error(`Failed to load page: ${response.statusText}`);
         }
-
+        
+        const pageContent = await response.text(); // response.text() çağrısını yalnızca bir kez yapın
+        
         // Profil sayfası yükleniyorsa, kullanıcı bilgilerini yükle
         if (page === 'profile') {
-            content.innerHTML = await response.text();
+            content.innerHTML = pageContent;
             loadUserInfo(); // Kullanıcı bilgilerini yükler
             loadFriendList();
+            return;
+        }
+        
+        if (page === 'game') {
+            content.innerHTML = pageContent;
+
+                // CSS dosyasını yükle
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = './game/game.css'; // CSS dosyasının doğru yolunu belirtin
+                document.head.appendChild(link);
+        
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+                script.onload = () => {
+                console.log('Three.js loaded');
+        
+                const script2 = document.createElement('script');
+                script2.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js';
+                script2.onload = () => {
+                    console.log('OrbitControls.js loaded');
+        
+                };
+                document.head.appendChild(script2);
+            };
+            document.head.appendChild(script);
             return;
         }
 
