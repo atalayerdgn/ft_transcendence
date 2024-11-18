@@ -29,6 +29,7 @@ export async function authenticateUser() {
                 console.log('Başarılı login');
                 console.log('Yanıt:', responseData); // Yanıtı kontrol et
                 localStorage.setItem('temp_token', responseData.temp_token); // temp_token'ı localStorage'a kaydet
+                //localStorage.setItem('user_id', responseData.user_id); // email'i localStorage'a kaydet
                 loadPage('validate'); // validate sayfasını yükle
             } else {
                 console.log('Başarısız login');

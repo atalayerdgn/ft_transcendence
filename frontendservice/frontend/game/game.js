@@ -1,6 +1,17 @@
 export async function game(againstAnotherPlayer = true) {
-    document.querySelector('.topLeft').innerHTML = "Self : <i class=\"self\"></i>";
-    document.querySelector('.topRight').innerHTML = "Opposite : <i class=\"opposite\"></i>";
+    let oppositeName;
+    if(againstAnotherPlayer) {
+        // Kullanıcıdan input almak için prompt kullan
+        oppositeName = prompt("Lütfen 'Opposite' için bir isim girin:");
+
+        document.querySelector('.topLeft').innerHTML = "Self : <i class=\"self\"></i>";
+        document.querySelector('.topRight').innerHTML = `${oppositeName} : <i class="opposite"></i>`;
+    }
+    else {
+        oppositeName = "Düşman AI";
+        document.querySelector('.topLeft').innerHTML = "Self : <i class=\"self\"></i>";
+        document.querySelector('.topRight').innerHTML = "Düşman AI : <i class=\"opposite\"></i>";
+    }
     // 1. Sahne (Scene)
     const scene = new THREE.Scene();
 
@@ -466,7 +477,7 @@ export async function game(againstAnotherPlayer = true) {
                 sphereVector.x = Math.sin(angle);
                 sphereVector.z = Math.cos(angle);
                 if (++scoreOpposite == 10) {
-                    document.querySelector(".topCenter").innerHTML = "Opposite Won";
+                    document.querySelector(".topCenter").innerHTML = `${oppositeName} Won`;
                     returnStartStation();
                 }
             } else if (sphereMesh.position.z < selfMesh.position.z + 4 && sphereMesh.position.z > selfMesh.position.z - 4) {
@@ -507,6 +518,12 @@ export async function game(againstAnotherPlayer = true) {
 
     animate();
 }
+
+
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const button = document.querySelector(".startAgaintsAnotherPlayerGame");

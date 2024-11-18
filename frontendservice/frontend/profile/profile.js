@@ -29,10 +29,13 @@ export async function loadUserInfo() {
         }*/
 
         const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1]; // Token'ı al
+        const user_id = localStorage.getItem('user_id'); // User id'yi al
+        console.log('loaduserinfouserid:', user_id);
         const response = await fetch('http://localhost:8007/users/username/', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`, // Kullanıcının token'ını ekle
+                'id': user_id, // Kullanıcının id'sini ekle
             },
         });
 
@@ -65,24 +68,22 @@ export async function loadUserInfo() {
         return; // token olmadığında console.error hatası vermesin diye return ekledim	
         console.error('Hata:', error);
     }
-
-    
-
 }
 
 export async function loadFriendList() {
     const friendListContainer = document.getElementById('friend-list');
     const matchHistoryList = document.getElementById('match-history-list');
     const userId = JSON.parse(localStorage.getItem('user')).id;
-    const friendListUrl = `http://127.0.0.1:8007/friend/friend-list/?user_id=${userId}`;
+    const friendListUrl = `http://localhost:8007/friend/friend-list/?user_id=${userId}`;
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
 
     let users;
     try {
         // İlk fetch işlemi
-        const usersResponse = await fetch('http://127.0.0.1:8007/users/list', {
+        const usersResponse = await fetch('http://localhost:8007/users/list/', {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`,
+                'id': userId
             }
         });
         const usersData = await usersResponse.json();
@@ -95,6 +96,7 @@ export async function loadFriendList() {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
+                'id': userId
             },
         });
 

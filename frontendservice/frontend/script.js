@@ -36,12 +36,25 @@ function checkTokenAndLoadPage() {
     if (tokenCookie) {
         loadPage('profile'); // Token varsa profile sayfasını yükle
         //beonline endpointine istek atarak kullanıcıyı online yap
+        const user_id = JSON.parse(localStorage.getItem('user')).id;
+        console.log('user_id:', user_id);
+        if (!user_id) {
+            alert('Kullanıcı bulunamadı, lütfen tekrar giriş yapın.');
+            loadPage('login');
+            return;
+        }
         const token = tokenCookie.split('=')[1];
+        if (!token) {
+            alert('Token bulunamadı, lütfen tekrar giriş yapın.');
+            loadPage('login');
+            return;
+        }
         fetch('http://localhost:8007/users/beonline/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
+                'id': user_id
             },
             body: JSON.stringify({}),
         }).then(response => {
@@ -74,7 +87,6 @@ async function handleAppClick(event) {
         } else if (page === 'game') {
             console.log('game ifi içerisinde page:', page);
             loadPage(page);
-
             return;
         }
         else {
@@ -109,25 +121,32 @@ async function handleRegisterForm() {
 }
 
 // Tıklanan butona göre ilgili işlemi yapar
-function handleButtonClicks(event) {
+function handleButtonClicks(event) 
+{
     if (event.target.matches('.buttonLogin')) {
         event.preventDefault();
         authenticateUser(); // Login işlemi
-    } else if (event.target.matches('.buttonLogout')) {
+    } 
+    else if (event.target.matches('.buttonLogout')) {
         event.preventDefault();
         logoutUser(); // Çıkış işlemi
-    } else if (event.target.matches('.validateButton')) {
+    } 
+    else if (event.target.matches('.validateButton')) {
         event.preventDefault();
         validateUserCode(); // İki faktörlü doğrulama
-    } else if (event.target.matches('.updateProfileBtn')) {
+    }
+    else if (event.target.matches('.updateProfileBtn')) {
         event.preventDefault();
         updateUserInfo(); // Profil güncelleme
-    } else if (event.target.matches('.img-fluid')) {
+    } 
+    else if (event.target.matches('.img-fluid')) {
         updateProfilePicture(); // Profil resmi güncelleme
-    } else if (event.target.matches('.buttonAddFriend')) {
+    } 
+    else if (event.target.matches('.buttonAddFriend')) {
         event.preventDefault();
         addFriend(); // Arkadaş ekleme
-    } else if(event.target.matches('.playWithPlayer')){
+    } 
+    else if (event.target.matches('.playWithPlayer')) {
         event.preventDefault();
         console.log('playWithPlayer butonuna tıklandı');
 
@@ -138,9 +157,10 @@ function handleButtonClicks(event) {
             game();
             button.style.display = "none";
             document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
-    });
+        });
         //game(false);
-    } else if(event.target.matches('.playWithAi')){
+    } 
+    else if (event.target.matches('.playWithAi')) {
         event.preventDefault();
         console.log('playWithAi butonuna tıklandı');
         
@@ -151,7 +171,7 @@ function handleButtonClicks(event) {
             game(false);
             button.style.display = "none";
             document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "none";
-    });
+        });
         //game(true);
     }
 }
@@ -159,13 +179,23 @@ function handleButtonClicks(event) {
 // Kullanıcıyı çıkış yaptırır
 async function logoutUser() {
     try {
+        // Localden userid yi al
+        const user = JSON.parse(localStorage.getItem('user'));
+        const userId = user.id;
+        if (!userId) {
+            alert('Kullanıcı bulunamadı, lütfen tekrar giriş yapın.');
+            loadPage('login');
+            return;
+        }
+        console.log("User ID:", userId);
+
+        // Cookie'den token'ı güvenli bir şekilde al
         const tokenCookie = document.cookie.split('; ').find(cookie => cookie.startsWith('token='));
         if (!tokenCookie) {
             alert('Token bulunamadı, lütfen tekrar giriş yapın.');
             loadPage('login');
             return;
         }
-        
         const token = tokenCookie.split('=')[1];
         console.log("Token:", token);
 
@@ -173,7 +203,8 @@ async function logoutUser() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`,
+                'id': userId
             }
         });
 
@@ -214,7 +245,8 @@ window.addEventListener('beforeunload', function(event) {
     const tokenCookie = document.cookie.split('; ').find(cookie => cookie.startsWith('token='));
     if (tokenCookie) {
         const token = tokenCookie.split('=')[1];
-
+        const user = JSON.parse(localStorage.getItem('user'));
+        const userId = user.id;
         // Logout isteği için URL ve yapılandırma
         const url = 'http://localhost:8007/users/logout/';
 
@@ -223,7 +255,8 @@ window.addEventListener('beforeunload', function(event) {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'id': userId
             },
             body: JSON.stringify({})
         }).then(response => {

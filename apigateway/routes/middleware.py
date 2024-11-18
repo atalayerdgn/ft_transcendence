@@ -13,32 +13,44 @@ class JWTAuthenticationMiddleware:
 
     def __call__(self, request):
         # Giriş yapılmadan erişilebilecek yolları tanımla (örneğin, login ve register gibi)
-        exempt_paths = ['/users/create/', '/users/login/' , '/users/login_with_42/', '/users/oauth_callback/' , '/favicon.ico']
+        exempt_paths = ['/users/create/', '/users/login/','/users/validate/']
         if request.path in exempt_paths:
             return self.get_response(request)  # Eğer istek bu yollardan birine yapılmışsa, doğrulama yapılmadan işleme devam edilir
 
         # Header'dan Authorization kısmından token'ı al
         token = request.headers.get('Authorization')
+        user_id_header = request.headers.get('id')  # Header'dan User-ID'yi al
+        logger.error('User-ID: %s', user_id_header)
+
         if not token:
             logger.debug('Missing token')  # Token yoksa hata mesajı loglanır
             return JsonResponse({'error': 'Missing token'}, status=401)  # 401 Unauthorized yanıtı ile kullanıcı bilgilendirilir
+        
+        if not user_id_header:
+            logger.debug('Missing User-ID')  # User-ID yoksa hata mesajı loglanır
+            return JsonResponse({'error': 'Missing User-ID'}, status=400)  # 400 Bad Request yanıtı döndür
 
         try:
             # Bearer token formatında gelen token'ı "Bearer <token>" olarak ayır
             token = token.split(' ')[1]
-            logger.debug('Token: %s', token) # Ayrıştırılan token'ı logla
+            logger.debug('Token: %s', token)  # Ayrıştırılan token'ı logla
 
             # Token'ı çöz ve içindeki kullanıcı bilgilerini al
             decoded_token = jwt.decode(token, settings.USER_SECRET_KEY, algorithms=['HS256'])
             logger.debug('Decoded Token: %s', decoded_token)
 
+            # Token'den alınan user_id ile header'dan gelen user_id'yi karşılaştır
+            token_user_id = str(decoded_token['user_id'])
+            if str(user_id_header) != token_user_id:
+                logger.debug(f"User-ID mismatch: Header({user_id_header}) != Token({token_user_id})")
+                return JsonResponse({'error': 'User-ID mismatch'}, status=403)  # 403 Forbidden yanıtı döndür
+
             # Kullanıcı ID'sini request'e ekleyelim
-            request.user_id = decoded_token['user_id']
+            request.user_id = token_user_id
 
             # Token doğrulama başarılıysa loga başarılı mesajı yazalım
             logger.debug('********** Token is valid **********')
             logger.debug('Token is valid for user_id: %s', request.user_id)
-            logger.debug('Token is valid for username %s', decoded_token['username'])
             logger.debug('************************************')
 
         except jwt.ExpiredSignatureError:
@@ -53,6 +65,7 @@ class JWTAuthenticationMiddleware:
 
         # Eğer token geçerliyse, isteği bir sonraki middleware'e gönder
         return self.get_response(request)
+
     
 '''
 Middleware, her gelen isteği inceleyerek önce token olup olmadığını kontrol eder.

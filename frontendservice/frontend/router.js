@@ -36,8 +36,8 @@ export async function loadPage(page) {
         if (page === 'profile') {
             const pageContent = await response.text();
             content.innerHTML = pageContent;
-            loadUserInfo(); // Kullanıcı bilgilerini yükler
-            loadFriendList();
+            await loadUserInfo(); // Kullanıcı bilgilerini yükler
+            await loadFriendList();
             return;
         }
         

@@ -12,6 +12,7 @@ class GameServiceImpl(GameService):
 
     def save_game(self, validated_data: dict) -> Tuple[bool, str]:
         game = Game(**validated_data)
+        #eozdur icelebi
         success, message = self.game_repository.save_game(game)
         if success:
             return True, "Oyun başarıyla kaydedildi"

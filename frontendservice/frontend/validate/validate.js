@@ -29,6 +29,7 @@ export async function validateUser() {
             });
 
             if (response.ok) {
+                const responseData = await response.json();
                 console.log('Başarılı validate');
                 document.cookie = `token=${token}; path=/; max-age=1500`; // 1 saat geçerlilik süresi
                 localStorage.removeItem('temp_token'); // Token'ı localStorage'dan sil
@@ -36,7 +37,11 @@ export async function validateUser() {
                 //loadPage('profile'); 
                 const cookies = document.cookie.split('; ');
                 const tokenCookie = cookies.find(cookie => cookie.startsWith('token='));
-
+                // user_id locale kaydet
+                localStorage.setItem('user_id', responseData.user_id); // email'i localStorage'a kaydet
+                console.log('VALİDATEEEE');
+                const user_id = localStorage.getItem('user_id');
+                
                 if (tokenCookie) {
                     // Token mevcut, profile sayfasını yükle
                     loadPage('profile');

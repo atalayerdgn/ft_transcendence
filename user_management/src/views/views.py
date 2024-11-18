@@ -50,6 +50,7 @@ class AuthHandler(viewsets.ViewSet):
             return Response({
                 'message': '2FA code sent to your email, please validate',
                 'temp_token': result['temp_token']
+                #user id döndür
             }, status=status.HTTP_200_OK)
             
         # Login başarısızsa hata mesajı döner
@@ -74,12 +75,15 @@ class AuthHandler(viewsets.ViewSet):
         user = self.service.get_user_from_token(token)
         if user is None:
             return Response({'error': 'Invalid or expired token'}, status=status.HTTP_401_UNAUTHORIZED)
-
+        user_id = user.id # Kullanıcı ID'sini al
         # 2FA kodunu kontrol et
         validation_result = self.service.validate_twofa(user, twofa_code)
         if validation_result:
             logger.error(f"Is online: {user.is_online}")
-            return Response({'message': '2FA validation successful'}, status=status.HTTP_200_OK)
+            return Response({
+                'message': '2FA code validated successfully',
+                'user_id': user_id
+            }, status=status.HTTP_200_OK)
         
         return Response({'error': 'Invalid 2FA code'}, status=status.HTTP_400_BAD_REQUEST)
     

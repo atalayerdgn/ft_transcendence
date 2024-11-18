@@ -5,12 +5,19 @@ export async function updateUserInfo() {
     const username = document.getElementById('userrname').value;
     const currentUserName = JSON.parse(localStorage.getItem('user')).username;
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
-
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userId = user.id;
+    if(!userId){
+        alert('Kullanıcı bulunamadı, lütfen tekrar giriş yapın.');
+        loadPage('login');
+        return;
+    }
     const response = await fetch('http://localhost:8007/users/update/', {
         method: 'PUT',
         headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
+            'id': userId
         },
         body: JSON.stringify({
             current_username: currentUserName,
@@ -76,7 +83,7 @@ export async function updateProfilePicture() {
             const user = JSON.parse(localStorage.getItem('user'));
             const userId = user.id; // Kullanıcı ID'si
 
-            const url = `http://127.0.0.1:8004/users/upload_avatar/?id=${userId}`; // URL'ye user_id ekleyin
+            const url = `http://localhost:8004/users/upload_avatar/?id=${userId}`; // URL'ye user_id ekleyin
 
             // Fetch ile dosyayı sunucuya gönder
             try {
@@ -115,8 +122,8 @@ export async function addFriend() {
     const user = JSON.parse(localStorage.getItem('user'));
     const userId = user.id;
     const friendName = document.getElementById('friend-username').value;
-
-    const checkUsernameUrl = `http://127.0.0.1:8007/users/check_username/?username=${friendName}`;
+    // Kullanıcı adı kontrolü
+    const checkUsernameUrl = `http://localhost:8007/users/check_username/?username=${friendName}`;
     let friendId = null;
     try {
         const response = await fetch(checkUsernameUrl, {
@@ -124,6 +131,7 @@ export async function addFriend() {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
+                'id': userId,
             },
         });
 
@@ -137,15 +145,15 @@ export async function addFriend() {
     } catch (error) {
         console.error('Error occurred:', error);
     }
-
-    const addFriendUrl = `http://127.0.0.1:8006/friend/add/?id=${friendId}`;
-
+    // Arkadaş ekleme
+    const addFriendUrl = `http://localhost:8007/friend/add/?id=${friendId}`;
     try {
         const addFriendResponse = await fetch(addFriendUrl, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
+                'id': userId,
             },
             body: JSON.stringify({
                 user_id: userId,
