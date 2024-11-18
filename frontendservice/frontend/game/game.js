@@ -330,6 +330,7 @@ export async function game(againstAnotherPlayer = true) {
         scoreOpposite = 0;
         document.querySelector('.self').innerHTML = "score";
         document.querySelector('.opposite').innerHTML = "score";
+        
     }
 
     returnStartStation();
@@ -477,6 +478,21 @@ export async function game(againstAnotherPlayer = true) {
                 sphereVector.x = Math.sin(angle);
                 sphereVector.z = Math.cos(angle);
                 if (++scoreOpposite == 10) {
+                    if(againstAnotherPlayer) {
+                        document.querySelector(".topCenter").innerHTML = `${oppositeName} Won`;
+                        checkUsernameFunc(oppositeName).then(isValid => {
+                            if (isValid === true) {
+                            //document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "block";
+                            saveGameResult(scoreSelf, scoreOpposite, oppositeName);
+                            returnStartStation();
+                            }
+                            if (isValid === false) {
+                                
+                                returnStartStation();
+                            }
+                        });
+               
+                    }
                     document.querySelector(".topCenter").innerHTML = `${oppositeName} Won`;
                     returnStartStation();
                 }
@@ -497,6 +513,19 @@ export async function game(againstAnotherPlayer = true) {
                 sphereVector.x = Math.sin(angle);
                 sphereVector.z = Math.cos(angle);
                 if (++scoreSelf == 10) {
+                    if(againstAnotherPlayer) {
+                        document.querySelector(".topCenter").innerHTML = "Self Won";
+                        checkUsernameFunc(oppositeName).then(isValid => {
+                            if (isValid === true) {
+                                //document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "block";
+                                saveGameResult(scoreSelf, scoreOpposite, oppositeName);
+                                returnStartStation();
+                            }
+                            if (isValid === false) {
+                                returnStartStation();
+                            }
+                        });
+                    }
                     document.querySelector(".topCenter").innerHTML = "Self Won";
                     returnStartStation();
                 }
@@ -520,9 +549,60 @@ export async function game(againstAnotherPlayer = true) {
 }
 
 
+async function checkUsernameFunc(oppositeName) {
+    const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
+    const storedUserId = JSON.parse(localStorage.getItem('user'));
+    try {
+        const response = await fetch(`http://127.0.0.1:8007/users/check_username/?username=${oppositeName}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+                'id': storedUserId.id
+            }
+        });
 
+        if (response.ok) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        console.error('Error occurred:', error);
+        return false;
+    }
+}
 
+async function saveGameResult(playerOneScore, playerTwoScore, userName) {
+    const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
+    const storedUserId = JSON.parse(localStorage.getItem('user'));
+    const data = {
+        player_one_score: playerOneScore,
+        player_two_score: playerTwoScore,
+        user_name: userName
+    };
 
+    try {
+        const response = await fetch('http://127.0.0.1:8007/game/save/', {
+            method: 'POST',
+            headers: {
+                'Bearer': token,
+                'id': storedUserId.id,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        console.error('Error occurred:', error);
+        return false;
+    }
+}
 
 
 document.addEventListener("DOMContentLoaded", () => {
