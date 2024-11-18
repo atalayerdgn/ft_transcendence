@@ -130,21 +130,27 @@ function handleButtonClicks(event) {
     } else if(event.target.matches('.playWithPlayer')){
         event.preventDefault();
         console.log('playWithPlayer butonuna tıklandı');
+
         const button = document.querySelector(".startAgaintsAnotherPlayerGame");
-    button.addEventListener("click", function() {
-        game();
-        button.style.display = "none";
-        document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
+        button.addEventListener("click", function() {
+            const existingCanvas = document.querySelectorAll('canvas');
+            existingCanvas.forEach(canvas => canvas.remove());
+            game();
+            button.style.display = "none";
+            document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
     });
         //game(false);
     } else if(event.target.matches('.playWithAi')){
         event.preventDefault();
         console.log('playWithAi butonuna tıklandı');
+        
         const button = document.querySelector(".startAgainstArtificalIntelligenceGame");
-    button.addEventListener("click", function() {
-        game(false);
-        button.style.display = "none";
-        document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "none";
+        button.addEventListener("click", function() {
+            const existingCanvas = document.querySelectorAll('canvas');
+            existingCanvas.forEach(canvas => canvas.remove());
+            game(false);
+            button.style.display = "none";
+            document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "none";
     });
         //game(true);
     }
