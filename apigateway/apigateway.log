@@ -12124,3 +12124,323 @@ Request Params: {'params': {'user_id': '84fd5cf5-0546-4497-9677-71678004c361'}}
 ***************************
 Request successful: http://friend_service:8002/friend/friend-list/
 Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+********** Token is valid **********
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+Forwarding request to: http://usermanagementc:8000/users/logout/
+Forwarding request to: http://usermanagementc:8000/users/logout/ with params: {'json': None}
+*** Forwarding request ***
+HTTP Method: post
+Request URL: http://usermanagementc:8000/users/logout/
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'json': None}
+***************************
+Request successful: http://usermanagementc:8000/users/logout/
+Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+********** Token is valid **********
+********** Token is valid **********
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+Forwarding request to: http://usermanagementc:8000/users/beonline/ with params: {'json': None}
+*** Forwarding request ***
+*** Forwarding request ***
+HTTP Method: get
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+HTTP Method: post
+Request URL: http://usermanagementc:8000/users/username/
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+Request URL: http://usermanagementc:8000/users/beonline/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+********** Token is valid **********
+Request Params: {'json': None}
+***************************
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+***************************
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/beonline/
+Response received: 200
+Response received: 200
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+********** Token is valid **********
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Forwarding request to: http://usermanagementc:8000/users/list/ with params: {'params': {}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/list/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/list/
+Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+********** Token is valid **********
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Forwarding request to: http://friend_service:8002/friend/friend-list/ with params: {'params': {'user_id': '84fd5cf5-0546-4497-9677-71678004c361'}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://friend_service:8002/friend/friend-list/
+Request Headers: {'Content-Length': '', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {'user_id': '84fd5cf5-0546-4497-9677-71678004c361'}}
+***************************
+Request successful: http://friend_service:8002/friend/friend-list/
+Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+********** Token is valid **********
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+Forwarding request to: http://usermanagementc:8000/users/logout/
+Forwarding request to: http://usermanagementc:8000/users/logout/ with params: {'json': None}
+*** Forwarding request ***
+HTTP Method: post
+Request URL: http://usermanagementc:8000/users/logout/
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'json': None}
+***************************
+Request successful: http://usermanagementc:8000/users/logout/
+Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+********** Token is valid **********
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+********** Token is valid **********
+************************************
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+Forwarding request to: http://usermanagementc:8000/users/beonline/ with params: {'json': None}
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+Forwarding request to: http://usermanagementc:8000/users/username/
+*** Forwarding request ***
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+HTTP Method: post
+********** Token is valid **********
+*** Forwarding request ***
+Request URL: http://usermanagementc:8000/users/beonline/
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+HTTP Method: get
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+************************************
+Request URL: http://usermanagementc:8000/users/username/
+Request Params: {'json': None}
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+***************************
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+Request Params: {'params': {}}
+*** Forwarding request ***
+***************************
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200
+Request successful: http://usermanagementc:8000/users/beonline/
+Response received: 200
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+********** Token is valid **********
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Forwarding request to: http://usermanagementc:8000/users/list/ with params: {'params': {}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/list/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/list/
+Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+********** Token is valid **********
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Forwarding request to: http://friend_service:8002/friend/friend-list/ with params: {'params': {'user_id': '84fd5cf5-0546-4497-9677-71678004c361'}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://friend_service:8002/friend/friend-list/
+Request Headers: {'Content-Length': '', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {'user_id': '84fd5cf5-0546-4497-9677-71678004c361'}}
+***************************
+Request successful: http://friend_service:8002/friend/friend-list/
+Response received: 200
+User-ID: d89c93c0-65f0-47d0-8aaf-17f822f224ba
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVtcmUzMSIsInVzZXJfaWQiOiJkODljOTNjMC02NWYwLTQ3ZDAtOGFhZi0xN2Y4MjJmMjI0YmEiLCJpc18yZmFfdmFsaWRhdGVkIjpmYWxzZSwiZXhwIjoxNzMyMTM5NDIyfQ.MjVKhR_Q841zOfJ0b2T4LI_YiJ-6hVkjFzorNEcMbgE
+Decoded Token: {'username': 'emre31', 'user_id': 'd89c93c0-65f0-47d0-8aaf-17f822f224ba', 'is_2fa_validated': False, 'exp': 1732139422}
+********** Token is valid **********
+Token is valid for user_id: d89c93c0-65f0-47d0-8aaf-17f822f224ba
+************************************
+Forwarding request to: http://usermanagementc:8000/users/logout/
+Forwarding request to: http://usermanagementc:8000/users/logout/ with params: {'json': None}
+*** Forwarding request ***
+HTTP Method: post
+Request URL: http://usermanagementc:8000/users/logout/
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVtcmUzMSIsInVzZXJfaWQiOiJkODljOTNjMC02NWYwLTQ3ZDAtOGFhZi0xN2Y4MjJmMjI0YmEiLCJpc18yZmFfdmFsaWRhdGVkIjpmYWxzZSwiZXhwIjoxNzMyMTM5NDIyfQ.MjVKhR_Q841zOfJ0b2T4LI_YiJ-6hVkjFzorNEcMbgE', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': 'd89c93c0-65f0-47d0-8aaf-17f822f224ba', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9'}
+Request Params: {'json': None}
+***************************
+Request successful: http://usermanagementc:8000/users/logout/
+Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732140156}
+********** Token is valid **********
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+Forwarding request to: http://usermanagementc:8000/users/logout/
+Forwarding request to: http://usermanagementc:8000/users/logout/ with params: {'json': None}
+*** Forwarding request ***
+HTTP Method: post
+Request URL: http://usermanagementc:8000/users/logout/
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MDE1Nn0.Fe48Wvbh4sVgNzdX7YEXSr-r2KS3a2J7KGrMiHU0Vrg', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'json': None}
+***************************
+Request successful: http://usermanagementc:8000/users/logout/
+Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MTk5M30.kn9wsg9CkG-43pCPw3kPRH8tdZtdGjiKZYl72Ayl-nA
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732141993}
+********** Token is valid **********
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+Forwarding request to: http://usermanagementc:8000/users/logout/
+Forwarding request to: http://usermanagementc:8000/users/logout/ with params: {'json': None}
+*** Forwarding request ***
+HTTP Method: post
+Request URL: http://usermanagementc:8000/users/logout/
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MTk5M30.kn9wsg9CkG-43pCPw3kPRH8tdZtdGjiKZYl72Ayl-nA', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'json': None}
+***************************
+Request successful: http://usermanagementc:8000/users/logout/
+Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MTk5M30.kn9wsg9CkG-43pCPw3kPRH8tdZtdGjiKZYl72Ayl-nA
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732141993}
+********** Token is valid **********
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MTk5M30.kn9wsg9CkG-43pCPw3kPRH8tdZtdGjiKZYl72Ayl-nA
+*** Forwarding request ***
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732141993}
+HTTP Method: get
+********** Token is valid **********
+Request URL: http://usermanagementc:8000/users/username/
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MTk5M30.kn9wsg9CkG-43pCPw3kPRH8tdZtdGjiKZYl72Ayl-nA', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+************************************
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Request Params: {'params': {}}
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MTk5M30.kn9wsg9CkG-43pCPw3kPRH8tdZtdGjiKZYl72Ayl-nA
+***************************
+Forwarding request to: http://usermanagementc:8000/users/beonline/ with params: {'json': None}
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732141993}
+*** Forwarding request ***
+********** Token is valid **********
+HTTP Method: post
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+Request URL: http://usermanagementc:8000/users/beonline/
+************************************
+Request Headers: {'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MTk5M30.kn9wsg9CkG-43pCPw3kPRH8tdZtdGjiKZYl72Ayl-nA', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request Params: {'json': None}
+Forwarding request to: http://usermanagementc:8000/users/username/ with params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/username/
+*** Forwarding request ***
+Response received: 200
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/username/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MTk5M30.kn9wsg9CkG-43pCPw3kPRH8tdZtdGjiKZYl72Ayl-nA', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/beonline/
+Response received: 200
+Request successful: http://usermanagementc:8000/users/username/
+Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MTk5M30.kn9wsg9CkG-43pCPw3kPRH8tdZtdGjiKZYl72Ayl-nA
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732141993}
+********** Token is valid **********
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Forwarding request to: http://usermanagementc:8000/users/list/ with params: {'params': {}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://usermanagementc:8000/users/list/
+Request Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MTk5M30.kn9wsg9CkG-43pCPw3kPRH8tdZtdGjiKZYl72Ayl-nA', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {}}
+***************************
+Request successful: http://usermanagementc:8000/users/list/
+Response received: 200
+User-ID: 84fd5cf5-0546-4497-9677-71678004c361
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MTk5M30.kn9wsg9CkG-43pCPw3kPRH8tdZtdGjiKZYl72Ayl-nA
+Decoded Token: {'username': 'icelebi', 'user_id': '84fd5cf5-0546-4497-9677-71678004c361', 'is_2fa_validated': False, 'exp': 1732141993}
+********** Token is valid **********
+Token is valid for user_id: 84fd5cf5-0546-4497-9677-71678004c361
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Forwarding request to: http://friend_service:8002/friend/friend-list/ with params: {'params': {'user_id': '84fd5cf5-0546-4497-9677-71678004c361'}}
+*** Forwarding request ***
+HTTP Method: get
+Request URL: http://friend_service:8002/friend/friend-list/
+Request Headers: {'Content-Length': '', 'Content-Type': 'application/json', 'Host': 'localhost:8007', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiODRmZDVjZjUtMDU0Ni00NDk3LTk2NzctNzE2NzgwMDRjMzYxIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMjE0MTk5M30.kn9wsg9CkG-43pCPw3kPRH8tdZtdGjiKZYl72Ayl-nA', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'Sec-Ch-Ua-Mobile': '?0', 'Id': '84fd5cf5-0546-4497-9677-71678004c361', 'Accept': '*/*', 'Origin': 'https://localhost:8008', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'}
+Request Params: {'params': {'user_id': '84fd5cf5-0546-4497-9677-71678004c361'}}
+***************************
+Request successful: http://friend_service:8002/friend/friend-list/
+Response received: 200

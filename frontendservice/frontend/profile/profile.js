@@ -155,8 +155,19 @@ export async function fetchMatchHistory() {
 
         matchHistory.forEach(match => {
             const listItem = document.createElement('li');
-            listItem.className = 'list-group-item';
-            listItem.textContent = `Date: ${new Date(match.match_date).toLocaleString()}, Player One Score: ${match.player_one_score}, Player Two Score: ${match.player_two_score}, Düşman: ${match.user_two_name}`;
+            listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+            const matchInfo = document.createElement('span');
+            const userColor = match.player_one_score > match.player_two_score ? 'green' : 'red';
+            const opponentColor = match.player_one_score > match.player_two_score ? 'red' : 'green';
+            matchInfo.innerHTML = `<strong style="color: ${match.player_one_score > match.player_two_score ? 'green' : 'red'};">${userId}</strong>: ${match.player_one_score},  -  ${match.player_two_score}, düşman <strong style="color: ${match.player_two_score > match.player_one_score ? 'green' : 'red'};">${match.user_two_name}</strong>`;
+
+            const matchDate = document.createElement('span');
+            matchDate.textContent = new Date(match.match_date).toLocaleString();
+            matchDate.style.fontSize = '0.8em'; // Yazı boyutunu küçült
+
+            listItem.appendChild(matchInfo);
+            listItem.appendChild(matchDate);
             matchHistoryList.appendChild(listItem);
         });
     } catch (error) {
