@@ -37,6 +37,9 @@ export async function loadPage(page) {
             await loadUserInfo(); // Kullanıcı bilgilerini yükler
             await loadFriendList();
             await fetchMatchHistory();
+            //tüm canvasları kaldır
+            const existingCanvas = document.querySelectorAll('canvas');
+            existingCanvas.forEach(canvas => canvas.remove());
             return;
         }
         
