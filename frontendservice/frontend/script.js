@@ -6,6 +6,7 @@ import { validateUser } from './validate/validate.js';
 import { updateUserInfo, updateProfilePicture } from './profile/updateProfile.js';
 import { addFriend } from './profile/updateProfile.js';
 import { game } from './game/game.js';
+import { loginWith42, handle42Callback } from './login/login42.js';
 
 // Ana event listener kurma fonksiyonu
 function setupEventListeners() {
@@ -13,9 +14,21 @@ function setupEventListeners() {
 }
 
 // Sayfa yüklendiğinde yapılacak işlemler
-function onDOMContentLoaded() {
+async function onDOMContentLoaded() {
     // Token kontrolü yap
     checkTokenAndLoadPage();
+
+    if (window.location.search.includes("code=")) {
+        console.log("42 callback geldi!");
+        await handle42Callback(); // Callback işleme
+        // Mevcut URL'i al
+        const urluchiman = new URL(window.location.href);
+        // 'code' parametresini kaldır
+        urluchiman.searchParams.delete('code');
+        // urluchiman'i güncelle
+        window.location.href = urluchiman.toString();
+        loadPage('profile');
+    }
 
     // Ana uygulama öğesini al
     const app = document.getElementById('app');
@@ -147,7 +160,11 @@ function handleButtonClicks(event)
     else if (event.target.matches('.buttonAddFriend')) {
         event.preventDefault();
         addFriend(); // Arkadaş ekleme
-    } 
+    } else if (event.target.matches('.login42')) {
+        event.preventDefault();
+        console.log('login42 butonuna tıklandı');
+        loginWith42();
+    }
    /* else if (event.target.matches('.playWithPlayer')) {
         document.querySelector('.playWithPlayer').addEventListener('click', function(event) {
             event.preventDefault();

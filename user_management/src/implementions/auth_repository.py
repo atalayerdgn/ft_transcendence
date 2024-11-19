@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Optional, Tuple
 from django.contrib.auth.hashers import check_password
 from src.interface.auth_repository import AuthRepository
 from src.models.models import User
@@ -39,4 +39,28 @@ class AuthRepositoryImpl(AuthRepository):
         except Exception as e:
             logger.error(f"Error during user retrieval: {str(e)}")
             return None  # Hata durumunda None döndür
+        
+    def oauth_callback(self, user_info: dict) -> Tuple[bool, str, Optional[User]]:
+        try:
+            # Önce kullanıcıyı e-posta adresine göre bulmaya çalış
+            user = User.objects.filter(email=user_info.get('email')).first()
+            if user:
+                # Kullanıcı bulunduysa bilgilerini güncelle
+                user.username = user_info.get('login')
+                user.first_name = user_info.get('first_name')
+                user.last_name = user_info.get('last_name')
+                user.save()
+                return True, 'User updated successfully', user
+            else:
+                # Kullanıcı bulunamazsa yeni kullanıcı oluştur
+                user = User.objects.create(
+                    username=user_info.get('login'),
+                    first_name=user_info.get('first_name'),
+                    last_name=user_info.get('last_name'),
+                    email=user_info.get('email')
+                )
+                return True, 'User created successfully', user
+        except Exception as e:
+            # Herhangi bir hata olursa hata mesajı ve None döndür.
+            return False, f"Error updating or creating user: {str(e)}", None
         

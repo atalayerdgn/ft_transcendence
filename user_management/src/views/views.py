@@ -131,7 +131,22 @@ class AuthHandler(viewsets.ViewSet):
         logger.error(f"User {user.username} is online.")
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
     
+    @csrf_exempt  # CSRF korumasını bu view için devre dışı bırakıyoruz (dış API çağrısı olduğundan).
+    def oauth_callback(self, request):
+        # Gelen istekte 'code' parametresini alıyoruz.
+        code = request.query_params.get('code')
+        logger.error(f"Code: {code}")
+        if not code:  # Eğer code yoksa, hata döndürüyoruz.
+            return Response({'error': 'Authorization code is missing'}, status=status.HTTP_400_BAD_REQUEST)
 
+        # service'deki oauth_callback metodunu çağırıyoruz.
+        success, message, token, user_id = self.service.oauth_callback(code)
+        if success:  # İşlem başarılıysa, kullanıcıya bir token dönüyoruz.
+            return Response({'token': token, 'user_id': user_id}, status=status.HTTP_200_OK)
+        # Başarısız olduğunda hata mesajıyla birlikte dönüyoruz.
+        return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
+
+    
 
 class UserManagementHandler(viewsets.ViewSet):
 

@@ -13,7 +13,7 @@ class JWTAuthenticationMiddleware:
 
     def __call__(self, request):
         # Giriş yapılmadan erişilebilecek yolları tanımla (örneğin, login ve register gibi)
-        exempt_paths = ['/users/create/', '/users/login/','/users/validate/']
+        exempt_paths = ['/users/create/', '/users/login/','/users/validate/', '/uers/oauth_callback/']
         if request.path in exempt_paths:
             return self.get_response(request)  # Eğer istek bu yollardan birine yapılmışsa, doğrulama yapılmadan işleme devam edilir
 

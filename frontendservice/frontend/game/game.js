@@ -585,7 +585,7 @@ async function saveGameResult(playerOneScore, playerTwoScore, userName) {
     return fetch('http://127.0.0.1:8007/game/save/', {
         method: 'POST',
         headers: {
-            'Bearer': token,
+            'Authorization': `Bearer ${token}`,
             'id': storedUserId.id,
             'Content-Type': 'application/json'
         },

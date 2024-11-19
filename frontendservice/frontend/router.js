@@ -22,9 +22,6 @@ export async function loadPage(page) {
     let pageUrl = pageMap.get(page) || '404/404.html';
     console.log('Page:', page, 'URL:', pageUrl);
     try {
-        if (page === 'loginWith42') {
-            return; // Bu durumda herhangi bir işlem yapılmaz
-        }
         
         const response = await fetch(pageUrl);
         if (!response.ok) {

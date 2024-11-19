@@ -38,6 +38,9 @@ urlpatterns = [
     path('beonline/', AuthHandler.as_view({'post': 'beonline'}), name='beonline'),
     
     path('check_username/', UserManagementHandler.as_view({'get': 'check_username'}), name='check_username'),
+    
+    #oauthcallback
+    path('oauth_callback/', AuthHandler.as_view({'post': 'oauth_callback'}), name='oauth_callback'),
 ]
 '''
 Asviews() fonksiyonu, bir sınıf tabanlı görünümü işlev tabanlı bir görünüme dönüştürür.

@@ -10,13 +10,7 @@ from ..models.models import Game
 class GameRepositoryImpl(GameRepository):
     def save_game(self, game: Game) -> Tuple[bool, str]:
         try:
-            new_game = Game()
-            new_game.user_name = game.user_two_name
-            new_game.user_two_name = game.user_name
-            new_game.player_one_score = game.player_two_score
-            new_game.player_two_score = game.player_one_score
             game.save()
-            new_game.save()
             return True, "Oyun başarıyla kaydedildi"
         except Exception as e:
             return False, str(e)
