@@ -491,7 +491,7 @@ export async function game(againstAnotherPlayer = true) {
                 console.log('OIIIIFFFFFFF 111131111:', scoreSelf, scoreOpposite, oppositeName);
                 if (++scoreOpposite == 10) {
                     console.log('IJ GUCLERIM:', scoreSelf, scoreOpposite, oppositeName);
-                    document.querySelector(".topCenter").innerHTML = "Self Won";
+                    document.querySelector(".topCenter").innerHTML = `${oppositeName} Won`;
                     handleGameResult(scoreSelf, scoreOpposite, oppositeName,againstAnotherPlayer);
                     returnStartStation();
                     cancelAnimationFrame(animationFrameId);
