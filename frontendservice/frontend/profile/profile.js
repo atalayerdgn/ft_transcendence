@@ -142,7 +142,30 @@ export async function loadFriendList() {
     }
 }
 
+export async function fetchMatchHistory() {
+    const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1]; // Token'ı al
+    const userId = JSON.parse(localStorage.getItem('user')).username; // User id'yi al
 
+    try {
+        const response = await fetch(`http://127.0.0.1:8005/game/list/?user_name=${userId}`);
+        const matchHistory = await response.json();
+
+        const matchHistoryList = document.getElementById('match-history-list');
+        matchHistoryList.innerHTML = ''; // Önceki içeriği temizle
+
+        matchHistory.forEach(match => {
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item';
+            listItem.textContent = `Date: ${new Date(match.match_date).toLocaleString()}, Player One Score: ${match.player_one_score}, Player Two Score: ${match.player_two_score}, Düşman: ${match.user_two_name}`;
+            matchHistoryList.appendChild(listItem);
+        });
+    } catch (error) {
+        console.error('Error fetching match history:', error);
+    }
+}
+
+// Sayfa yüklendiğinde maç geçmişini getir
+window.onload = fetchMatchHistory;
 
 
 document.addEventListener('DOMContentLoaded', loadUserInfo);

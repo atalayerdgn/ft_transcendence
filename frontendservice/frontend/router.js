@@ -1,4 +1,4 @@
-import { loadUserInfo } from './profile/profile.js';
+import { fetchMatchHistory, loadUserInfo } from './profile/profile.js';
 import { loadFriendList } from './profile/profile.js';
 import { game } from './game/game.js';
 
@@ -36,6 +36,7 @@ export async function loadPage(page) {
             content.innerHTML = pageContent;
             await loadUserInfo(); // Kullanıcı bilgilerini yükler
             await loadFriendList();
+            await fetchMatchHistory();
             return;
         }
         
