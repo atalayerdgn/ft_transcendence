@@ -417,8 +417,12 @@ export async function game(againstAnotherPlayer = true) {
     // 17. Animasyon Döngüsü
     const speed = 1.4;
 
+
+    let animationFrameId;
+
     function animate() {
-        requestAnimationFrame(animate);
+        animationFrameId=requestAnimationFrame(animate);
+
         // Küreyi hareket ettir
 
         if (isStart) {
@@ -496,6 +500,7 @@ export async function game(againstAnotherPlayer = true) {
                         });
                     }
                     returnStartStation();
+                    cancelAnimationFrame(animationFrameId);
                 }
             } else if (sphereMesh.position.z < selfMesh.position.z + 4 && sphereMesh.position.z > selfMesh.position.z - 4) {
                 angle = Math.PI - angle;
@@ -526,6 +531,7 @@ export async function game(againstAnotherPlayer = true) {
                         });
                     }
                     returnStartStation();
+                    cancelAnimationFrame(animationFrameId);
                 }
             } else if (sphereMesh.position.z < oppositeMesh.position.z + 4 && sphereMesh.position.z > oppositeMesh.position.z - 4) {
                 angle = Math.PI - angle;
@@ -541,12 +547,9 @@ export async function game(againstAnotherPlayer = true) {
 
         // Sahneyi render etme
         renderer.render(scene, camera);
-
-        
     }
 
     animate();
-
 }
 
 async function checkUsernameFunc(oppositeName) {
@@ -594,5 +597,4 @@ async function saveGameResult(playerOneScore, playerTwoScore, userName) {
         return false;
     });
 }
-
 
