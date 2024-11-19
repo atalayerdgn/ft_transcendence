@@ -156,7 +156,11 @@ export async function fetchMatchHistory() {
         matchHistory.forEach(match => {
             const listItem = document.createElement('li');
             listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
-
+            listItem.style.marginTop = '4px';
+            listItem.style.marginBottom = '2px';
+            listItem.style.borderRadius = '20px'; // Köşeleri yuvarla
+            listItem.style.backgroundColor = '#2c3e50'; // Arka plan rengini ayarla
+            listItem.style.border = '1px solid #34495e'; // Kenarlık rengini ayarla
             const matchInfo = document.createElement('span');
             const userColor = match.player_one_score > match.player_two_score ? 'green' : 'red';
             const opponentColor = match.player_one_score > match.player_two_score ? 'red' : 'green';
@@ -165,6 +169,7 @@ export async function fetchMatchHistory() {
             const matchDate = document.createElement('span');
             matchDate.textContent = new Date(match.match_date).toLocaleString();
             matchDate.style.fontSize = '0.8em'; // Yazı boyutunu küçült
+            matchDate.style.color = 'white'; // Metin rengini ayarla
 
             listItem.appendChild(matchInfo);
             listItem.appendChild(matchDate);
