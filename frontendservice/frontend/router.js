@@ -1,5 +1,6 @@
 import { loadUserInfo } from './profile/profile.js';
 import { loadFriendList } from './profile/profile.js';
+import { game } from './game/game.js';
 
 export async function loadPage(page) {
     const content = document.getElementById('content');
@@ -65,6 +66,12 @@ export async function loadPage(page) {
                 document.head.appendChild(script2);
             };
             document.head.appendChild(script);
+
+            // .startAgaintsAnotherPlayerGame butonunun tıklama dinleyicisini eklemeden önce kaldır
+            const button = document.querySelector(".startAgaintsAnotherPlayerGame");
+            button.removeEventListener("click", startGameWithPlayer);
+            button.addEventListener("click", startGameWithPlayer);
+
             return;
         }
         //const pageContent = await response.text();
@@ -75,3 +82,14 @@ export async function loadPage(page) {
         content.innerHTML = `<p>Error loading page: ${error.message}</p>`;
     }
 }
+
+
+export function startGameWithPlayer() {
+    const existingCanvas = document.querySelectorAll('canvas');
+    existingCanvas.forEach(canvas => canvas.remove());
+    game();
+    var button = document.querySelector(".startAgaintsAnotherPlayerGame");
+    button.style.display = "none";
+    document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
+}
+

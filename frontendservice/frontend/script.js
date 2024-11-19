@@ -26,6 +26,8 @@ function onDOMContentLoaded() {
     // Tıklama olaylarını dinle
     document.addEventListener('click', handleButtonClicks);
 
+    
+
 }
 
 // Kullanıcı token'ını kontrol edip, uygun sayfayı yükler
@@ -146,25 +148,30 @@ function handleButtonClicks(event)
         event.preventDefault();
         addFriend(); // Arkadaş ekleme
     } 
-    else if (event.target.matches('.playWithPlayer')) {
-        event.preventDefault();
-        console.log('playWithPlayer butonuna tıklandı');
-
-        const button = document.querySelector(".startAgaintsAnotherPlayerGame");
-        button.addEventListener("click", function() {
-            const existingCanvas = document.querySelectorAll('canvas');
-            existingCanvas.forEach(canvas => canvas.remove());
-            game();
-            button.style.display = "none";
-            document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
+   /* else if (event.target.matches('.playWithPlayer')) {
+        document.querySelector('.playWithPlayer').addEventListener('click', function(event) {
+            event.preventDefault();
+            console.log('playWithPlayer butonuna tıklandı');
+        
+            var button = document.querySelector(".startAgaintsAnotherPlayerGame");
+        
+            // Olay dinleyicisini eklemeden önce kaldır
+            button.removeEventListener("click", startGameWithPlayer);
+        
+            // Olay dinleyicisini ekle
+            button.addEventListener("click", startGameWithPlayer);
+        
+            // Programlı olarak butona tıklama olayını tetikle
+            button.click();
         });
+
         //game(false);
     } 
     else if (event.target.matches('.playWithAi')) {
         event.preventDefault();
         console.log('playWithAi butonuna tıklandı');
         
-        const button = document.querySelector(".startAgainstArtificalIntelligenceGame");
+        var button = document.querySelector(".startAgainstArtificalIntelligenceGame");
         button.addEventListener("click", function() {
             const existingCanvas = document.querySelectorAll('canvas');
             existingCanvas.forEach(canvas => canvas.remove());
@@ -172,9 +179,15 @@ function handleButtonClicks(event)
             button.style.display = "none";
             document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "none";
         });
+        button.click();
         //game(true);
-    }
+    }*/
 }
+
+
+
+
+
 
 // Kullanıcıyı çıkış yaptırır
 async function logoutUser() {

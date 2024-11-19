@@ -1,5 +1,8 @@
+import { loadPage, startGameWithPlayer } from '../router.js';
+
 export async function game(againstAnotherPlayer = true) {
-    let oppositeName;
+    let oppositeName = "";
+
     if(againstAnotherPlayer) {
         // Kullanıcıdan input almak için prompt kullan
         oppositeName = prompt("Lütfen 'Opposite' için bir isim girin:");
@@ -330,7 +333,9 @@ export async function game(againstAnotherPlayer = true) {
         scoreOpposite = 0;
         document.querySelector('.self').innerHTML = "score";
         document.querySelector('.opposite').innerHTML = "score";
-        
+        //return;
+        const denemeuchiman = document.querySelector(".startAgaintsAnotherPlayerGame");
+        denemeuchiman.removeEventListener("click", startGameWithPlayer);
     }
 
     returnStartStation();
@@ -478,22 +483,18 @@ export async function game(againstAnotherPlayer = true) {
                 sphereVector.x = Math.sin(angle);
                 sphereVector.z = Math.cos(angle);
                 if (++scoreOpposite == 10) {
+                    document.querySelector(".topCenter").innerHTML = `${oppositeName} Won`;
                     if(againstAnotherPlayer) {
-                        document.querySelector(".topCenter").innerHTML = `${oppositeName} Won`;
                         checkUsernameFunc(oppositeName).then(isValid => {
                             if (isValid === true) {
                             //document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "block";
                             saveGameResult(scoreSelf, scoreOpposite, oppositeName);
-                            returnStartStation();
+                            
                             }
                             if (isValid === false) {
-                                
-                                returnStartStation();
                             }
                         });
-               
                     }
-                    document.querySelector(".topCenter").innerHTML = `${oppositeName} Won`;
                     returnStartStation();
                 }
             } else if (sphereMesh.position.z < selfMesh.position.z + 4 && sphereMesh.position.z > selfMesh.position.z - 4) {
@@ -513,20 +514,17 @@ export async function game(againstAnotherPlayer = true) {
                 sphereVector.x = Math.sin(angle);
                 sphereVector.z = Math.cos(angle);
                 if (++scoreSelf == 10) {
+                    document.querySelector(".topCenter").innerHTML = "Self Won";
                     if(againstAnotherPlayer) {
-                        document.querySelector(".topCenter").innerHTML = "Self Won";
                         checkUsernameFunc(oppositeName).then(isValid => {
                             if (isValid === true) {
                                 //document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "block";
                                 saveGameResult(scoreSelf, scoreOpposite, oppositeName);
-                                returnStartStation();
                             }
                             if (isValid === false) {
-                                returnStartStation();
                             }
                         });
                     }
-                    document.querySelector(".topCenter").innerHTML = "Self Won";
                     returnStartStation();
                 }
             } else if (sphereMesh.position.z < oppositeMesh.position.z + 4 && sphereMesh.position.z > oppositeMesh.position.z - 4) {
@@ -543,15 +541,18 @@ export async function game(againstAnotherPlayer = true) {
 
         // Sahneyi render etme
         renderer.render(scene, camera);
+
+        
     }
 
     animate();
-}
 
+}
 
 async function checkUsernameFunc(oppositeName) {
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
     const storedUserId = JSON.parse(localStorage.getItem('user'));
+
     try {
         const response = await fetch(`http://127.0.0.1:8007/users/check_username/?username=${oppositeName}`, {
             method: 'GET',
@@ -562,11 +563,7 @@ async function checkUsernameFunc(oppositeName) {
             }
         });
 
-        if (response.ok) {
-            return true;
-        } else {
-            return false;
-        }
+        return response.ok;
     } catch (error) {
         console.error('Error occurred:', error);
         return false;
@@ -582,43 +579,20 @@ async function saveGameResult(playerOneScore, playerTwoScore, userName) {
         user_name: userName
     };
 
-    try {
-        const response = await fetch('http://127.0.0.1:8007/game/save/', {
-            method: 'POST',
-            headers: {
-                'Bearer': token,
-                'id': storedUserId.id,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        if (response.ok) {
-            return true;
-        } else {
-            return false;
-        }
-    } catch (error) {
+    return fetch('http://127.0.0.1:8007/game/save/', {
+        method: 'POST',
+        headers: {
+            'Bearer': token,
+            'id': storedUserId.id,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.ok)
+    .catch(error => {
         console.error('Error occurred:', error);
         return false;
-    }
+    });
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    const button = document.querySelector(".startAgaintsAnotherPlayerGame");
-    button.addEventListener("click", function() {
-        game();
-        button.style.display = "none";
-        document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
-    });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const button = document.querySelector(".startAgainstArtificalIntelligenceGame");
-    button.addEventListener("click", function() {
-        game(false);
-        button.style.display = "none";
-        document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "none";
-    });
-});
