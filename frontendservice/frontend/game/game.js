@@ -491,20 +491,8 @@ export async function game(againstAnotherPlayer = true) {
                 console.log('OIIIIFFFFFFF 111131111:', scoreSelf, scoreOpposite, oppositeName);
                 if (++scoreOpposite == 10) {
                     console.log('IJ GUCLERIM:', scoreSelf, scoreOpposite, oppositeName);
-                    document.querySelector(".topCenter").innerHTML = `${oppositeName} Won`;
-                    if(againstAnotherPlayer) {
-                        console.log('IJ GUCLERIM22222', scoreSelf, scoreOpposite, oppositeName);
-                        checkUsernameFunc(scoreSelf,scoreOpposite,oppositeName).then(isValid => {
-                            console.log('IJJJ GUCLEERRR 333333:', scoreSelf, scoreOpposite, oppositeName);
-                            if (isValid === true) {
-                            //document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "block";
-                            console.log('Outside checkUsernameFunc:', scoreSelf, scoreOpposite, oppositeName);
-                            saveGameResult(scoreSelf, scoreOpposite, oppositeName);
-                            }
-                            if (isValid === false) {
-                            }
-                        });
-                    }
+                    document.querySelector(".topCenter").innerHTML = "Self Won";
+                    handleGameResult(scoreSelf, scoreOpposite, oppositeName,againstAnotherPlayer);
                     returnStartStation();
                     cancelAnimationFrame(animationFrameId);
                 }
@@ -528,19 +516,7 @@ export async function game(againstAnotherPlayer = true) {
                 if (++scoreSelf == 10) {
                     console.log('IJ GUCLERIM:', scoreSelf, scoreOpposite, oppositeName);
                     document.querySelector(".topCenter").innerHTML = "Self Won";
-                    if(againstAnotherPlayer) {
-                        console.log('IJ GUCLERIM22222', scoreSelf, scoreOpposite, oppositeName);
-                        checkUsernameFunc(scoreSelf,scoreOpposite,oppositeName).then(isValid => {
-                            console.log('IJJJ GUCLEERRR 333333:', scoreSelf, scoreOpposite, oppositeName);
-                            if (isValid === true) {
-                                //document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "block";
-                                console.log('Outside checkUsernameFunc:', scoreSelf, scoreOpposite, oppositeName);
-                                saveGameResult(scoreSelf, scoreOpposite, oppositeName);
-                            }
-                            if (isValid === false) {
-                            }
-                        });
-                    }
+                    handleGameResult(scoreSelf, scoreOpposite, oppositeName,againstAnotherPlayer);
                     returnStartStation();
                     cancelAnimationFrame(animationFrameId);
                 }
@@ -561,6 +537,23 @@ export async function game(againstAnotherPlayer = true) {
     }
 
     animate();
+}
+
+async function handleGameResult(scoreSelf, scoreOpposite, oppositeName,againstAnotherPlayer) {
+    if (againstAnotherPlayer) {
+        console.log('IJ GUCLERIM22222', scoreSelf, scoreOpposite, oppositeName);
+        try {
+            const isValid = await checkUsernameFunc(scoreSelf, scoreOpposite, oppositeName);
+            console.log('IJJJ GUCLEERRR 333333:', scoreSelf, scoreOpposite, oppositeName);
+            if (isValid === true) {
+                console.log('Outside checkUsernameFunc:', scoreSelf, scoreOpposite, oppositeName);
+                saveGameResult(scoreSelf, scoreOpposite, oppositeName);
+            }
+        } catch (error) {
+            console.error('Error occurred:', error);
+        }
+    }
+
 }
 
 async function checkUsernameFunc(scoreSelf,scoreOpposite,oppositeName) {

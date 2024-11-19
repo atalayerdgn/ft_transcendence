@@ -143,4 +143,6 @@ export async function loadFriendList() {
 }
 
 
+
+
 document.addEventListener('DOMContentLoaded', loadUserInfo);
