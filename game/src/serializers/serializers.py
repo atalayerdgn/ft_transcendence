@@ -10,6 +10,7 @@ class CreateGameSerializer(serializers.ModelSerializer):
             'player_one_score',
             'player_two_score',
             'user_name',
+            'user_two_name'
         ]
 
 
@@ -21,5 +22,6 @@ class GameSerializer(serializers.ModelSerializer):
             'player_one_score',
             'player_two_score',
             'user_name',
+            'user_two_name',
             'match_date'
         ]

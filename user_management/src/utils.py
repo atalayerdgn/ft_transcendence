@@ -9,7 +9,9 @@ import random
 from src.models.models import User
 from django.utils import timezone
 from datetime import timedelta
-
+from urllib.parse import urlparse
+from django.core.files.base import ContentFile
+import requests
 
 # Logger'i ayarla
 logger = logging.getLogger(__name__)
@@ -111,6 +113,24 @@ class Utils:
             return decoded_token.get('username')
         except (ValueError, IndexError):
             return None
+        
+    @staticmethod
+    def save_avatar_from_url(user: User, url: str):
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                # Dosya adını URL'den al
+                parsed_url = urlparse(url)
+                filename = parsed_url.path.split('/')[-1]
+
+                # Avatarı kaydet
+                user.avatar.save(filename, ContentFile(response.content), save=True)
+                return True
+            else:
+                return False
+        except Exception as e:
+            logger.error(f"Avatar kaydedilemedi: {str(e)}")
+            return False
         
 '''
 1. Kullanici Login İsteği Gönderir

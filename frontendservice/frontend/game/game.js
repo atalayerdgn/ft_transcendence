@@ -324,6 +324,8 @@ export async function game(againstAnotherPlayer = true) {
     let scoreSelf;
     let scoreOpposite;
 
+    console.log('Outside checkUsernameFunc:', scoreSelf, scoreOpposite, oppositeName);
+
     function returnStartStation() {
         sphereMesh.position.set(0, 1, 0);
         oppositeMesh.position.set(-38.95, 1, 0);
@@ -486,14 +488,18 @@ export async function game(againstAnotherPlayer = true) {
                 angle = (Math.PI / 180) * (270 + THREE.Math.randFloatSpread(45));
                 sphereVector.x = Math.sin(angle);
                 sphereVector.z = Math.cos(angle);
+                console.log('OIIIIFFFFFFF 111131111:', scoreSelf, scoreOpposite, oppositeName);
                 if (++scoreOpposite == 10) {
+                    console.log('IJ GUCLERIM:', scoreSelf, scoreOpposite, oppositeName);
                     document.querySelector(".topCenter").innerHTML = `${oppositeName} Won`;
                     if(againstAnotherPlayer) {
-                        checkUsernameFunc(oppositeName).then(isValid => {
+                        console.log('IJ GUCLERIM22222', scoreSelf, scoreOpposite, oppositeName);
+                        checkUsernameFunc(scoreSelf,scoreOpposite,oppositeName).then(isValid => {
+                            console.log('IJJJ GUCLEERRR 333333:', scoreSelf, scoreOpposite, oppositeName);
                             if (isValid === true) {
                             //document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "block";
+                            console.log('Outside checkUsernameFunc:', scoreSelf, scoreOpposite, oppositeName);
                             saveGameResult(scoreSelf, scoreOpposite, oppositeName);
-                            
                             }
                             if (isValid === false) {
                             }
@@ -518,12 +524,17 @@ export async function game(againstAnotherPlayer = true) {
                 angle = (Math.PI / 180) * (90 + THREE.Math.randFloatSpread(45));
                 sphereVector.x = Math.sin(angle);
                 sphereVector.z = Math.cos(angle);
+                console.log('OIIIIFFFFFFF 111131111:', scoreSelf, scoreOpposite, oppositeName);
                 if (++scoreSelf == 10) {
+                    console.log('IJ GUCLERIM:', scoreSelf, scoreOpposite, oppositeName);
                     document.querySelector(".topCenter").innerHTML = "Self Won";
                     if(againstAnotherPlayer) {
-                        checkUsernameFunc(oppositeName).then(isValid => {
+                        console.log('IJ GUCLERIM22222', scoreSelf, scoreOpposite, oppositeName);
+                        checkUsernameFunc(scoreSelf,scoreOpposite,oppositeName).then(isValid => {
+                            console.log('IJJJ GUCLEERRR 333333:', scoreSelf, scoreOpposite, oppositeName);
                             if (isValid === true) {
                                 //document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "block";
+                                console.log('Outside checkUsernameFunc:', scoreSelf, scoreOpposite, oppositeName);
                                 saveGameResult(scoreSelf, scoreOpposite, oppositeName);
                             }
                             if (isValid === false) {
@@ -552,7 +563,8 @@ export async function game(againstAnotherPlayer = true) {
     animate();
 }
 
-async function checkUsernameFunc(oppositeName) {
+async function checkUsernameFunc(scoreSelf,scoreOpposite,oppositeName) {
+    console.log('Inside checkUsernameFunc:', scoreSelf, scoreOpposite, oppositeName);
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
     const storedUserId = JSON.parse(localStorage.getItem('user'));
 
@@ -574,12 +586,17 @@ async function checkUsernameFunc(oppositeName) {
 }
 
 async function saveGameResult(playerOneScore, playerTwoScore, userName) {
+    console.log('Inside saveGameResult:', playerOneScore, playerTwoScore, userName);
+
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
     const storedUserId = JSON.parse(localStorage.getItem('user'));
+
+    
     const data = {
         player_one_score: playerOneScore,
         player_two_score: playerTwoScore,
-        user_name: userName
+        user_name: storedUserId.username,
+        user_two_name: userName
     };
 
     return fetch('http://127.0.0.1:8007/game/save/', {

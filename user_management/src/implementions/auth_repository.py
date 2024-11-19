@@ -5,6 +5,7 @@ from src.models.models import User
 from src.utils import Utils
 from django.utils import timezone
 import logging
+import urllib.parse
 
 # Logger'ı ayarla
 logger = logging.getLogger(__name__)
@@ -64,3 +65,29 @@ class AuthRepositoryImpl(AuthRepository):
             # Herhangi bir hata olursa hata mesajı ve None döndür.
             return False, f"Error updating or creating user: {str(e)}", None
         
+    def oauth_callback(self, user_info: dict) -> Tuple[bool, str, Optional[User]]:
+        try:
+            user = User.objects.filter(email=user_info.get('email')).first()
+            avatar_url = urllib.parse.unquote(user_info.get('image').get('link'))
+
+            if user:
+                user.username = user_info.get('login')
+                user.first_name = user_info.get('first_name')
+                user.last_name = user_info.get('last_name')
+
+                # Avatarı kaydet
+                Utils.save_avatar_from_url(user, avatar_url)
+                user.save()
+                return True, 'User updated successfully', user
+            else:
+                user = User.objects.create(
+                    username=user_info.get('login'),
+                    first_name=user_info.get('first_name'),
+                    last_name=user_info.get('last_name'),
+                    email=user_info.get('email'),
+                )
+                # Yeni kullanıcı için avatar kaydet
+                Utils.save_avatar_from_url(user, avatar_url)
+                return True, 'User created successfully', user
+        except Exception as e:
+            return False, f"Error updating or creating user: {str(e)}", None
