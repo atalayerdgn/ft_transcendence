@@ -13,8 +13,8 @@
 <body>
 
     <!-- Top Bar / Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <a class="navbar-brand" href="#">Pong Game</a>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm" style="background-color: #1a252f">
+        <a class="navbar-brand" style="color: white;">Pong Game</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,7 +46,7 @@
                             <img src="" alt="Avatar" class="avatar img-fluid" width="150" id="avatar-img" style="cursor: pointer;">
                             <input class="img-fluid" type="file" id="file-input" style="display: none;" accept="image/jpg,image/jpeg,image/png,image/webp"/>
                             <div class="mt-3" id="user-info">
-                                <h4 id="username">Loading..</h4>
+                                <h4 id="username" style="color: white;">Loading..</h4>
                                 <p class="text-secondary mb-1" id="user-role">Pong Player</p>
                                 <p class="text-muted font-size-sm" id="user-location">San Francisco, CA</p>
                                 <div class="d-flex justify-content-center">
@@ -79,9 +79,9 @@
                     <!-- Add Friend Card -->
                     <div class="card mt-4">
                         <div class="card-body">
-                            <h5 class="d-flex align-items-center mb-3">Add Friend</h5>
+                            <h5 class="d-flex align-items-center mb-3" style="color:#0d6ed6;">Add Friend</h5>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Enter friend's username" id="friend-username">
+                                <input type="text" class="form-control" placeholder="Enter friend's username" id="friend-username" style="background-color: #2c3e50; color: white;">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary buttonAddFriend" type="button" id="add-friend-btn">Add Friend</button>
                                 </div>
@@ -110,29 +110,29 @@
                             <div class="contact-info">
                                 <i class="fas fa-user icon"></i>
                                 <div class="info-text">
-                                    <strong>First Name:</strong> 
-                                    <input type="text" id="first-name" value="Loading..." class="form-control" />
+                                    <strong style="color: #0d6ed6;">First Name:</strong> 
+                                    <input type="text" id="first-name" value="Loading..." class="form-control" style="background-color: #2c3e50; color: white" />
                                 </div>
                             </div>
                             <div class="contact-info">
                                 <i class="fas fa-user icon"></i>
                                 <div class="info-text">
-                                    <strong>Last Name:</strong> 
-                                    <input type="text" id="last-name" value="Loading..." class="form-control" />
+                                    <strong style="color: #0d6ed6;">Last Name:</strong> 
+                                    <input type="text" id="last-name" value="Loading..." class="form-control" style="background-color: #2c3e50; color: white" />
                                 </div>
                             </div>
                             <div class="contact-info">
                                 <i class="fas fa-envelope icon"></i>
                                 <div class="info-text">
-                                    <strong>Email:</strong>
-                                    <input type="email" id="email" value="Loading..." class="form-control" />
+                                    <strong style="color: #0d6ed6;">Email:</strong>
+                                    <input type="email" id="email" value="Loading..." class="form-control" style="background-color: #2c3e50; color: white" />
                                 </div>
                             </div>
                             <div class="contact-info">
                                 <i class="fas fa-user-tag icon"></i>
                                 <div class="info-text">
-                                    <strong>Username:</strong>
-                                    <input type="text" id="userrname" value="Loading..." class="form-control" />
+                                    <strong style="color: #0d6ed6;">Username:</strong>
+                                    <input type="text" id="userrname" value="Loading..." class="form-control" style="background-color: #2c3e50; color: white" />
                                 </div>
                             </div>
                             <button class="btn btn-secondary nav-link " id="updateProfileBtn" data-page="updateProfile">Update Info</button>
@@ -142,7 +142,7 @@
                     <!-- Match History Card -->
                     <div class="card mt-4" id="match-history-container">
                         <div class="card-body">
-                            <h5 class="align-items-center" style="color:white; text-align:center;">Match History</h5>
+                            <h5 class="align-items-center" style="color: #0d6ed6; text-align:center;">Match History</h5>
                             <ul class="list-group list-group-flush" id="match-history-list" style=" color: white;">
                                         <!-- Maç geçmişi burada listelenecek -->
                             </ul>

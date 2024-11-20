@@ -70,9 +70,11 @@ export async function loadPage(page) {
 
             // .startAgaintsAnotherPlayerGame butonunun tıklama dinleyicisini eklemeden önce kaldır
             const button = document.querySelector(".startAgaintsAnotherPlayerGame");
+            const button2 = document.querySelector(".startAgainstArtificalIntelligenceGame");
+            button2.removeEventListener("click", startGameWithArtificalIntellıgence);
             button.removeEventListener("click", startGameWithPlayer);
             button.addEventListener("click", startGameWithPlayer);
-
+            button2.addEventListener("click", startGameWithArtificalIntellıgence);
             return;
         }
         //const pageContent = await response.text();
@@ -94,3 +96,12 @@ export function startGameWithPlayer() {
     document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
 }
 
+export function startGameWithArtificalIntellıgence() {
+    const existingCanvas = document.querySelectorAll('canvas');
+    existingCanvas.forEach(canvas => canvas.remove());
+    game(false);
+    var button = document.querySelector(".startAgainstArtificalIntelligenceGame");
+    button.style.display = "none";
+    document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
+    document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "none";
+}

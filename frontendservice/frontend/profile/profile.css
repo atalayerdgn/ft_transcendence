@@ -8,7 +8,7 @@ body {
     border-radius: 0.75rem; /* Yuvarlatılmış köşeler */
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge */
     margin-bottom: 1.5rem;
-    border: 1px solid #ddd; /* Gri kenar rengi */
+    border: 1px solid #0056b3; /* Gri kenar rengi #7e0e46 tonları dene */
     background-color: #1a252f; /* Beyaz arka plan */
 }
 
