@@ -164,6 +164,9 @@ function handleButtonClicks(event)
         event.preventDefault();
         console.log('login42 butonuna tıklandı');
         loginWith42();
+    } else if (event.target.matches('.buttonForgetPassword')) {
+        event.preventDefault();
+        alert('OH ! Soory.. If you have forgotten your password, please contact our support team.');
     }
    /* else if (event.target.matches('.playWithPlayer')) {
         document.querySelector('.playWithPlayer').addEventListener('click', function(event) {
