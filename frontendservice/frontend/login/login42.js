@@ -1,5 +1,6 @@
 // 42 Login başlatma
 import { loadPage } from "../router.js";
+import { setupEventListeners } from "../script.js";
 
 export async function loginWith42() {
     console.log("Logging in with 42 OAuth...");

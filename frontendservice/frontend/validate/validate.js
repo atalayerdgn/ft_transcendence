@@ -44,15 +44,15 @@ export async function validateUser() {
                 
                 if (tokenCookie) {
                     // Token mevcut, profile sayfasını yükle
-                    loadPage('profile');
+                    loadPage('profile',true);
                 } else {
                     // Token yok, login sayfasını yükle
-                    loadPage('login');
+                    loadPage('login',true);
         }
             } else {
                 console.log('Başarısız validate');
                 localStorage.removeItem('temp_token'); // Token'ı localStorage'dan sil
-                loadPage('login');
+                loadPage('login',true);
             }
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);

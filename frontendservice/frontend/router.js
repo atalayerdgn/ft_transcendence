@@ -1,8 +1,17 @@
+// router.js
 import { fetchMatchHistory, loadUserInfo } from './profile/profile.js';
 import { loadFriendList } from './profile/profile.js';
 import { game } from './game/game.js';
+import { setupEventListeners } from './script.js';
 
-export async function loadPage(page) {
+// Geçmiş yönetimi için yeni fonksiyon
+function updateHistory(page) {
+    const state = { page };
+    history.pushState(state, '', `#${page}`);
+}
+
+// Sayfa yükleme fonksiyonu güncellendi
+export async function loadPage(page, pushState = true) {
     const content = document.getElementById('content');
     const pageMap = new Map([
         ['login', 'login/login.html'],
@@ -18,90 +27,100 @@ export async function loadPage(page) {
         ['send', 'forgot/forgot.html'],
     ]);
 
-    // URL'yi al ve geçerli değilse 404 sayfasına yönlendir
+    // Geçmişi güncelle
+    if (pushState) {
+        updateHistory(page);
+    }
+
     let pageUrl = pageMap.get(page) || '404/404.html';
     console.log('Page:', page, 'URL:', pageUrl);
+
     try {
-        
         const response = await fetch(pageUrl);
         if (!response.ok) {
             throw new Error(`Failed to load page: ${response.statusText}`);
         }
-        
-         // response.text() çağrısını yalnızca bir kez yapın
-        
-        // Profil sayfası yükleniyorsa, kullanıcı bilgilerini yükle
+
         if (page === 'profile') {
             const pageContent = await response.text();
             content.innerHTML = pageContent;
-            await loadUserInfo(); // Kullanıcı bilgilerini yükler
+            await loadUserInfo();
             await loadFriendList();
             await fetchMatchHistory();
-            //tüm canvasları kaldır
             const existingCanvas = document.querySelectorAll('canvas');
             existingCanvas.forEach(canvas => canvas.remove());
+            console.log('setupEventListeners sonrası ( router.js )');
+            //burda profile sayfasını yükledikten sonra event listenerları tekrar ekliyoruz
+            //loadPage('profile');
             return;
         }
-        
+
         if (page === 'game') {
             const pageContent = await response.text();
             content.innerHTML = pageContent;
 
-                // CSS dosyasını yükle
-                const link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = './game/game.css'; // CSS dosyasının doğru yolunu belirtin
-                document.head.appendChild(link);
-        
-                const script = document.createElement('script');
-                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-                script.onload = () => {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = './game/game.css';
+            document.head.appendChild(link);
+
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+            script.onload = () => {
                 console.log('Three.js loaded');
-        
+
                 const script2 = document.createElement('script');
                 script2.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js';
                 script2.onload = () => {
                     console.log('OrbitControls.js loaded');
-        
                 };
                 document.head.appendChild(script2);
             };
             document.head.appendChild(script);
 
-            // .startAgaintsAnotherPlayerGame butonunun tıklama dinleyicisini eklemeden önce kaldır
             const button = document.querySelector(".startAgaintsAnotherPlayerGame");
             const button2 = document.querySelector(".startAgainstArtificalIntelligenceGame");
-            button2.removeEventListener("click", startGameWithArtificalIntellıgence);
-            button.removeEventListener("click", startGameWithPlayer);
-            button.addEventListener("click", startGameWithPlayer);
-            button2.addEventListener("click", startGameWithArtificalIntellıgence);
+            
+            if (button2) button2.removeEventListener("click", startGameWithArtificalIntellıgence);
+            if (button) button.removeEventListener("click", startGameWithPlayer);
+            
+            if (button) button.addEventListener("click", startGameWithPlayer);
+            if (button2) button2.addEventListener("click", startGameWithArtificalIntellıgence);
             return;
         }
-        //const pageContent = await response.text();
 
-        // Diğer sayfalar için içerik yükle
         content.innerHTML = await response.text();
     } catch (error) {
         content.innerHTML = `<p>Error loading page: ${error.message}</p>`;
     }
 }
 
+// İlk yükleme için yeni fonksiyon
+export function handleInitialLoad() {
+    const hash = window.location.hash.slice(1) || 'login';
+    loadPage(hash, false);
+}
 
 export function startGameWithPlayer() {
     const existingCanvas = document.querySelectorAll('canvas');
     existingCanvas.forEach(canvas => canvas.remove());
     game();
     var button = document.querySelector(".startAgaintsAnotherPlayerGame");
-    button.style.display = "none";
-    document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
+    if (button) button.style.display = "none";
+    const aiButton = document.querySelector(".startAgainstArtificalIntelligenceGame");
+    if (aiButton) aiButton.style.display = "none";
 }
 
 export function startGameWithArtificalIntellıgence() {
     const existingCanvas = document.querySelectorAll('canvas');
     existingCanvas.forEach(canvas => canvas.remove());
     game(false);
-    var button = document.querySelector(".startAgainstArtificalIntelligenceGame");
-    button.style.display = "none";
-    document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
-    document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "none";
+    const buttons = [
+        ".startAgainstArtificalIntelligenceGame",
+        ".startAgaintsAnotherPlayerGame"
+    ];
+    buttons.forEach(selector => {
+        const button = document.querySelector(selector);
+        if (button) button.style.display = "none";
+    });
 }

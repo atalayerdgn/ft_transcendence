@@ -9,15 +9,22 @@ import { game } from './game/game.js';
 import { loginWith42, handle42Callback } from './login/login42.js';
 
 // Ana event listener kurma fonksiyonu
-function setupEventListeners() {
+export function setupEventListeners() {
     document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
+
+    window.addEventListener('popstate', (event) => {
+        if (event.state && event.state.page) {
+            loadPage(event.state.page, false);
+        } else {
+            // Varsayılan sayfa
+            loadPage('login', false);
+        }
+    });
 }
 
 // Sayfa yüklendiğinde yapılacak işlemler
 async function onDOMContentLoaded() {
-    // Token kontrolü yap
-    checkTokenAndLoadPage();
-
+    
     if (window.location.search.includes("code=")) {
         console.log("42 callback geldi!");
         await handle42Callback(); // Callback işleme
@@ -27,20 +34,19 @@ async function onDOMContentLoaded() {
         urluchiman.searchParams.delete('code');
         // urluchiman'i güncelle
         window.location.href = urluchiman.toString();
-        loadPage('profile');
+        //loadPage('profile');
     }
-
+    
     // Ana uygulama öğesini al
     const app = document.getElementById('app');
     if (app) {
         app.addEventListener('click', handleAppClick);
     }
-
+    
     // Tıklama olaylarını dinle
     document.addEventListener('click', handleButtonClicks);
-
-    
-
+    // Token kontrolü yap
+    checkTokenAndLoadPage();
 }
 
 // Kullanıcı token'ını kontrol edip, uygun sayfayı yükler
@@ -83,8 +89,8 @@ function checkTokenAndLoadPage() {
             console.error('Kullanıcı online yapılamadı:', error);
         });
 
-
     } else {
+        console.log('Token bulunamadı, login sayfası yükleniyor.');
         loadPage('login'); // Token yoksa login sayfasını yükle
     }
 }
@@ -136,7 +142,7 @@ async function handleRegisterForm() {
 }
 
 // Tıklanan butona göre ilgili işlemi yapar
-function handleButtonClicks(event) 
+function handleButtonClicks(event)
 {
     if (event.target.matches('.buttonLogin')) {
         event.preventDefault();

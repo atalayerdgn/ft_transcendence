@@ -9,7 +9,7 @@ export async function updateUserInfo() {
     const userId = user.id;
     if(!userId){
         alert('Kullanıcı bulunamadı, lütfen tekrar giriş yapın.');
-        loadPage('login');
+        loadPage('login',true);
         return;
     }
     const response = await fetch('http://localhost:8007/users/update/', {

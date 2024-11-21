@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-ox31j0@8g2fi@o$^&y@8gy+&qljbuzzq3u+$b+c-7&r3jd$p5z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -25,6 +25,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'src'))
 
 INSTALLED_APPS = [
     'src',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +42,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'game.urls'
 
