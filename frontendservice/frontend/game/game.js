@@ -1,16 +1,146 @@
-import { loadPage, startGameWithPlayer } from '../router.js';
+import {loadPage, startGameWithPlayer, playTournamentMatch} from '../router.js';
+import {validateUser} from '../validate/validate.js';
+import {User} from '../profile/profile.js';
 
-export async function game(againstAnotherPlayer = true) {
-    let oppositeName = "";
+export let pairs_global = [];
+export let finalArray = new Array();
 
-    if(againstAnotherPlayer) {
-        // Kullanıcıdan input almak için prompt kullan
-        oppositeName = prompt("Lütfen 'Opposite' için bir isim girin:");
+export function tournamentView(users, Name_1) {
+    users.push(Name_1);
+    shuffleArray(users);
+    createPairs(users);
+}
 
-        document.querySelector('.topLeft').innerHTML = "Self : <i class=\"self\"></i>";
-        document.querySelector('.topRight').innerHTML = `${oppositeName} : <i class="opposite"></i>`;
+function shuffleArray(array) {
+    // Shuffle function to randomize the array
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
     }
-    else {
+}
+
+function createPairs(users) {
+    // Create pairs of users (assuming an even number of users)
+    for (let i = 0; i < users.length; i += 1) {
+        pairs_global.push(users[i]);
+    }
+}
+
+function displayTournament() {
+    // Get the container where you want to display the pairs
+    const tournamentContainer = document.querySelector('.tournament-container');
+    const startGameButtonContainer = document.querySelector('.startTournamentGame');
+
+    // Ensure the container exists before trying to set innerHTML
+    if (!tournamentContainer) {
+        console.error('Tournament container element not found!');
+        return;
+    }
+
+    if (!startGameButtonContainer) {
+        console.error('Start game button container element not found!');
+        return;
+    }
+
+    tournamentContainer.innerHTML = ''; // Clear the container
+    startGameButtonContainer.innerHTML = ''; // Clear the button container
+    for (let index = 0; index < pairs_global.length; index += 2) {
+        const pairDiv = document.createElement('div');
+        pairDiv.classList.add('pair');
+        pairDiv.innerHTML = `
+            <div class="pair">
+                <div class="pair-item">${pairs_global[index]} vs ${pairs_global[index + 1]} </div>
+            </div>
+        `;
+        if (index === 0) {
+            pairDiv.classList.add('first-match');
+        }
+        tournamentContainer.appendChild(pairDiv);
+    }
+    // Iterate over the pairs and display them
+
+    // Add the button dynamically
+    const startButton = document.createElement('button');
+    startButton.classList.add('startGame', 'playTournamentMatch', 'TournamentPlay');
+    startButton.id = 'TournamentPlay';
+    startButton.textContent = 'Start Tournament';
+    tournamentContainer.appendChild(startButton);
+    startButton.addEventListener('click', playTournamentMatch);
+}
+
+
+export async function isUsersValid(args) {
+    const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    try {
+        const usersResponse = await fetch('http://localhost:8007/users/list/', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'id': userId
+            }
+        });
+        const usersData = await usersResponse.json();
+        const users = usersData.map(user => new User(user));
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].username === args) {
+                return true;
+            }
+        }
+    } catch (error) {
+        console.error('Error during fetch:', error);
+        return null;
+    }
+    return false
+}
+
+export async function startGame(againstAnotherPlayer = true, tournamentMode = false) {
+    let oppositeName = "";
+    let Name_1 = "";
+    let a;
+      if (againstAnotherPlayer == true && tournamentMode == false) {
+        if (finalArray.length == 2) {
+            console.log('true false kısmındayız veeeeeeeee:', finalArray);
+            document.querySelector('.topLeft').innerHTML = `${finalArray[0]} : <i class="self"></i>`;
+            document.querySelector('.topRight').innerHTML = `${finalArray[1]} : <i class="opposite"></i>`;
+            oppositeName = finalArray[1];
+        } else {
+            oppositeName = prompt("Lütfen 'Opposite' için bir isim girin:");
+            document.querySelector('.topLeft').innerHTML = "Self : <i class=\"self\"></i>";
+            document.querySelector('.topRight').innerHTML = `${oppositeName} : <i class=\"opposite\"></i>`;
+        }
+    } else if (tournamentMode == true && againstAnotherPlayer == true) {
+        // Tournament modunda maçları yönet
+        if (pairs_global.length >= 2) {
+            document.querySelector('.topLeft').innerHTML = `${pairs_global[0]} : <i class="self"></i>`;
+            document.querySelector('.topRight').innerHTML = `${pairs_global[1]} : <i class="opposite"></i>`;
+        } else if (finalArray.length >= 2) {
+            // Eğer pairs_global boşsa finalArray'i kullan
+            document.querySelector('.topLeft').innerHTML = `${finalArray[0]} : <i class="self"></i>`;
+            document.querySelector('.topRight').innerHTML = `${finalArray[1]} : <i class="opposite"></i>`;
+        } else {
+            console.error('Oyuncu bilgileri bulunamadı');
+            return;
+        }
+    } else if (tournamentMode == true && againstAnotherPlayer == false) {
+        const user = JSON.parse(localStorage.getItem('user'));
+        Name_1 = user.username;
+        let users = [];
+        for (let i = 0; i < 3; i++) {
+            a = prompt("Lütfen kullanıcı adını girin:");
+
+            // if (!await isUsersValid(i)) {
+            //     alert("Lütfen geçerli kullanıcılar girin.");
+            //     return;
+            // }
+            // else
+            users.push(a);
+        }
+        tournamentView(users, Name_1);
+        displayTournament(pairs_global);
+    } else if (tournamentMode == true && againstAnotherPlayer == true) {
+        document.querySelector('.topLeft').innerHTML = `${pairs_global[0]} : <i class=\"self\"></i>`;
+        document.querySelector('.topRight').innerHTML = `${pairs_global[1]} : <i class=\"opposite\"></i>`;
+    } else if (tournamentMode == false && againstAnotherPlayer == false) {
         oppositeName = "Düşman AI";
         document.querySelector('.topLeft').innerHTML = "Self : <i class=\"self\"></i>";
         document.querySelector('.topRight').innerHTML = "Düşman AI : <i class=\"opposite\"></i>";
@@ -38,7 +168,7 @@ export async function game(againstAnotherPlayer = true) {
 
     // Malzemeleri oluşturun ve renklerini ayarlayın
     const platformMaterialLeft = new THREE.MeshStandardMaterial({
-        color: 0x00FF00 , // Yeşil renk
+        color: 0x00FF00, // Yeşil renk
         transparent: true, // Şeffaflık aktif
     });
     const platformMaterialRight = new THREE.MeshStandardMaterial({
@@ -67,23 +197,23 @@ export async function game(againstAnotherPlayer = true) {
     };
 
     const edges = [
-        { start: new THREE.Vector3(-40, -2, -20), end: new THREE.Vector3(40, -2, -20) }, // Alt kenar
-        { start: new THREE.Vector3(40, -2, -20), end: new THREE.Vector3(40, -2, 20) },  // Sağ kenar
-        { start: new THREE.Vector3(40, -2, 20), end: new THREE.Vector3(-40, -2, 20) },  // Üst kenar
-        { start: new THREE.Vector3(-40, -2, 20), end: new THREE.Vector3(-40, -2, -20) }, // Sol kenar
-        { start: new THREE.Vector3(-40, -2, -20), end: new THREE.Vector3(-40, 5, -20) }, // Sol dikey kenar
-        { start: new THREE.Vector3(40, -2, -20), end: new THREE.Vector3(40, 5, -20) },  // Sağ dikey kenar
-        { start: new THREE.Vector3(40, -2, 20), end: new THREE.Vector3(40, 5, 20) },   // Sağ dikey kenar
-        { start: new THREE.Vector3(-40, -2, 20), end: new THREE.Vector3(-40, 5, 20) },  // Sol dikey kenar
-        { start: new THREE.Vector3(-40, 5, -20), end: new THREE.Vector3(40, 2, -20) },  // Üst kenar
-        { start: new THREE.Vector3(40, 5, -20), end: new THREE.Vector3(40, 2, 20) },   // Üst kenar
-        { start: new THREE.Vector3(40, 5, 20), end: new THREE.Vector3(-40, 2, 20) },   // Üst kenar
-        { start: new THREE.Vector3(-40, 5 , 20), end: new THREE.Vector3(-40, 2, -20) }  // Üst kenar
+        {start: new THREE.Vector3(-40, -2, -20), end: new THREE.Vector3(40, -2, -20)}, // Alt kenar
+        {start: new THREE.Vector3(40, -2, -20), end: new THREE.Vector3(40, -2, 20)},  // Sağ kenar
+        {start: new THREE.Vector3(40, -2, 20), end: new THREE.Vector3(-40, -2, 20)},  // Üst kenar
+        {start: new THREE.Vector3(-40, -2, 20), end: new THREE.Vector3(-40, -2, -20)}, // Sol kenar
+        {start: new THREE.Vector3(-40, -2, -20), end: new THREE.Vector3(-40, 5, -20)}, // Sol dikey kenar
+        {start: new THREE.Vector3(40, -2, -20), end: new THREE.Vector3(40, 5, -20)},  // Sağ dikey kenar
+        {start: new THREE.Vector3(40, -2, 20), end: new THREE.Vector3(40, 5, 20)},   // Sağ dikey kenar
+        {start: new THREE.Vector3(-40, -2, 20), end: new THREE.Vector3(-40, 5, 20)},  // Sol dikey kenar
+        {start: new THREE.Vector3(-40, 5, -20), end: new THREE.Vector3(40, 2, -20)},  // Üst kenar
+        {start: new THREE.Vector3(40, 5, -20), end: new THREE.Vector3(40, 2, 20)},   // Üst kenar
+        {start: new THREE.Vector3(40, 5, 20), end: new THREE.Vector3(-40, 2, 20)},   // Üst kenar
+        {start: new THREE.Vector3(-40, 5, 20), end: new THREE.Vector3(-40, 2, -20)}  // Üst kenar
     ];
 
     const rainbowMaterial = new THREE.ShaderMaterial({
         uniforms: {
-            time: { value: 0.0 } // Zamanı kontrol eden uniform
+            time: {value: 0.0} // Zamanı kontrol eden uniform
         },
         vertexShader: `
             varying vec3 vPosition;
@@ -137,7 +267,7 @@ export async function game(againstAnotherPlayer = true) {
 
     // 11. Küre
     const sphereGeometry = new THREE.SphereGeometry(1, 32, 32); // Küre çapını küçült
-    const sphereMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000, metalness: 0.5, roughness: 0.5 }); // Metalik ve parlak bir malzeme
+    const sphereMaterial = new THREE.MeshStandardMaterial({color: 0xff0000, metalness: 0.5, roughness: 0.5}); // Metalik ve parlak bir malzeme
     const sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
     sphereMesh.castShadow = true; // Gölge oluşturmayı sağla
     scene.add(sphereMesh);
@@ -154,7 +284,7 @@ export async function game(againstAnotherPlayer = true) {
 
     // 12. Kendimizi ekliyoruz
     const selfGeometry = new THREE.BoxGeometry(2, 2, 8); // Dikdörtgenler prizmasının boyutları
-    const selfMaterial = new THREE.MeshStandardMaterial({ color: 0x0000ff }); // Mavi renk
+    const selfMaterial = new THREE.MeshStandardMaterial({color: 0x0000ff}); // Mavi renk
     const selfMesh = new THREE.Mesh(selfGeometry, selfMaterial);
 
     // Dikdörtgenler prizmasını platformun üstüne yerleştir
@@ -162,7 +292,7 @@ export async function game(againstAnotherPlayer = true) {
 
     // 13. Rakibi ekliyoruz
     const oppositeGeometry = new THREE.BoxGeometry(2, 2, 8); // Dikdörtgenler prizmasının boyutları
-    const oppositeMaterial = new THREE.MeshStandardMaterial({ color: 0x006400 }); // Yeşil renk
+    const oppositeMaterial = new THREE.MeshStandardMaterial({color: 0x006400}); // Yeşil renk
     const oppositeMesh = new THREE.Mesh(oppositeGeometry, oppositeMaterial);
 
     // Dikdörtgenler prizmasını platformun üstüne yerleştir
@@ -335,9 +465,9 @@ export async function game(againstAnotherPlayer = true) {
         scoreOpposite = 0;
         document.querySelector('.self').innerHTML = "score";
         document.querySelector('.opposite').innerHTML = "score";
-        //return;
-        const denemeuchiman = document.querySelector(".startAgaintsAnotherPlayerGame");
-        denemeuchiman.removeEventListener("click", startGameWithPlayer);
+        return;
+        //const denemeuchiman = document.querySelector(".startAgaintsAnotherPlayerGame");
+        //denemeuchiman.removeEventListener("click", startGameWithPlayer);
     }
 
     returnStartStation();
@@ -417,13 +547,13 @@ export async function game(againstAnotherPlayer = true) {
     scene.add(starField);
 
     // 17. Animasyon Döngüsü
-    const speed = 1.4;
+    const speed = 3.4;
 
 
     let animationFrameId;
 
     function animate() {
-        animationFrameId=requestAnimationFrame(animate);
+        animationFrameId = requestAnimationFrame(animate);
 
         // Küreyi hareket ettir
 
@@ -481,6 +611,139 @@ export async function game(againstAnotherPlayer = true) {
                 sphereMesh.position.z += sphereVector.z * speed;
             }
         }
+
+
+        function startFirstGame(forWho) {
+            if (forWho === 1) {
+                document.querySelector(".topCenter").innerHTML = `${pairs_global[1]} Won`;
+                locateFinalUsers(pairs_global[1]);
+                const existingCanvas = document.querySelectorAll('canvas');
+                existingCanvas.forEach(canvas => canvas.remove());
+                //returnStartStation();
+                startGame(true, true, pairs_global);
+                cancelAnimationFrame(animationFrameId);
+            } else {
+                document.querySelector(".topCenter").innerHTML = `${pairs_global[0]} Won`;
+                locateFinalUsers(pairs_global[0]);
+                const existingCanvas = document.querySelectorAll('canvas');
+                existingCanvas.forEach(canvas => canvas.remove());
+                //returnStartStation();
+                startGame(true, true, pairs_global);
+                cancelAnimationFrame(animationFrameId);
+            }
+
+        }
+
+        function startSecondGame(forWho) {
+            if (forWho == 1) {
+                // Yeni oyun için canvas oluştur ve kapsayıcıya ekle
+                const newCanvas = document.createElement('canvas');
+                const existingCanvas = document.querySelectorAll('canvas');
+                existingCanvas.forEach(canvas => canvas.remove());
+                // Yeni oyun başlat
+                document.querySelector(".topCenter").innerHTML = `${pairs_global[0]} Won`;
+                locateFinalUsers(pairs_global[1]);
+                //returnStartStation();
+                startGame(true, true, pairs_global);
+                cancelAnimationFrame(animationFrameId);
+                console.log('2.MAÇ BİTTİ ve finalArray:', finalArray);
+                // burda direk finalArray içindeki iki arkadaşı maç yapmaya göndercez
+            } else {
+                // Yeni oyun için canvas oluştur ve kapsayıcıya ekle
+                const newCanvas = document.createElement('canvas');
+                const existingCanvas = document.querySelectorAll('canvas');
+                existingCanvas.forEach(canvas => canvas.remove());
+                // Yeni oyun başlat
+                document.querySelector(".topCenter").innerHTML = `${pairs_global[0]} Won`;
+                locateFinalUsers(pairs_global[0]);
+                //returnStartStation();
+                startGame(true, true, pairs_global);
+                cancelAnimationFrame(animationFrameId);
+                console.log('2.MAÇ BİTTİ ve finalArray:', finalArray);
+                // burda direk finalArray içindeki iki arkadaşı maç yapmaya göndercez
+            }
+        }
+
+        function startThirdGame(forWho) {
+            if (forWho === 1) {
+                const existingCanvas = document.querySelectorAll('canvas');
+                existingCanvas.forEach(canvas => canvas.remove());
+                //locateFinalUsers(pairs_global[1]);
+                // burda artık finalArrayı gönderelim o ikisi maç yapsın
+
+                returnStartStation();
+                startGame(true, false, pairs_global);
+                cancelAnimationFrame(animationFrameId);
+                alert('Turnuva bitti ŞAMPİYON: ' + finalArray[1]);
+                finalArray = [];
+                pairs_global = [];
+                returnStartStation();
+                cancelAnimationFrame(animationFrameId);
+                loadPage('profile');
+            } else {
+                const existingCanvas = document.querySelectorAll('canvas');
+                existingCanvas.forEach(canvas => canvas.remove());
+                //locateFinalUsers(pairs_global[0]);
+                console.log('ARTIK 3.MAÇ OYNAMALIIIIIIII');
+                // burda artık finalArrayı gönderelim o ikisi maç yapsın
+                returnStartStation();
+                startGame(true, false, pairs_global);
+                cancelAnimationFrame(animationFrameId);
+                alert('Turnuva bitti ŞAMPİYON: ' + finalArray[0]);
+                finalArray = [];
+                pairs_global = [];
+                returnStartStation();
+                cancelAnimationFrame(animationFrameId);
+                loadPage('profile');
+            }
+        }
+
+        function startGameForNormal(forWho) {
+            if (forWho === 1) {
+                handleGameResult(scoreSelf, scoreOpposite, oppositeName, againstAnotherPlayer);
+                returnStartStation();
+                cancelAnimationFrame(animationFrameId);
+            } else {
+                handleGameResult(scoreSelf, scoreOpposite, oppositeName, againstAnotherPlayer);
+                returnStartStation();
+                cancelAnimationFrame(animationFrameId);
+            }
+            showAlert();
+        }
+
+        function showAlert() {
+            let messageBox = document.createElement('div');
+            messageBox.style.position = 'fixed';
+            messageBox.style.top = '50%';
+            messageBox.style.left = '50%';
+            messageBox.style.transform = 'translate(-50%, -50%)';
+            messageBox.style.padding = '20px';
+            messageBox.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            messageBox.style.color = 'white';
+            messageBox.style.fontSize = '20px';
+            messageBox.style.borderRadius = '10px';
+            messageBox.style.textAlign = 'center';
+            document.body.appendChild(messageBox);
+        
+            let countdown = 3;
+        
+            function updateMessage() {
+                if (countdown > 0) {
+                    messageBox.textContent = `Oyun bitti eve dönme vakti. ${countdown} saniye kaldı.`;
+                    countdown--;
+                    setTimeout(updateMessage, 1000);
+                } else {
+                    messageBox.textContent = 'Oyun bitti eve dönme vakti.';
+                    setTimeout(() => {
+                        document.body.removeChild(messageBox);
+                        loadPage('profile');
+                    }, 1000);
+                }
+            }
+            //returnStartStation();
+            updateMessage();
+        }
+
         if (sphereMesh.position.x > 37) {
             if (sphereMesh.position.x > 38.95) {
                 sphereMesh.position.x = 0;
@@ -488,13 +751,19 @@ export async function game(againstAnotherPlayer = true) {
                 angle = (Math.PI / 180) * (270 + THREE.Math.randFloatSpread(45));
                 sphereVector.x = Math.sin(angle);
                 sphereVector.z = Math.cos(angle);
-                console.log('OIIIIFFFFFFF 111131111:', scoreSelf, scoreOpposite, oppositeName);
                 if (++scoreOpposite == 10) {
-                    console.log('IJ GUCLERIM:', scoreSelf, scoreOpposite, oppositeName);
                     document.querySelector(".topCenter").innerHTML = `${oppositeName} Won`;
-                    handleGameResult(scoreSelf, scoreOpposite, oppositeName,againstAnotherPlayer);
-                    returnStartStation();
-                    cancelAnimationFrame(animationFrameId);
+                    if (tournamentMode === true && againstAnotherPlayer === true && finalArray.length === 0) {
+                        startFirstGame(1)
+                        return;
+                    } else if (tournamentMode == true && againstAnotherPlayer == true && finalArray.length == 1) {
+                        startSecondGame(1)
+                        return;
+                    } else if (tournamentMode === true && againstAnotherPlayer === true && finalArray.length === 2) {
+                        startThirdGame(1)
+                    } else {
+                        startGameForNormal(1);
+                    }
                 }
             } else if (sphereMesh.position.z < selfMesh.position.z + 4 && sphereMesh.position.z > selfMesh.position.z - 4) {
                 angle = Math.PI - angle;
@@ -512,13 +781,19 @@ export async function game(againstAnotherPlayer = true) {
                 angle = (Math.PI / 180) * (90 + THREE.Math.randFloatSpread(45));
                 sphereVector.x = Math.sin(angle);
                 sphereVector.z = Math.cos(angle);
-                console.log('OIIIIFFFFFFF 111131111:', scoreSelf, scoreOpposite, oppositeName);
                 if (++scoreSelf == 10) {
-                    console.log('IJ GUCLERIM:', scoreSelf, scoreOpposite, oppositeName);
                     document.querySelector(".topCenter").innerHTML = "Self Won";
-                    handleGameResult(scoreSelf, scoreOpposite, oppositeName,againstAnotherPlayer);
-                    returnStartStation();
-                    cancelAnimationFrame(animationFrameId);
+                    if (tournamentMode == true && againstAnotherPlayer == true && finalArray.length == 0) {
+                        startFirstGame(2)
+                        return;
+                    } else if (tournamentMode == true && againstAnotherPlayer == true && finalArray.length == 1) {
+                        startSecondGame(2)
+                        return;
+                    } else if (tournamentMode == true && againstAnotherPlayer == true && finalArray.length == 2) {
+                        startThirdGame(2)
+                    } else {
+                        startGameForNormal(2)
+                    }
                 }
             } else if (sphereMesh.position.z < oppositeMesh.position.z + 4 && sphereMesh.position.z > oppositeMesh.position.z - 4) {
                 angle = Math.PI - angle;
@@ -539,7 +814,7 @@ export async function game(againstAnotherPlayer = true) {
     animate();
 }
 
-async function handleGameResult(scoreSelf, scoreOpposite, oppositeName,againstAnotherPlayer) {
+async function handleGameResult(scoreSelf, scoreOpposite, oppositeName, againstAnotherPlayer) {
     if (againstAnotherPlayer) {
         console.log('IJ GUCLERIM22222', scoreSelf, scoreOpposite, oppositeName);
         try {
@@ -556,7 +831,7 @@ async function handleGameResult(scoreSelf, scoreOpposite, oppositeName,againstAn
 
 }
 
-async function checkUsernameFunc(scoreSelf,scoreOpposite,oppositeName) {
+async function checkUsernameFunc(scoreSelf, scoreOpposite, oppositeName) {
     console.log('Inside checkUsernameFunc:', scoreSelf, scoreOpposite, oppositeName);
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
     const storedUserId = JSON.parse(localStorage.getItem('user'));
@@ -584,7 +859,7 @@ async function saveGameResult(playerOneScore, playerTwoScore, userName) {
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
     const storedUserId = JSON.parse(localStorage.getItem('user'));
 
-    
+
     const data = {
         player_one_score: playerOneScore,
         player_two_score: playerTwoScore,
@@ -601,10 +876,18 @@ async function saveGameResult(playerOneScore, playerTwoScore, userName) {
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.ok)
-    .catch(error => {
-        console.error('Error occurred:', error);
-        return false;
-    });
+        .then(response => response.ok)
+        .catch(error => {
+            console.error('Error occurred:', error);
+            return false;
+        });
 }
 
+export function locateFinalUsers(winner) {
+    finalArray.push(winner);
+    pairs_global.shift();
+    pairs_global.shift();
+    console.log('Final Array:', finalArray);
+    //game(true,true,pairs_global);
+    console.log('pairs_global yeni hali yani diğer 2.maç:', pairs_global);
+}

@@ -1,4 +1,4 @@
-class User {
+export class User {
     constructor(data) {
         this.id = data.id;
         this.username = data.username;
@@ -144,10 +144,21 @@ export async function loadFriendList() {
 
 export async function fetchMatchHistory() {
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1]; // Token'ı al
-    const userId = JSON.parse(localStorage.getItem('user')).username; // User id'yi al
+    const username = JSON.parse(localStorage.getItem('user')).username; // User id'yi al
+    const user_id = JSON.parse(localStorage.getItem('user')).id; // User id'yi al
 
     try {
-        const response = await fetch(`http://127.0.0.1:8005/game/list/?user_name=${userId}`);
+        //const response = await fetch(`http://127.0.0.1:8005/game/list/?user_name=${userId}`);
+
+        const response = await fetch(`http://localhost:8007/game/list/?user_name=${username}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+                'id': user_id,
+            },
+        });
+
         const matchHistory = await response.json();
 
         const matchHistoryList = document.getElementById('match-history-list');
@@ -164,7 +175,7 @@ export async function fetchMatchHistory() {
             const matchInfo = document.createElement('span');
             const userColor = match.player_one_score > match.player_two_score ? 'green' : 'red';
             const opponentColor = match.player_one_score > match.player_two_score ? 'red' : 'green';
-            matchInfo.innerHTML = `<strong style="color: ${match.player_one_score > match.player_two_score ? 'green' : 'red'};">${userId}</strong>: ${match.player_one_score},  -  ${match.player_two_score}, düşman <strong style="color: ${match.player_two_score > match.player_one_score ? 'green' : 'red'};">${match.user_two_name}</strong>`;
+            matchInfo.innerHTML = `<strong style="color: ${match.player_one_score > match.player_two_score ? 'green' : 'red'};">${username}</strong>: ${match.player_one_score},  -  ${match.player_two_score}, düşman <strong style="color: ${match.player_two_score > match.player_one_score ? 'green' : 'red'};">${match.user_two_name}</strong>`;
 
             const matchDate = document.createElement('span');
             matchDate.textContent = new Date(match.match_date).toLocaleString();

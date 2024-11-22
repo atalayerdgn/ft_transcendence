@@ -5,7 +5,7 @@ import { authenticateUser } from './login/login.js';
 import { validateUser } from './validate/validate.js';
 import { updateUserInfo, updateProfilePicture } from './profile/updateProfile.js';
 import { addFriend } from './profile/updateProfile.js';
-import { game } from './game/game.js';
+import { startGame } from './game/game.js';
 import { loginWith42, handle42Callback } from './login/login42.js';
 
 // Ana event listener kurma fonksiyonu

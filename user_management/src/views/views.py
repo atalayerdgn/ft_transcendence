@@ -134,7 +134,7 @@ class AuthHandler(viewsets.ViewSet):
     @csrf_exempt  # CSRF korumasını bu view için devre dışı bırakıyoruz (dış API çağrısı olduğundan).
     def oauth_callback(self, request):
         # Gelen istekte 'code' parametresini alıyoruz.
-        code = request.query_params.get('code')
+        code = request.data.get('code')
         logger.error(f"Code: {code}")
         if not code:  # Eğer code yoksa, hata döndürüyoruz.
             return Response({'error': 'Authorization code is missing'}, status=status.HTTP_400_BAD_REQUEST)

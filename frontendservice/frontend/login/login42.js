@@ -32,35 +32,40 @@ export async function handle42Callback() {
         return;
     }
 
-    const url = `http://localhost:8004/users/oauth_callback/?code=${code}`;
+    const url = "http://localhost:8007/users/oauth_callback/";
 
     try {
-        // Backend'e "code" gönder
+        // Backend'e "code" parametresini JSON olarak gönder
         const response = await fetch(url, {
             method: "POST",
-            headers: { "Content-Type": "application/json" }
+            headers: { 
+                "Content-Type": "application/json" 
+            },
+            body: JSON.stringify({ code }) // Code'u body kısmına JSON formatında gönderiyoruz
         });
 
         if (!response.ok) {
             console.log("Failed to complete OAuth process.");
             throw new Error("Failed to complete OAuth process.");
         }
+
         confirm("Giriş başarılı. Profil sayfasına yönlendiriliyorsunuz.");
         const data = await response.json();
         const jwtToken = data.token;
         const user_id = data.user_id;
         console.log("Received JWT token:", jwtToken);
         console.log("Received user_id:", user_id);
+
         // Token'ı localStorage ve cookie'ye kaydet
         localStorage.setItem("token", jwtToken);
-        // User_id'yi localStorage ve cookie'ye kaydet
         localStorage.setItem("user_id", user_id);
-        // Token'ı cookie'ye kaydet
         document.cookie = `token=${jwtToken}; path=/; max-age=1500`;
+
         // Profil sayfasına yönlendir
-        //loadPage("profile");
+        // loadPage("profile");
     } catch (error) {
         console.error("Login with 42 API failed:", error);
         alert("Giriş sırasında bir hata oluştu. Lütfen tekrar deneyin.");
     }
 }
+

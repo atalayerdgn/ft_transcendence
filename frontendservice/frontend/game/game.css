@@ -1,57 +1,66 @@
+.overlay.topLeft, .overlay.topRight, .overlay.topCenter {
+    position: absolute;
+    top: 10px;
+    color: black;  /* beyazdan siyaha değiştirildi */
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.5);  /* gölge rengini de değiştirdim */
+    z-index: 10;
+}
+
 .overlay.topLeft {
-	position: absolute;
-	top: 20px;
-	left: 20px;
-	color: white;
-	font-size: 80px;
-	z-index: 10;
+    left: 20px;
 }
+
 .overlay.topRight {
-	position: absolute;
-	top: 20px;
-	right: 20px;
-	color: white;
-	font-size: 80px;
-	z-index: 10;
+    right: 20px;
 }
+
 .overlay.topCenter {
-	position: absolute;
-	top: 20px;
-	left: 50%;
-	transform: translateX(-50%);
-	color: white;
-	font-size: 80px;
-	z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
 }
-/*body {
-	background-image: url('background.png');
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
-	background-color: #f0f0f0;
-}*/
+
+.game-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px; /* Butonlar arası boşluk */
+}
 
 .startGame {
-	background-color: #ff5733;
-	color: white;
-	border: none;
-	border-radius: 12px;
-	padding: 15px 30px;
-	margin: 20px;
-	font-size: 18px;
-	font-weight: bold;
-	cursor: pointer;
-	transition: background-color 0.3s, transform 0.3s;
-	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #4CAF50;
+    color: black;  /* beyazdan siyaha değiştirildi */
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .startGame:hover {
-	background-color: #ff4d00;
-	transform: scale(1.05);
+    background-color: #45a049;
+    transform: scale(1.05);
 }
 
 .startGame:active {
-	background-color: #e63946;
+    background-color: #3e8e41;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .game-buttons {
+        gap: 10px;
+    }
+}
+html, body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }

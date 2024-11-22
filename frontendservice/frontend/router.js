@@ -1,8 +1,9 @@
 // router.js
 import { fetchMatchHistory, loadUserInfo } from './profile/profile.js';
 import { loadFriendList } from './profile/profile.js';
-import { game } from './game/game.js';
+import { startGame } from './game/game.js';
 import { setupEventListeners } from './script.js';
+import { pairs_global } from './game/game.js';
 
 // Geçmiş yönetimi için yeni fonksiyon
 function updateHistory(page) {
@@ -80,12 +81,18 @@ export async function loadPage(page, pushState = true) {
 
             const button = document.querySelector(".startAgaintsAnotherPlayerGame");
             const button2 = document.querySelector(".startAgainstArtificalIntelligenceGame");
-            
+            const button3 = document.querySelector(".startTournamentGame");
+            const button4 = document.querySelector(".playTournamentMatch");
+
+            if (button4) button4.removeEventListener("click", playTournamentMatch);
+            if (button3) button3.removeEventListener("click", startTournamentGame);
             if (button2) button2.removeEventListener("click", startGameWithArtificalIntellıgence);
             if (button) button.removeEventListener("click", startGameWithPlayer);
             
             if (button) button.addEventListener("click", startGameWithPlayer);
             if (button2) button2.addEventListener("click", startGameWithArtificalIntellıgence);
+            if (button3) button3.addEventListener("click", startTournamentGame);
+            if (button4) button4.addEventListener("click", playTournamentMatch);
             return;
         }
 
@@ -104,23 +111,37 @@ export function handleInitialLoad() {
 export function startGameWithPlayer() {
     const existingCanvas = document.querySelectorAll('canvas');
     existingCanvas.forEach(canvas => canvas.remove());
-    game();
-    var button = document.querySelector(".startAgaintsAnotherPlayerGame");
-    if (button) button.style.display = "none";
-    const aiButton = document.querySelector(".startAgainstArtificalIntelligenceGame");
-    if (aiButton) aiButton.style.display = "none";
+    startGame();
+    document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "none";;
+    document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
+    document.querySelector(".startTournamentGame").style.display = "none";
+}
+
+export function startTournamentGame() {
+    const existingCanvas = document.querySelectorAll('canvas');
+    existingCanvas.forEach(canvas => canvas.remove());
+    startGame(false,true);
+    document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "none";;
+    document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
+    document.querySelector(".startTournamentGame").style.display = "none";
+}
+
+export function playTournamentMatch() 
+{
+    const existingCanvas = document.querySelectorAll('canvas');
+    existingCanvas.forEach(canvas => canvas.remove());
+    startGame(true,true,pairs_global);
+    document.querySelector(".tournament-container").style.display = "none";
+    document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "none";
+    document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
+    document.querySelector(".startTournamentGame").style.display = "none";
 }
 
 export function startGameWithArtificalIntellıgence() {
     const existingCanvas = document.querySelectorAll('canvas');
     existingCanvas.forEach(canvas => canvas.remove());
-    game(false);
-    const buttons = [
-        ".startAgainstArtificalIntelligenceGame",
-        ".startAgaintsAnotherPlayerGame"
-    ];
-    buttons.forEach(selector => {
-        const button = document.querySelector(selector);
-        if (button) button.style.display = "none";
-    });
+    startGame(false);
+    document.querySelector(".startAgaintsAnotherPlayerGame").style.display = "none";;
+    document.querySelector(".startAgainstArtificalIntelligenceGame").style.display = "none";
+    document.querySelector(".startTournamentGame").style.display = "none";
 }

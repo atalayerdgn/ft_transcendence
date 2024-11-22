@@ -10,14 +10,14 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-    <a class="navbar-brand">Pong Game</a>
+    <a class="navbar-brand" href="#">Pong Game</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <button class="btn btn-link nav-link" data-page="profile">TRANSCENDENCE</button>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <button class="btn btn-link nav-link buttonGame" data-page="game">GAME</button>
@@ -26,7 +26,7 @@
                 <button class="btn btn-link nav-link" data-page="profile">PROFILE</button>
             </li>
             <li class="nav-item">
-                <a class="nav-link aboutUs nav-link" data-page="about">ABOUT</a>
+                <a class="nav-link" href="#">ABOUT</a>
             </li>
         </ul>
     </div>
@@ -34,11 +34,15 @@
   <div class="overlay topLeft" style="max-width: inherit;"></div>
   <div class="overlay topCenter"></div>
   <div class="overlay topRight"></div>
-  <button class="startGame startAgaintsAnotherPlayerGame playWithPlayer" id="playWithPlayer">Play Against Another Player</button>
-  <button class="startGame startAgainstArtificalIntelligenceGame playWithAi" id="playWithAi">Play Against Artifical Intelligence</button>
+  <div class="tournament-container"></div>
+
+<div class="game-buttons">
+    <button class="startGame startAgaintsAnotherPlayerGame playWithPlayer" id="playWithPlayer">Play Against Another Player</button>
+    <button class="startGame startAgainstArtificalIntelligenceGame playWithAi" id="playWithAi">Play Against Artifical Intelligence</button>
+    <button class="startGame startTournamentGame Tournament" id="Tournament">Tournament</button>
+</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script src="game.js"></script>
-
 </body>
 </html>
