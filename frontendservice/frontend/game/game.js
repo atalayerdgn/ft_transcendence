@@ -621,6 +621,8 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
                 existingCanvas.forEach(canvas => canvas.remove());
                 //returnStartStation();
                 startGame(true, true, pairs_global);
+                console.log('1. MAÇ IF ONCESI:', pairs_global[0],pairs_global[1]);
+                validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
                 cancelAnimationFrame(animationFrameId);
             } else {
                 document.querySelector(".topCenter").innerHTML = `${pairs_global[0]} Won`;
@@ -629,9 +631,10 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
                 existingCanvas.forEach(canvas => canvas.remove());
                 //returnStartStation();
                 startGame(true, true, pairs_global);
+                console.log('1. MAÇ IF ONCESI:', pairs_global[0],pairs_global[1]);
+                validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
                 cancelAnimationFrame(animationFrameId);
             }
-
         }
 
         function startSecondGame(forWho) {
@@ -645,6 +648,7 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
                 locateFinalUsers(pairs_global[1]);
                 //returnStartStation();
                 startGame(true, true, pairs_global);
+                validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
                 cancelAnimationFrame(animationFrameId);
                 console.log('2.MAÇ BİTTİ ve finalArray:', finalArray);
                 // burda direk finalArray içindeki iki arkadaşı maç yapmaya göndercez
@@ -658,6 +662,7 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
                 locateFinalUsers(pairs_global[0]);
                 //returnStartStation();
                 startGame(true, true, pairs_global);
+                validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
                 cancelAnimationFrame(animationFrameId);
                 console.log('2.MAÇ BİTTİ ve finalArray:', finalArray);
                 // burda direk finalArray içindeki iki arkadaşı maç yapmaya göndercez
@@ -673,6 +678,7 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
 
                 returnStartStation();
                 startGame(true, false, pairs_global);
+                console.log('3.maç sonrası pairs global:', pairs_global[0], pairs_global[1]);
                 cancelAnimationFrame(animationFrameId);
                 alert('Turnuva bitti ŞAMPİYON: ' + finalArray[1]);
                 showAlert();
@@ -689,6 +695,7 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
                 // burda artık finalArrayı gönderelim o ikisi maç yapsın
                 returnStartStation();
                 startGame(true, false, pairs_global);
+                console.log('3.maç sonrası pairs global:', pairs_global[0], pairs_global[1]);
                 cancelAnimationFrame(animationFrameId);
                 alert('Turnuva bitti ŞAMPİYON: ' + finalArray[0]);
                 showAlert();
@@ -855,6 +862,39 @@ async function checkUsernameFunc(scoreSelf, scoreOpposite, oppositeName) {
     }
 }
 
+
+async function checkUsernameforTournament(username) {
+    console.log('Inside checkUsername:', username);
+    const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
+    const storedUserId = JSON.parse(localStorage.getItem('user'));
+
+    try {
+        const response = await fetch(`http://127.0.0.1:8007/users/check_username/?username=${username}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+                'id': storedUserId.id
+            }
+        });
+
+        return response.ok;
+    } catch (error) {
+        console.error('Error occurred:', error);
+        return false;
+    }
+}
+
+async function validateAndSaveGameResultForTournament(scoreOpposite, scoreSelf) {
+    const isUsername1Valid = await checkUsernameforTournament(pairs_global[1]);
+    const isUsername2Valid = await checkUsernameforTournament(pairs_global[0]);
+
+    if (isUsername1Valid === true && isUsername2Valid === true) {
+        console.log('1. MAÇ IF:', pairs_global);
+        saveGameResultforTournament(scoreOpposite, scoreSelf, pairs_global[1], pairs_global[0]);
+    }
+}
+
 async function saveGameResult(playerOneScore, playerTwoScore, userName) {
     console.log('Inside saveGameResult:', playerOneScore, playerTwoScore, userName);
 
@@ -867,6 +907,35 @@ async function saveGameResult(playerOneScore, playerTwoScore, userName) {
         player_two_score: playerTwoScore,
         user_name: storedUserId.username,
         user_two_name: userName
+    };
+
+    return fetch('http://127.0.0.1:8007/game/save/', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'id': storedUserId.id,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.ok)
+        .catch(error => {
+            console.error('Error occurred:', error);
+            return false;
+        });
+}
+
+async function saveGameResultforTournament(playerOneScore, playerTwoScore, playerOneUsername, playerTwoUsername) {
+    console.log('Inside saveMatchResult:', playerOneScore, playerTwoScore, playerOneUsername, playerTwoUsername);
+
+    const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
+    const storedUserId = JSON.parse(localStorage.getItem('user'));
+
+    const data = {
+        player_one_score: playerOneScore,
+        player_two_score: playerTwoScore,
+        user_name: playerOneUsername,
+        user_two_name: playerTwoUsername
     };
 
     return fetch('http://127.0.0.1:8007/game/save/', {
