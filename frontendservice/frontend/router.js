@@ -4,6 +4,7 @@ import { loadFriendList } from './profile/profile.js';
 import { startGame } from './game/game.js';
 import { setupEventListeners } from './script.js';
 import { pairs_global } from './game/game.js';
+import { showRandomQuote } from './profile/profile.js';
 
 // Geçmiş yönetimi için yeni fonksiyon
 function updateHistory(page) {
@@ -48,6 +49,7 @@ export async function loadPage(page, pushState = true) {
             await loadUserInfo();
             await loadFriendList();
             await fetchMatchHistory();
+            showRandomQuote();
             const existingCanvas = document.querySelectorAll('canvas');
             existingCanvas.forEach(canvas => canvas.remove());
             console.log('setupEventListeners sonrası ( router.js )');

@@ -12,6 +12,109 @@ export class User {
     }
 }
 
+const quotes = [
+    "Hayat, ne kadar uzun olursa olsun, anı yaşamakla güzelleşir.",
+    "Her yeni başlangıç, eski bir sonu işaret eder.",
+    "Düşe kalka yürürken, her adım bir ders bırakır.",
+    "Zorluklar, gücün keşfidir.",
+    "İleriye bakarken geçmişi unutma, çünkü geçmişten ders alırsın.",
+    "Başarı, pes etmeyenlerin ödülüdür.",
+    "Kimseyi olduğu gibi kabul et, kendini olduğun gibi sev.",
+    "En karanlık an, en parlak ışığın doğduğu andır.",
+    "Mutluluk, paylaşılınca artar.",
+    "İnsan, sevdiği kadar değerli olur.",
+    "Kendi yolunu çiz, başkalarının izinden gitme.",
+    "Bazen kaybetmek, kazanmanın ilk adımıdır.",
+    "Her şey zamanla güzelleşir, sabır her şeyin ilacıdır.",
+    "Gerçek gücün, düşerken değil, kalkarken gösterilir.",
+    "İyi bir insan olmak, her şeyden daha önemlidir.",
+    "İnsan, ne düşündüğünü söyler; ama ne yaptığı, kim olduğunu gösterir.",
+    "Sabır, acının içindeki huzurdur.",
+    "Hata yapmak, öğrenmenin en güzel yoludur.",
+    "Geçmişin yükünden kurtul, geleceği kucakla.",
+    "Yalnızca düşünmek yetmez, eyleme geçmek gerekir.",
+    "Başarı, ne kadar yükseğe tırmandığın değil, ne kadar sağlam durduğundur.",
+    "Gerçek zenginlik, sahip olduklarında değil, paylaştıklarında gizlidir.",
+    "Hayatta en değerli şey, kaybetmediklerin değil, kazandıklarındır.",
+    "Ne olursa olsun, her zaman en iyi versiyonunu sergile.",
+    "Bazen en güzel hikayeler, kelimelerle anlatılmaz.",
+    "İyi insanlar, kalpleriyle konuşurlar.",
+    "İç huzur, dış dünyadan bağımsızdır.",
+    "Her son, yeni bir başlangıçtır.",
+    "İnsanlar hatalarını sevdiklerinden öğrenir.",
+    "Hayat, cesaret isteyen bir yolculuktur.",
+    "Olumsuz düşünceler, ruhunu karartır.",
+    "Sadece kendin ol, başkası olma.",
+    "Bir insanın değeri, sahip olduğu değil, paylaştığı şeylerle ölçülür.",
+    "Zihnin huzuru, kalbin özgürlüğüdür.",
+    "Gözler, ne kadar uzağa bakarsa baksın, kalp her zaman en yakın olanı arar.",
+    "Senin için yapabileceğim tek şey, kendi yolunu bulmana yardımcı olmaktır.",
+    "Güzel bir şeyin değerini anlamadan önce, onu kaybetme.",
+    "İnsan, ne kadar az ile yetinirse, o kadar çok mutlu olur.",
+    "Asıl zenginlik, insanın içindedir.",
+    "Kendini bilmek, dünyayı anlamanın başlangıcıdır.",
+    "Gelişmek, geçmişi bırakıp geleceğe adım atabilmektir.",
+    "Huzur, dış dünyada değil, iç dünyada bulunur.",
+    "Zorluklar, güçlü insanları yaratır.",
+    "Zamanın kıymetini, kaybetmeden önce anlayamazsınız.",
+    "Hayatın en güzel anları, en basit olanlardır.",
+    "Her şeyin bir zamanı vardır, sabırla bekle.",
+    "En büyük başarı, içsel huzuru bulmaktır.",
+    "İnsan, kalbiyle duyduğunu aklıyla anlamaya çalışır.",
+    "Gerçek arkadaşlar, zor zamanlarda yanındakilerdir.",
+    "Hayat, bir yolculuktur; her adım bir derstir.",
+    "Kendine inan, her şey mümkün olur.",
+    "En güçlü silah, sevgiyle dolu bir kalptir.",
+    "Kendi değerini bil, başkalarının düşüncelerine göre yaşamayı bırak.",
+    "Her gün, bir fırsattır.",
+    "Zorluklar, cesur insanları bulur.",
+    "Başarı, sabır ve azimle şekillenir.",
+    "Güzel bir hayat, güzel bir bakış açısıyla başlar.",
+    "En değerli şey, zamanını nereye harcadığındır.",
+    "İnsan ne kadar basit yaşarsa, o kadar mutlu olur.",
+    "Bazen, en büyük başarı sabırlı olmak ve beklemektir.",
+    "İleriye doğru attığın her adım, seni bir adım daha yaklaştırır.",
+    "Sevgiyi hissetmek, en büyük lüksdür.",
+    "Kendine güven, dünya seninle olacaktır.",
+    "Bir insanı anlayabilmek için, onun yerine koyarak düşünmelisin.",
+    "Hayatta en önemli şey, başkalarına nasıl hissettirdiğindir.",
+    "İçindeki gücü keşfet, seni kimse durduramaz.",
+    "Zaman, en değerli hazinedir; ona dikkat et.",
+    "Gerçek başarı, başkalarını mutlu etmekten gelir.",
+    "Sevgi, bir insanın içindeki en güçlü kuvvettir.",
+    "Başarı, sadece elde edilen sonuçlarla değil, verilen emekle ölçülür.",
+    "Her şey geçer, ama anılar kalır.",
+    "Kendi yolunu bulmak, en değerli yolculuktur.",
+    "Hayatta kalmak yetmez, yaşamak gerekir.",
+    "Başkalarına iyi davranmak, insanın kalbini hafifletir.",
+    "Zihnindeki karışıklıklar, dünyanı karartır.",
+    "Gerçek güç, sabır ve anlayışla gelir.",
+    "Her gün bir adım daha at, ilerlemek için.",
+    "Güçlü olmak, her zaman kolay olmasa da gereklidir.",
+    "Olumsuzluklar, yalnızca geçici engellerdir.",
+    "Hayatını başkaları için değil, kendin için yaşa.",
+    "Sevgi ve hoşgörü, her şeyin ilacıdır.",
+    "İnsan, hatalarıyla büyür.",
+    "Gerçek dostluk, zorluklarda kendini gösterir.",
+    "Mutluluk, her anı değerlendirebilmektir.",
+    "Kendini olduğun gibi sev, dışarıdan onay bekleme.",
+    "İçindeki iyiliği bul, dünya buna ihtiyaç duyuyor.",
+    "Gerçek zafer, başkalarına yardım etmekle gelir.",
+    "Her şeyin bir nedeni vardır, sabırlı ol.",
+    "Kendini tanımadan, dünyayı tanıman mümkün değildir.",
+    "Hayatta en değerli şey, doğru zamanda doğru yerde olmaktır.",
+    "Düşüncelerini doğru yönlendir, hayatın değişsin.",
+    "Kendi sınırlarını aşmak, en büyük başarıdır.",
+    "Mutluluğun sırrı, küçük şeylerde saklıdır.",
+    "Geçmişe takılmak, geleceği görmene engel olur.",
+    "Hayat, bir seçimdir; her gün yeni bir fırsattır.",
+    "Güçlü kalabilmek, her şeyin üstesinden gelmek demektir.",
+    "Hatalar, insanı olgunlaştırır.",
+    "Hayatını değiştirmek istiyorsan, önce düşüncelerini değiştir.",
+    "Her şey zamanla gelir, sabırlı ol.",
+    "Kendin ol, çünkü başkası olmanın bir anlamı yok."
+];
+
 export async function loadUserInfo() {
     try {
         //localde user bilgileri var ise istek atmadan localden user bilgilerini al
@@ -68,6 +171,12 @@ export async function loadUserInfo() {
         return; // token olmadığında console.error hatası vermesin diye return ekledim	
         console.error('Hata:', error);
     }
+}
+
+export async function showRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const randomQuote = quotes[randomIndex];
+    document.getElementById('quote').textContent = randomQuote;
 }
 
 export async function loadFriendList() {
@@ -192,7 +301,5 @@ export async function fetchMatchHistory() {
 }
 
 // Sayfa yüklendiğinde maç geçmişini getir
-window.onload = fetchMatchHistory;
-
 
 document.addEventListener('DOMContentLoaded', loadUserInfo);
