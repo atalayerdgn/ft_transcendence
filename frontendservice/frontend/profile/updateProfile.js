@@ -139,7 +139,9 @@ export async function addFriend() {
             const data = await response.json();
             friendId = data.id;
             console.log('Friend ID:', friendId);
+            alert(`${friendName} başarıyla eklendi`);
         } else {
+            alert('Kullanıcı adı bulunamadı.');
             console.error('Username check failed:', response.status);
         }
     } catch (error) {
