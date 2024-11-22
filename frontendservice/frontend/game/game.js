@@ -675,11 +675,12 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
                 startGame(true, false, pairs_global);
                 cancelAnimationFrame(animationFrameId);
                 alert('Turnuva bitti ŞAMPİYON: ' + finalArray[1]);
+                showAlert();
                 finalArray = [];
                 pairs_global = [];
                 returnStartStation();
                 cancelAnimationFrame(animationFrameId);
-                loadPage('profile');
+                //loadPage('profile');
             } else {
                 const existingCanvas = document.querySelectorAll('canvas');
                 existingCanvas.forEach(canvas => canvas.remove());
@@ -690,11 +691,12 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
                 startGame(true, false, pairs_global);
                 cancelAnimationFrame(animationFrameId);
                 alert('Turnuva bitti ŞAMPİYON: ' + finalArray[0]);
+                showAlert();
                 finalArray = [];
                 pairs_global = [];
                 returnStartStation();
                 cancelAnimationFrame(animationFrameId);
-                loadPage('profile');
+                //loadPage('profile');
             }
         }
 
@@ -740,7 +742,7 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
                     }, 1000);
                 }
             }
-            //returnStartStation();
+            returnStartStation();
             updateMessage();
         }
 
