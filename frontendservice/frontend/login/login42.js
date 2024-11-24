@@ -31,7 +31,8 @@ export async function handle42Callback() {
         alert("Giriş başarısız oldu. Lütfen tekrar deneyin.");
         return;
     }
-
+    // Kullanıcıya "Lütfen Bekleyin" sayfasını göster (login42.html yükleniyor)
+    await loadPage("loginWith42");
     const url = "http://localhost:8007/users/oauth_callback/";
 
     try {

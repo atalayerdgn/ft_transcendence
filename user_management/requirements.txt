@@ -8,3 +8,4 @@ psycopg
 PyJWT
 Pillow
 flask
+python-dotenv

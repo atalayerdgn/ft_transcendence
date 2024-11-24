@@ -6,3 +6,4 @@ psycopg2-binary
 psycopg2
 psycopg
 PyJWT
+python-dotenv

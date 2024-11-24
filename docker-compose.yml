@@ -30,13 +30,8 @@ services:
     working_dir: /app
     ports:
       - "8004:8000"
-    environment:
-      DATABASE_NAME: usermanagement_db
-      DATABASE_USER: postgres
-      DATABASE_PASSWORD: 1234
-      DATABASE_HOST: postgres
     env_file:
-      - ./user_management/.env
+      - .env
     networks:
       - backend_network
 
@@ -51,13 +46,8 @@ services:
     working_dir: /app
     ports:
       - "8005:8001"
-    environment:
-      DATABASE_NAME: game_db
-      DATABASE_USER: postgres
-      DATABASE_PASSWORD: 1234
-      DATABASE_HOST: postgres
     env_file:
-      - ./game/.env
+      - .env
     networks: 
       - backend_network
 
@@ -72,13 +62,8 @@ services:
     working_dir: /app
     ports:
       - "8006:8002"
-    environment:
-      DATABASE_NAME: friend_service_db
-      DATABASE_USER: postgres
-      DATABASE_PASSWORD: 1234
-      DATABASE_HOST: postgres
     env_file:
-      - ./friend_service/.env
+      - .env
     networks:
       - backend_network
 
@@ -92,6 +77,8 @@ services:
       - friend_service
     ports:
       - "8007:8007"
+    env_file:
+      - .env
     volumes:
       - ./apigateway:/app
     working_dir: /app

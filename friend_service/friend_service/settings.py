@@ -1,8 +1,10 @@
 import os
 import sys
-
-
+from dotenv import load_dotenv
 from pathlib import Path
+
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ox31j0@8g2fi@o$^&y@8gy+&qljbuzzq3u+$b+c-7&r3jd$p5z'
+SECRET_KEY = os.getenv('FRIEND_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -74,11 +76,11 @@ WSGI_APPLICATION = 'friend_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DATABASE_NAME', 'friend_service_db'),
-        'USER': os.getenv('DATABASE_USER', 'postgres'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', '1234'),
-        'HOST': os.getenv('DATABASE_HOST', 'postgres'),
-        'PORT': os.getenv('DATABASE_PORT', '5432'),
+        'NAME': os.getenv('FRIEND_DATABASE_NAME'),
+        'USER': os.getenv('FRIEND_DATABASE_USER'),
+        'PASSWORD': os.getenv('FRIEND_DATABASE_PASSWORD'),
+        'HOST': os.getenv('FRIEND_DATABASE_HOST'),
+        'PORT': os.getenv('FRIEND_DATABASE_PORT'),
     }
 }
 

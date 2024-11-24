@@ -27,6 +27,7 @@ export async function loadPage(page, pushState = true) {
         ['settings', 'settings/settings.html'],
         ['game', 'game/game.html'],
         ['send', 'forgot/forgot.html'],
+        ['loginWith42', 'login/login42.html'],
     ]);
 
     // Geçmişi güncelle
