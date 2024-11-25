@@ -1,52 +1,75 @@
+/* Genel Gövde */
 body {
-    background: #2c3e50; /* Açık gri arka plan */
+    background: #29425c; /* Daha koyu ama göz yormayan arka plan */
     margin-top: 20px;
     font-family: 'Arial', sans-serif;
+    color: #ecf0f1; /* Açık gri metin */
 }
 
+/* Kartlar */
 .card {
     border-radius: 0.75rem; /* Yuvarlatılmış köşeler */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Daha belirgin gölge */
     margin-bottom: 1.5rem;
-    border: 1px solid #0056b3; /* Gri kenar rengi #7e0e46 tonları dene */
-    background-color: #1a252f; /* Beyaz arka plan */
+    border: 1px solid #007bff; /* Mavi kenar */
+    background-color: #1e2f3c; /* Daha koyu kart arka planı */
+    color: #ecf0f1; /* Açık metin rengi */
 }
 
+/* Dosya Girdisi */
 #file-input {
-    display: inline-block; /* Görünür ve interaktif hale getir */
+    display: inline-block;
+    color: #ecf0f1; /* Görünür açık metin */
 }
 
+/* Avatar */
 .avatar {
-    border: 4px solid #007bff; /* Mavi border */
+    border: 4px solid #007bff; /* Mavi çerçeve */
     border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Hafif gölge */
 }
 
+/* Düğmeler */
 .btn-primary {
     background-color: #007bff; /* Mavi */
     border-color: #007bff;
+    border-radius: 0.5rem; /* Hafif yuvarlatılmış */
+    color: #ffffff; /* Beyaz metin */
+    transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3; /* Koyu mavi hover rengi */
+    background-color: #0056b3; /* Daha koyu mavi */
     border-color: #004494;
 }
 
+/* İkincil Metin */
 .text-secondary {
-    color: #6c757d; /* Koyu gri */
+    color: #95a5a6; /* Yumuşak gri */
 }
 
+/* Liste Elemanları */
 .list-group-item {
     border: none;
-    padding: 0.75rem 1rem; /* Padding */
-    background-color: #f8f9fa; /* Açık gri arka plan */
+    padding: 0.75rem 1rem; /* Daha rahat okuma için padding */
+    background-color: #2c3e50; /* Koyu ama kartlarla uyumlu gri */
+    color: #ecf0f1; /* Açık gri metin */
+    border-radius: 0.5rem; /* Hafif yuvarlatma */
+    transition: background-color 0.3s ease;
 }
 
+.list-group-item:hover {
+    background-color: #34495e; /* Hover için hafif açık ton */
+}
+
+/* Rank Kart */
 .rank-card {
-    background: #007bff; /* Mavi */
+    background: #3498db; /* Pastel mavi */
     color: #ffffff;
     border-radius: 0.75rem;
     padding: 1rem;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge */
 }
 
 .rank-card h5 {
@@ -54,28 +77,44 @@ body {
     font-size: 1.5rem; /* Büyük başlık */
 }
 
+/* İletişim Bilgileri Başlığı ve İkon Düzenlemesi */
+.contact-card-title {
+    font-size: 1.75rem; /* Başlık boyutunu büyüt */
+    margin-bottom: 1rem; /* Başlık ile içerik arasına boşluk ekle */
+    color: #0d6ed6; /* Mavi renk */
+}
+
 .contact-info {
     border-left: 4px solid #007bff; /* Mavi border */
-    padding-left: 1rem;
-    margin-bottom: 1rem;
+    padding-left: 1.25rem; /* Daha fazla padding */
+    margin-bottom: 1.25rem; /* Daha fazla boşluk */
+    color: #ecf0f1; /* Açık metin rengi */
+    font-size: 1.2rem; /* Yazı boyutunu büyüt */
 }
 
 .contact-info .icon {
-    font-size: 1.5rem;
-    color: #007bff; /* Mavi ikon rengi */
+    font-size: 2rem; /* İkon boyutunu büyüt */
+    color: #007bff; /* Mavi ikon */
+    margin-right: 1rem; /* İkon ile başlık arasına boşluk */
 }
 
+.contact-info .info-text {
+    display: inline-block; /* Başlık ve metni aynı hizada tut */
+    width: 400px; /* Metin genişliği */
+}
+
+.contact-info .info-text strong {
+    color: #0d6ed6; /* Başlık kısmını mavi yap */
+    font-size: 1.2rem; /* Başlık kısmının boyutunu büyüt */
+}
+
+/* Navbar */
 .navbar {
     margin-bottom: 2rem;
-    border-bottom: 1px solid #ddd; /* Alt çizgi */
-}
-
-.navbar-nav .nav-link {
-    color: #007bff !important; /* Mavi bağlantı rengi */
-}
-
-.navbar-nav .nav-link:hover {
-    color: #0056b3 !important; /* Hover rengi */
+    border-radius: 0.75rem;
+    background: #1e2f3c; /* Daha koyu degrade */
+    border: 1px solid #007bff; /* Mavi kenar */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Hafif gölge */
 }
 
 .navbar-nav {
@@ -86,7 +125,19 @@ body {
     margin-right: 1rem; /* Boşluk */
 }
 
+.navbar-nav .nav-link {
+    color: #ecf0f1 !important; /* Açık gri metin */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff !important; /* Mavi hover efekti */
+}
+
 .navbar-brand {
-    flex-grow: 1; /* Sola yaslama */
-    text-align: center; /* Ortalama */
+    flex-grow: 1;
+    text-align: center; /* Ortalı logo/metin */
+    color: #ecf0f1; /* Açık metin */
+    font-size: 1.5rem; /* Daha belirgin yazı */
 }
