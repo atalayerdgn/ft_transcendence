@@ -148,3 +148,13 @@ h4 {
 .footer a:hover {
     text-decoration: underline;
 }
+
+/* Additional styles for the developers section */
+.mt-5 {
+    margin-top: 5rem !important;
+}
+
+.card-body .btn-outline-light:hover {
+    color: #1abc9c; /* Hover effect on buttons */
+    border-color: #1abc9c;
+}

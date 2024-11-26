@@ -213,6 +213,17 @@ export async function loadFriendList() {
             const friendList = await friendResponse.json();
             console.log('Friend list:', friendList);
 
+            // Eğer arkadaş listesi boşsa mesaj göster
+            if (!friendList || friendList.length === 0) {
+                console.log('No friends found.');
+                const noFriendMessage = document.createElement('li');
+                noFriendMessage.className = 'list-group-item text-center';
+                noFriendMessage.style.color = '#bdc3c7'; // Metin rengini ayarla
+                noFriendMessage.textContent = 'No friends found.';
+                friendListContainer.appendChild(noFriendMessage);
+                return;
+            }
+            
             friendList.forEach(friend => {
                 const friendUser = users.find(user => user.id === friend.second_user_id);
                 console.log('Friend user:', friendUser);
@@ -273,6 +284,17 @@ export async function fetchMatchHistory() {
         const matchHistoryList = document.getElementById('match-history-list');
         matchHistoryList.innerHTML = ''; // Önceki içeriği temizle
 
+        // Eğer maç geçmişi boşsa "Maç bulunamadı" mesajı göster
+        // Maç geçmişi dizisini kontrol et
+        if (!Array.isArray(matchHistory) || matchHistory.length === 0) {
+            console.log('Maç geçmişi bulunamadı');
+            const noMatchMessage = document.createElement('li');
+            noMatchMessage.className = 'list-group-item text-center';
+            noMatchMessage.style.color = '#bdc3c7'; // Metin rengini ayarla
+            noMatchMessage.textContent = 'No games found for this user.';
+            matchHistoryList.appendChild(noMatchMessage);
+            return;
+        }
         matchHistory.forEach(match => {
             const listItem = document.createElement('li');
             listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
