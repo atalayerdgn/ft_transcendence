@@ -59,8 +59,8 @@
     }
 }
 html, body {
-    overflow: hidden;
+    overflow: hidden; /* Bu satırı sildim çünkü anasayfadaki scroll'u bozuyor sonra el atıcam -Uchiman */
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100%; 
 }

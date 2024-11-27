@@ -10,14 +10,14 @@ import logging
 from typing import Dict
 # Servis ve repository arayüzleri.
 from ..interface.gateway_service import GatewayService
-from ..interface.gateway_repository import GatewayRepository
+from ..implementions.gateway_repository import GatewayRepositoryImpl
 
 # Loglama için bir logger nesnesi tanımlanıyor.
 logger = logging.getLogger('apigateway')
 
 # Gateway iş mantığını yöneten sınıf.
 class GatewayServiceImpl(GatewayService):
-    def __init__(self, repository: GatewayRepository):
+    def __init__(self, repository: GatewayRepositoryImpl):
         # Repository, veri erişim işlemleri için kullanılır.
         self.repository = repository
 

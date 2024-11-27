@@ -45,6 +45,7 @@ const quotes = [
     "Hayat, cesaret isteyen bir yolculuktur.",
     "Olumsuz düşünceler, ruhunu karartır.",
     "Sadece kendin ol, başkası olma.",
+    "Nereye gidersen git mabedin hep arkandadır. -Konfüçyüs",
     "Bir insanın değeri, sahip olduğu değil, paylaştığı şeylerle ölçülür.",
     "Zihnin huzuru, kalbin özgürlüğüdür.",
     "Gözler, ne kadar uzağa bakarsa baksın, kalp her zaman en yakın olanı arar.",

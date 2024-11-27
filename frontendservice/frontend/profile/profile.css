@@ -4,6 +4,7 @@ body {
     margin-top: 20px;
     font-family: 'Arial', sans-serif;
     color: #ecf0f1; /* Açık gri metin */
+    overflow: scroll; /* Scroll çubuğunu göster */
 }
 
 /* Kartlar */
