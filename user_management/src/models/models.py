@@ -12,7 +12,7 @@ class User(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
-    avatar = models.ImageField(upload_to='avatars/', default='default_avatar.jpg')#yeni
+    avatar = models.ImageField(upload_to='avatars/', default='avatars/default_avatar.png')#yeni
     friends = models.ManyToManyField('self', symmetrical=False, related_name='user_friends')#yeni
     is_online = models.BooleanField(default=False)#yeni
     last_hearbeat = models.DateTimeField(default=timezone.now)#yeni
