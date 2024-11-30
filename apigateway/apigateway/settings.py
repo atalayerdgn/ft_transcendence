@@ -17,8 +17,11 @@ SECRET_KEY = os.getenv('API_SECRET_KEY')
 
 USER_SECRET_KEY = os.getenv('USER_MANAGEMENT_SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG ayarı (bool olarak okuma)
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
+
+# ALLOWED_HOSTS ayarı (virgül ile ayrılan stringi listeye çevir)
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 
 # SERVICE_ROUTES ortam değişkenini JSON formatında oku
@@ -111,8 +114,6 @@ CORS_ALLOW_ALL_HEADERS = True
 
 # settings.py
 
-
-ALLOWED_HOSTS = ['*']  # Geliştirme aşamasında tüm hostlara izin veriyoruz
 
 ROOT_URLCONF = 'apigateway.urls'
 

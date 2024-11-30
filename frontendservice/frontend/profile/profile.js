@@ -281,14 +281,14 @@ export async function fetchMatchHistory() {
         });
 
         const matchHistory = await response.json();
-
+        console.log('Match history:', matchHistory);
         const matchHistoryList = document.getElementById('match-history-list');
         matchHistoryList.innerHTML = ''; // Önceki içeriği temizle
 
         // Eğer maç geçmişi boşsa "Maç bulunamadı" mesajı göster
         // Maç geçmişi dizisini kontrol et
         if (!Array.isArray(matchHistory) || matchHistory.length === 0) {
-            console.log('Maç geçmişi bulunamadı');
+            console.log('No games found for this user.');
             const noMatchMessage = document.createElement('li');
             noMatchMessage.className = 'list-group-item text-center';
             noMatchMessage.style.color = '#bdc3c7'; // Metin rengini ayarla

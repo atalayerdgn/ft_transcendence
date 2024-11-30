@@ -16,9 +16,9 @@ class GameHandler(viewsets.ViewSet):
 
         result, message = self.service.list_games(user_name)
         if message:
-            return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)
-        if not result:
-            return Response({'error': 'No games found'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': message}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        #if not result:
+            #return Response({'error': 'No games found'}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = GameSerializer(result, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

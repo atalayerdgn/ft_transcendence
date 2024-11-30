@@ -6,6 +6,7 @@ from src.interface.auth_service import AuthService
 from src.utils import Utils
 from src.models.models import User
 from django.utils import timezone
+from django.conf import settings
 import logging
 
 # Logger'ı ayarla
@@ -83,9 +84,9 @@ class AuthServiceImpl(AuthService):
     #oauth_callback işlemi
     def oauth_callback(self, code: str) -> Tuple[bool, str, Optional[str]]:
         # Client ID ve Client Secret, 42 API'yi tanımlayan kimlik bilgileridir.
-        client_id = 'u-s4t2ud-f0a16fd8008b548e10e481a206cb0700607774c18bb30aca8d7208d9f1a93bf5'
-        client_secret = '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'
-        redirect_uri = 'https://localhost:8008/'  # Geri dönüş URL'si.
+        client_id = settings.INTRA_CLIENT_ID
+        client_secret = settings.INTRA_CLIENT_SECRET
+        redirect_uri = settings.INTRA_REDIRECT_URI
 
         # Token almak için POST isteği gönderiyoruz.
         token_response = requests.post(
@@ -102,7 +103,7 @@ class AuthServiceImpl(AuthService):
         # Eğer token isteği başarısız olursa hata döndürüyoruz.
         if token_response.status_code != 200:
             logger.error('!!!!!!!!!!!!!!!!!!!!!BURAYA GIRMEYEN PICCC')
-            return False, 'Failed to obtain access token', None
+            return False, 'Failed to obtain access token', None , None
 
         # Başarılıysa, access token'i alıyoruz.
         access_token = token_response.json().get('access_token')
@@ -116,7 +117,7 @@ class AuthServiceImpl(AuthService):
         # Kullanıcı bilgisi çekme başarısız olursa hata döndürüyoruz.
         if user_info_response.status_code != 200:
             logger.error('!!!!!!!!!!!!!!!!!!!!!BURAYA GIRMEYEN OCC')
-            return False, 'Failed to fetch user information', None
+            return False, 'Failed to fetch user information', None , None
 
         # Kullanıcı bilgilerini JSON formatında alıyoruz.
         user_info = user_info_response.json()
@@ -129,5 +130,5 @@ class AuthServiceImpl(AuthService):
             # Kullanıcı başarıyla oluşturulmuşsa JWT token oluşturuyoruz.
             jwt_token = Utils.generate_token(user)
             return True, 'User authenticated successfully', jwt_token, str(user_id)
-        return False, message, None
+        return False, message, None , None
 

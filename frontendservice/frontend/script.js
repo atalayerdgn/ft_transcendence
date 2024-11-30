@@ -50,12 +50,12 @@ async function onDOMContentLoaded() {
 }
 
 // Kullanıcı token'ını kontrol edip, uygun sayfayı yükler
-function checkTokenAndLoadPage() {
+async function checkTokenAndLoadPage() {
     const cookies = document.cookie.split('; ');
     const tokenCookie = cookies.find(cookie => cookie.startsWith('token='));
 
     if (tokenCookie) {
-        loadPage('profile'); // Token varsa profile sayfasını yükle
+        await loadPage('profile'); // Token varsa profile sayfasını yükle
         //beonline endpointine istek atarak kullanıcıyı online yap
         const user_id = JSON.parse(localStorage.getItem('user')).id;
         console.log('user_id:', user_id);
