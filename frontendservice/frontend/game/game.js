@@ -93,7 +93,7 @@ export async function isUsersValid(args) {
     return false
 }
 
-export async function startGame(againstAnotherPlayer = true, tournamentMode = false) {
+export function startGame(againstAnotherPlayer = true, tournamentMode = false) {
     let oppositeName = "";
     let Name_1 = "";
     let a;
@@ -623,21 +623,21 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
             if (forWho === 1) {
                 document.querySelector(".topCenter").innerHTML = `${pairs_global[1]} Won`;
                 console.log('1.MAÇ BİTTİ ve pairs_global1, paris_global0: bu bilgilerle kayıta gidiyoruz kaydediyoruz', pairs_global[1], pairs_global[0]);
-                validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
-                locateFinalUsers(pairs_global[1]);
+                await validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
                 const existingCanvas = document.querySelectorAll('canvas');
                 existingCanvas.forEach(canvas => canvas.remove());
                 returnStartStation();
+                locateFinalUsers(pairs_global[1]);
                 startGame(true, true, pairs_global);
                 cancelAnimationFrame(animationFrameId);
             } else {
                 document.querySelector(".topCenter").innerHTML = `${pairs_global[0]} Won`;
                 console.log('1.MAÇ BİTTİ ve pairs_global1, paris_global0: bu bilgilerle kayıta gidiyoruz kaydediyoruz', pairs_global[1], pairs_global[0]);
-                validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
-                locateFinalUsers(pairs_global[0]);
+                await validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
                 const existingCanvas = document.querySelectorAll('canvas');
                 existingCanvas.forEach(canvas => canvas.remove());
                 returnStartStation();
+                locateFinalUsers(pairs_global[0]);
                 startGame(true, true, pairs_global);
                 cancelAnimationFrame(animationFrameId);
             }
@@ -647,13 +647,13 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
             if (forWho == 1) {
                 // Yeni oyun için canvas oluştur ve kapsayıcıya ekle
                 const newCanvas = document.createElement('canvas');
+                await validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
                 const existingCanvas = document.querySelectorAll('canvas');
                 existingCanvas.forEach(canvas => canvas.remove());
                 // Yeni oyun başlat
                 document.querySelector(".topCenter").innerHTML = `${pairs_global[1]} Won`;
-                validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
-                locateFinalUsers(pairs_global[1]);
                 returnStartStation();
+                locateFinalUsers(pairs_global[1]);
                 startGame(true, true, pairs_global);
                 cancelAnimationFrame(animationFrameId);
                 console.log('2.MAÇ BİTTİ ve finalArray:', finalArray);
@@ -661,13 +661,13 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
             } else {
                 // Yeni oyun için canvas oluştur ve kapsayıcıya ekle
                 const newCanvas = document.createElement('canvas');
+                await validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
                 const existingCanvas = document.querySelectorAll('canvas');
                 existingCanvas.forEach(canvas => canvas.remove());
                 // Yeni oyun başlat
                 document.querySelector(".topCenter").innerHTML = `${pairs_global[0]} Won`;
-                validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
-                locateFinalUsers(pairs_global[0]);
                 returnStartStation();
+                locateFinalUsers(pairs_global[0]);
                 startGame(true, true, pairs_global);
                 cancelAnimationFrame(animationFrameId);
                 console.log('2.MAÇ BİTTİ ve finalArray:', finalArray);
@@ -683,13 +683,13 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
                 // burda artık finalArrayı gönderelim o ikisi maç yapsın
 
                 //returnStartStation();
-                validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
+                await validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
                 //startGame(true, false, pairs_global);
                 console.log('3.maç sonrası pairs global:', pairs_global[0], pairs_global[1]);
-                alert('Turnuva bitti ŞAMPİYON: ' + finalArray[1]);
                 //burda buraya özel save isteği atılacak
                 showAlert();
                 cancelAnimationFrame(animationFrameId);
+                alert('Turnuva bitti ŞAMPİYON: ' + finalArray[1]);
                 finalArray = [];
                 pairs_global = [];
                 returnStartStation();
@@ -699,14 +699,13 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
                 existingCanvas.forEach(canvas => canvas.remove());
                 //locateFinalUsers(pairs_global[0]);
                 // burda artık finalArrayı gönderelim o ikisi maç yapsın
-                validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
-                returnStartStation();
+                await validateAndSaveGameResultForTournament(scoreOpposite,scoreSelf);
                 //startGame(true, false, pairs_global);
                 console.log('3.maç sonrası pairs global:', pairs_global[0], pairs_global[1]);
-                alert('Turnuva bitti ŞAMPİYON: ' + finalArray[0]);
                 //burda buraya özel save isteği atılacak
                 showAlert();
                 cancelAnimationFrame(animationFrameId);
+                alert('Turnuva bitti ŞAMPİYON: ' + finalArray[0]);
                 finalArray = [];
                 pairs_global = [];
                 returnStartStation();
@@ -832,11 +831,11 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
     animate();
 }
 
-function handleGameResult(scoreSelf, scoreOpposite, oppositeName, againstAnotherPlayer) {
+async function handleGameResult(scoreSelf, scoreOpposite, oppositeName, againstAnotherPlayer) {
     if (againstAnotherPlayer) {
         console.log('IJ GUCLERIM22222', scoreSelf, scoreOpposite, oppositeName);
         try {
-            const isValid = checkUsernameFunc(scoreSelf, scoreOpposite, oppositeName);
+            const isValid = await checkUsernameFunc(scoreSelf, scoreOpposite, oppositeName);
             console.log('IJJJ GUCLEERRR 333333:', scoreSelf, scoreOpposite, oppositeName);
             console.log('isValid:', isValid);
             if (isValid === true) {
@@ -850,13 +849,13 @@ function handleGameResult(scoreSelf, scoreOpposite, oppositeName, againstAnother
 
 }
 
-function checkUsernameFunc(scoreSelf, scoreOpposite, oppositeName) {
+async function checkUsernameFunc(scoreSelf, scoreOpposite, oppositeName) {
     console.log('Inside checkUsernameFunc:', scoreSelf, scoreOpposite, oppositeName);
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
     const storedUserId = JSON.parse(localStorage.getItem('user'));
 
     try {
-        const response = fetch(`http://127.0.0.1:8007/users/check_username/?username=${oppositeName}`, {
+        const response = await fetch(`http://127.0.0.1:8007/users/check_username/?username=${oppositeName}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -864,7 +863,11 @@ function checkUsernameFunc(scoreSelf, scoreOpposite, oppositeName) {
                 'id': storedUserId.id
             }
         });
-        return true;
+        if (response.status === 200) {
+            return true;
+        }
+        else
+            return false;
     } catch (error) {
         console.error('Error occurred:', error);
         return false;
@@ -872,64 +875,67 @@ function checkUsernameFunc(scoreSelf, scoreOpposite, oppositeName) {
 }
 
 
-function checkUsernameforTournament(username) {
-    console.log('Inside checkUsername:', username);
+async function checkUsernameforTournament(username) {
+    console.log('Inside checkUsername:forTournament', username);
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
     const storedUserId = JSON.parse(localStorage.getItem('user'));
 
-    return fetch(`http://127.0.0.1:8007/users/check_username/?username=${username}`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-            'id': storedUserId.id
-        }
-    })
-    .then(response => {
+    try {
+        const response = await fetch(`http://127.0.0.1:8007/users/check_username/?username=${username}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+                'id': storedUserId.id
+            }
+        });
+
         if (response.status === 200) {
-            return true;  // Username check success
+            return true;
         } else {
             console.log('Username check failed with status:', response.status);
-            return false;  // Username check failed
+            return false;
         }
-    })
-    .catch(error => {
+    } catch (error) {
         console.error('Error occurred:', error);
-        return false;  // Handle error
-    });
+        return false;
+    }
 }
 
 
 
+
 async function validateAndSaveGameResultForTournament(scoreOpposite, scoreSelf) {
-    let isUsername1Valid, isUsername2Valid;
+    
 
     // Final array kontrolü
     if(finalArray.length != 2) {
-        isUsername1Valid = await checkUsernameforTournament(pairs_global[1]);
-        isUsername2Valid = await checkUsernameforTournament(pairs_global[0]);
+        const isUsername1Valid = await checkUsernameforTournament(pairs_global[1]);
+        const isUsername2Valid = await checkUsernameforTournament(pairs_global[0]);
     
-        console.log('isUsername1 ve isUsername2', isUsername1Valid, isUsername2Valid);
+        console.log('validataansdavegameresultfortournamentisUsername1 ve isUsername2', isUsername1Valid, isUsername2Valid);
         console.log('Validate\'e geldik Inside validateAndSaveGameResult: scoreopposite, scoreself, pairs1, pairs0 isvalidusername1(1), isvalidusername2(0)', scoreOpposite, scoreSelf, pairs_global[1], pairs_global[0], isUsername1Valid, isUsername2Valid);
     
-        if (isUsername1Valid && isUsername2Valid) {
-            await saveGameResultforTournament(scoreOpposite, scoreSelf, pairs_global[1], pairs_global[0]);
+        if (isUsername1Valid  === true && isUsername2Valid === true) {
+            console.log('if e girdik kayıta gidiyoruz');
+         saveGameResultforTournament(scoreOpposite, scoreSelf, pairs_global[1], pairs_global[0]);
         }
     } else {
-        isUsername1Valid = await checkUsernameforTournament(finalArray[1]);
-        isUsername2Valid = await checkUsernameforTournament(finalArray[0]);
+        const isUsername1Valid = await checkUsernameforTournament(finalArray[1]);
+        const isUsername2Valid = await checkUsernameforTournament(finalArray[0]);
     
-        console.log('isUsername1 ve isUsername2', isUsername1Valid, isUsername2Valid);
-        console.log('Validate\'e geldik Inside validateAndSaveGameResult: scoreopposite, scoreself, final1, final0 isvalidusername1(1), isvalidusername2(0)', scoreOpposite, scoreSelf, finalArray[1], finalArray[0], isUsername1Valid, isUsername2Valid);
+        console.log('FİNAL validataansdavegameresultfortournamentisUsername1 ve isUsername2', isUsername1Valid, isUsername2Valid);
+        console.log('FİNAL Validate\'e geldik Inside validateAndSaveGameResult: scoreopposite, scoreself, final1, final0 isvalidusername1(1), isvalidusername2(0)', scoreOpposite, scoreSelf, finalArray[1], finalArray[0], isUsername1Valid, isUsername2Valid);
     
-        if (isUsername1Valid && isUsername2Valid) {
-            await saveGameResultforTournament(scoreOpposite, scoreSelf, finalArray[1], finalArray[0]);
+        if (isUsername1Valid === true && isUsername2Valid === true) {
+            console.log('FİNAL if e girdik kayıta gidiyoruz');
+         saveGameResultforTournament(scoreOpposite, scoreSelf, finalArray[1], finalArray[0]);
         }
     }
 }
 
 
-async function saveGameResult(playerOneScore, playerTwoScore, userName) {
+function saveGameResult(playerOneScore, playerTwoScore, userName) {
     console.log('Inside saveGameResult:', playerOneScore, playerTwoScore, userName);
 
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
@@ -959,7 +965,7 @@ async function saveGameResult(playerOneScore, playerTwoScore, userName) {
         });
 }
 
-async function saveGameResultforTournament(playerOneScore, playerTwoScore, playerOneUsername, playerTwoUsername) {
+function saveGameResultforTournament(playerOneScore, playerTwoScore, playerOneUsername, playerTwoUsername) {
     console.log('Inside saveMatchResult:', playerOneScore, playerTwoScore, playerOneUsername, playerTwoUsername);
 
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
@@ -972,34 +978,22 @@ async function saveGameResultforTournament(playerOneScore, playerTwoScore, playe
         user_two_name: playerTwoUsername
     };
 
-    try {
-        const response = await fetch('http://127.0.0.1:8007/game/save/', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'id': storedUserId.id,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        response.then(res => {
-            if (res.ok) {
-                console.log('Request successful');
-                return true;
-            } else {
-                console.error('Error occurred:', res.statusText);
-                return false;
-            }
-        }).catch(error => {
-            console.error('Error occurred:', error);
-            return false;
-        });
-    } catch (error) {
+    return fetch('http://127.0.0.1:8007/game/save/', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'id': storedUserId.id,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.ok ? true : false)  // If response is ok, return true, otherwise false
+    .catch(error => {
         console.error('Error occurred:', error);
         return false;
-    }
+    });
 }
+
 
 export function locateFinalUsers(winner) {
     finalArray.push(winner);
