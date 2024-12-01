@@ -105,6 +105,15 @@ export function startGame(againstAnotherPlayer = true, tournamentMode = false) {
             oppositeName = finalArray[1];
         } else {
             oppositeName = prompt("Lütfen 'Opposite' için bir isim girin:");
+            if (oppositeName == null)
+            {
+                loadPage('profile');
+                return;
+            }
+            while(oppositeName == "")
+            {
+                oppositeName = prompt("Lütfen 'Opposite' için bir isim girin:");
+            }
             document.querySelector('.topLeft').innerHTML = "Self : <i class=\"self\"></i>";
             document.querySelector('.topRight').innerHTML = `${oppositeName} : <i class=\"opposite\"></i>`;
         }
@@ -134,7 +143,7 @@ export function startGame(againstAnotherPlayer = true, tournamentMode = false) {
             }
             if (a == "")
             {
-                console.log("BURAYA GİRMEYENin ANASINI SİEKM");
+                console.log("BURAYA GİRMEYEN OE");
                 i--;
             }
             else if (a != null || a != "")
@@ -552,7 +561,7 @@ export function startGame(againstAnotherPlayer = true, tournamentMode = false) {
     scene.add(starField);
 
     // 17. Animasyon Döngüsü
-    const speed = 3.4;
+    const speed = 0.6;
 
 
     let animationFrameId;
