@@ -122,6 +122,10 @@ export async function addFriend() {
     const user = JSON.parse(localStorage.getItem('user'));
     const userId = user.id;
     const friendName = document.getElementById('friend-username').value;
+    if(friendName === user.username){
+        alert('Kendini arkadaş olarak ekleyemezsin!!!!!.');
+        return;
+    }
     // Kullanıcı adı kontrolü
     const checkUsernameUrl = `http://localhost:8007/users/check_username/?username=${friendName}`;
     let friendId = null;
