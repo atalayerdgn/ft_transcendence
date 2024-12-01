@@ -127,13 +127,18 @@ export async function startGame(againstAnotherPlayer = true, tournamentMode = fa
         let users = [];
         for (let i = 0; i < 3; i++) {
             a = prompt("Lütfen kullanıcı adını girin:");
-
-            // if (!await isUsersValid(i)) {
-            //     alert("Lütfen geçerli kullanıcılar girin.");
-            //     return;
-            // }
-            // else
-            users.push(a);
+            if (a == null)
+            {
+                loadPage('profile');
+                return;
+            }
+            if (a == "")
+            {
+                console.log("BURAYA GİRMEYENin ANASINI SİEKM");
+                i--;
+            }
+            else if (a != null || a != "")
+                users.push(a);
         }
         tournamentView(users, Name_1);
         displayTournament(pairs_global);
@@ -872,44 +877,57 @@ function checkUsernameforTournament(username) {
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
     const storedUserId = JSON.parse(localStorage.getItem('user'));
 
-    try {
-        const response = fetch(`http://127.0.0.1:8007/users/check_username/?username=${username}`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-                'id': storedUserId.id
-            }
-        });
-        return true;
-    } catch (error) {
+    return fetch(`http://127.0.0.1:8007/users/check_username/?username=${username}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'id': storedUserId.id
+        }
+    })
+    .then(response => {
+        if (response.status === 200) {
+            return true;  // Username check success
+        } else {
+            console.log('Username check failed with status:', response.status);
+            return false;  // Username check failed
+        }
+    })
+    .catch(error => {
         console.error('Error occurred:', error);
-        return false;
+        return false;  // Handle error
+    });
+}
+
+
+
+async function validateAndSaveGameResultForTournament(scoreOpposite, scoreSelf) {
+    let isUsername1Valid, isUsername2Valid;
+
+    // Final array kontrolü
+    if(finalArray.length != 2) {
+        isUsername1Valid = await checkUsernameforTournament(pairs_global[1]);
+        isUsername2Valid = await checkUsernameforTournament(pairs_global[0]);
+    
+        console.log('isUsername1 ve isUsername2', isUsername1Valid, isUsername2Valid);
+        console.log('Validate\'e geldik Inside validateAndSaveGameResult: scoreopposite, scoreself, pairs1, pairs0 isvalidusername1(1), isvalidusername2(0)', scoreOpposite, scoreSelf, pairs_global[1], pairs_global[0], isUsername1Valid, isUsername2Valid);
+    
+        if (isUsername1Valid && isUsername2Valid) {
+            await saveGameResultforTournament(scoreOpposite, scoreSelf, pairs_global[1], pairs_global[0]);
+        }
+    } else {
+        isUsername1Valid = await checkUsernameforTournament(finalArray[1]);
+        isUsername2Valid = await checkUsernameforTournament(finalArray[0]);
+    
+        console.log('isUsername1 ve isUsername2', isUsername1Valid, isUsername2Valid);
+        console.log('Validate\'e geldik Inside validateAndSaveGameResult: scoreopposite, scoreself, final1, final0 isvalidusername1(1), isvalidusername2(0)', scoreOpposite, scoreSelf, finalArray[1], finalArray[0], isUsername1Valid, isUsername2Valid);
+    
+        if (isUsername1Valid && isUsername2Valid) {
+            await saveGameResultforTournament(scoreOpposite, scoreSelf, finalArray[1], finalArray[0]);
+        }
     }
 }
 
-function validateAndSaveGameResultForTournament(scoreOpposite, scoreSelf) {
-    if(finalArray.length != 2) {
-        const isUsername1Valid = checkUsernameforTournament(pairs_global[1]);
-        const isUsername2Valid = checkUsernameforTournament(pairs_global[0]);
-    
-        console.log('Validate\'e geldik Inside validateAndSaveGameResult: scoreopposite, scoreself,paris1, pairs0 isvalidusername1(1),isvalidusername2(0)', scoreOpposite, scoreSelf, pairs_global[1], pairs_global[0], isUsername1Valid, isUsername2Valid);
-    
-        if (isUsername1Valid === true && isUsername2Valid === true) {
-            saveGameResultforTournament(scoreOpposite, scoreSelf, pairs_global[1], pairs_global[0]);
-        }
-    }
-    else {
-        const isUsername1Valid = checkUsernameforTournament(finalArray[1]);
-        const isUsername2Valid = checkUsernameforTournament(finalArray[0]);
-    
-        console.log('Validate\'e geldik Inside validateAndSaveGameResult: scoreopposite, scoreself,final1, final0 isvalidusername1(1),isvalidusername2(0)', scoreOpposite, scoreSelf, finalArray[1], finalArray[0], isUsername1Valid, isUsername2Valid);
-    
-        if (isUsername1Valid === true && isUsername2Valid === true) {
-            saveGameResultforTournament(scoreOpposite, scoreSelf, finalArray[1], finalArray[0]);
-        }
-    }
-}
 
 async function saveGameResult(playerOneScore, playerTwoScore, userName) {
     console.log('Inside saveGameResult:', playerOneScore, playerTwoScore, userName);
@@ -941,7 +959,7 @@ async function saveGameResult(playerOneScore, playerTwoScore, userName) {
         });
 }
 
-function saveGameResultforTournament(playerOneScore, playerTwoScore, playerOneUsername, playerTwoUsername) {
+async function saveGameResultforTournament(playerOneScore, playerTwoScore, playerOneUsername, playerTwoUsername) {
     console.log('Inside saveMatchResult:', playerOneScore, playerTwoScore, playerOneUsername, playerTwoUsername);
 
     const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
@@ -955,7 +973,7 @@ function saveGameResultforTournament(playerOneScore, playerTwoScore, playerOneUs
     };
 
     try {
-        const response = fetch('http://127.0.0.1:8007/game/save/', {
+        const response = await fetch('http://127.0.0.1:8007/game/save/', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

@@ -308,7 +308,6 @@ class UserManagementHandler(viewsets.ViewSet):
                     {'id': str(user.id)}, 
                     status=status.HTTP_200_OK
                 )
-            
             return Response(
                 {'error': 'User not found'}, 
                 status=status.HTTP_404_NOT_FOUND
