@@ -16050,3 +16050,845 @@ Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
 ************************************
 Forwarding request to: http://usermanagementc:8000/users/beonline/
 Request successful: http://usermanagementc:8000/users/beonline/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/check_username/
+Request successful: http://usermanagementc:8000/users/check_username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/check_username/
+Request successful: http://usermanagementc:8000/users/check_username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/save/
+Request successful: http://game_service:8001/game/save/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/logout/
+Request successful: http://usermanagementc:8000/users/logout/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+Request successful: http://usermanagementc:8000/users/beonline/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NDMwNn0.4Y9goMPEbxYQzE2araI58OTkAjf_HI7c8-Nc0uuXGSQ
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'is_2fa_validated': False, 'exp': 1733164306}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDU1fQ.Mft2iMJOfXuYo2Mh2x-uCUilQUOvL4V8baWOrYhHn_0
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165055}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDU1fQ.Mft2iMJOfXuYo2Mh2x-uCUilQUOvL4V8baWOrYhHn_0
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165055}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDU1fQ.Mft2iMJOfXuYo2Mh2x-uCUilQUOvL4V8baWOrYhHn_0
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165055}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDU1fQ.Mft2iMJOfXuYo2Mh2x-uCUilQUOvL4V8baWOrYhHn_0
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165055}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDU1fQ.Mft2iMJOfXuYo2Mh2x-uCUilQUOvL4V8baWOrYhHn_0
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165055}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDU1fQ.Mft2iMJOfXuYo2Mh2x-uCUilQUOvL4V8baWOrYhHn_0
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165055}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/update/
+Request successful: http://usermanagementc:8000/users/update/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/logout/
+Request successful: http://usermanagementc:8000/users/logout/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+Request successful: http://usermanagementc:8000/users/beonline/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/logout/
+Request successful: http://usermanagementc:8000/users/logout/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiYzNkMGNjZWQtZGZiOS00MmYzLWE4YzYtYTI2NjlhZjUxM2ZkIiwiZXhwIjoxNzMzMTY1MDc4fQ.2Kfu9oxg1uysOLToaT-T74TAvyMIAe9R-HMIgYaBeMo
+Decoded Token: {'username': 'icelebi', 'user_id': 'c3d0cced-dfb9-42f3-a8c6-a2669af513fd', 'exp': 1733165078}
+********** Token is valid **********
+Token is valid for user_id: c3d0cced-dfb9-42f3-a8c6-a2669af513fd
+************************************
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+Request successful: http://usermanagementc:8000/users/beonline/
+Forwarding request to: http://usermanagementc:8000/users/oauth_callback/
+Request successful: http://usermanagementc:8000/users/oauth_callback/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+Request successful: http://usermanagementc:8000/users/beonline/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://usermanagementc:8000/users/username/
+Request successful: http://usermanagementc:8000/users/username/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://usermanagementc:8000/users/list/
+Request successful: http://usermanagementc:8000/users/list/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://friend_service:8002/friend/friend-list/
+Request successful: http://friend_service:8002/friend/friend-list/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://game_service:8001/game/list/
+Request successful: http://game_service:8001/game/list/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://usermanagementc:8000/users/beonline/
+Request successful: http://usermanagementc:8000/users/beonline/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://usermanagementc:8000/users/logout/
+Request successful: http://usermanagementc:8000/users/logout/
+User-ID: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImljZWxlYmkiLCJ1c2VyX2lkIjoiZDJhZGJiM2YtMDU0OS00Y2NiLTgyYTUtZjM2YWUxY2Q1YmExIiwiaXNfMmZhX3ZhbGlkYXRlZCI6ZmFsc2UsImV4cCI6MTczMzE2NjkwMH0.FMfMT6eZiZ6SDbJQqNemdqr7jOW4q2gAgeA4QooUScs
+Decoded Token: {'username': 'icelebi', 'user_id': 'd2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1', 'is_2fa_validated': False, 'exp': 1733166900}
+********** Token is valid **********
+Token is valid for user_id: d2adbb3f-0549-4ccb-82a5-f36ae1cd5ba1
+************************************
+Forwarding request to: http://usermanagementc:8000/users/logout/
+Request successful: http://usermanagementc:8000/users/logout/

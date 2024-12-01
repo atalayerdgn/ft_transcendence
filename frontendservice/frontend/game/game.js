@@ -203,13 +203,13 @@ export function startGame(againstAnotherPlayer = true, tournamentMode = false) {
 
     const edges = [
         {start: new THREE.Vector3(-40, -2, -20), end: new THREE.Vector3(40, -2, -20)}, // Alt kenar
-        {start: new THREE.Vector3(40, -2, -20), end: new THREE.Vector3(40, -2, 20)},  // Sağ kenar
-        {start: new THREE.Vector3(40, -2, 20), end: new THREE.Vector3(-40, -2, 20)},  // Üst kenar
-        {start: new THREE.Vector3(-40, -2, 20), end: new THREE.Vector3(-40, -2, -20)}, // Sol kenar
-        {start: new THREE.Vector3(-40, -2, -20), end: new THREE.Vector3(-40, 5, -20)}, // Sol dikey kenar
-        {start: new THREE.Vector3(40, -2, -20), end: new THREE.Vector3(40, 5, -20)},  // Sağ dikey kenar
-        {start: new THREE.Vector3(40, -2, 20), end: new THREE.Vector3(40, 5, 20)},   // Sağ dikey kenar
-        {start: new THREE.Vector3(-40, -2, 20), end: new THREE.Vector3(-40, 5, 20)},  // Sol dikey kenar
+        {start: new THREE.Vector3(40, -2, -20), end: new THREE.Vector3(40, -2, 20)},  // Alt kenar
+        {start: new THREE.Vector3(40, -2, 20), end: new THREE.Vector3(-40, -2, 20)},  // Alt kenar
+        {start: new THREE.Vector3(-40, -2, 20), end: new THREE.Vector3(-40, -2, -20)}, // Alt kenar
+        {start: new THREE.Vector3(-40, -2, -20), end: new THREE.Vector3(-40, 5, -20)}, // Dikey kenar
+        {start: new THREE.Vector3(40, -2, -20), end: new THREE.Vector3(40, 5, -20)},  // Dikey kenar
+        {start: new THREE.Vector3(40, -2, 20), end: new THREE.Vector3(40, 5, 20)},   // Dikey kenar
+        {start: new THREE.Vector3(-40, -2, 20), end: new THREE.Vector3(-40, 5, 20)},  // Dikey kenar
         {start: new THREE.Vector3(-40, 5, -20), end: new THREE.Vector3(40, 2, -20)},  // Üst kenar
         {start: new THREE.Vector3(40, 5, -20), end: new THREE.Vector3(40, 2, 20)},   // Üst kenar
         {start: new THREE.Vector3(40, 5, 20), end: new THREE.Vector3(-40, 2, 20)},   // Üst kenar
