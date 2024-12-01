@@ -98,25 +98,18 @@ export function startGame(againstAnotherPlayer = true, tournamentMode = false) {
     let Name_1 = "";
     let a;
       if (againstAnotherPlayer == true && tournamentMode == false) {
-        if (finalArray.length == 2) {
-            console.log('true false kısmındayız veeeeeeeee:', finalArray);
-            document.querySelector('.topLeft').innerHTML = `${finalArray[0]} : <i class="self"></i>`;
-            document.querySelector('.topRight').innerHTML = `${finalArray[1]} : <i class="opposite"></i>`;
-            oppositeName = finalArray[1];
-        } else {
-            oppositeName = prompt("Lütfen 'Opposite' için bir isim girin:");
-            if (oppositeName == null)
-            {
-                loadPage('profile');
-                return;
-            }
-            while(oppositeName == "")
-            {
-                oppositeName = prompt("Lütfen 'Opposite' için bir isim girin:");
-            }
-            document.querySelector('.topLeft').innerHTML = "Self : <i class=\"self\"></i>";
-            document.querySelector('.topRight').innerHTML = `${oppositeName} : <i class=\"opposite\"></i>`;
+        oppositeName = prompt("Lütfen 'Opposite' için bir isim girin:");
+        if (oppositeName == null)
+        {
+            loadPage('profile');
+            return;
         }
+        while(oppositeName == "")
+        {
+            oppositeName = prompt("Lütfen 'Opposite' için bir isim girin:");
+        }
+        document.querySelector('.topLeft').innerHTML = "Self : <i class=\"self\"></i>";
+        document.querySelector('.topRight').innerHTML = `${oppositeName} : <i class=\"opposite\"></i>`;
     } else if (tournamentMode == true && againstAnotherPlayer == true) {
         // Tournament modunda maçları yönet
         if (pairs_global.length >= 2) {
