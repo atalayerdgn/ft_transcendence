@@ -554,11 +554,13 @@ export function startGame(againstAnotherPlayer = true, tournamentMode = false) {
 
     let animationFrameId;
 
+    const clock = new THREE.Clock();
+
     function animate() {
         animationFrameId = requestAnimationFrame(animate);
 
         // Küreyi hareket ettir
-
+        rainbowMaterial.uniforms.time.value = 5 * clock.getElapsedTime();
         if (isStart) {
             document.querySelector('.self').innerHTML = scoreSelf;
             document.querySelector('.opposite').innerHTML = scoreOpposite;
