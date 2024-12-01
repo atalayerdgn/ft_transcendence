@@ -176,11 +176,9 @@ export function startGame(againstAnotherPlayer = true, tournamentMode = false) {
     // Malzemeleri oluşturun ve renklerini ayarlayın
     const platformMaterialLeft = new THREE.MeshStandardMaterial({
         color: 0x00FF00, // Yeşil renk
-        transparent: true, // Şeffaflık aktif
     });
     const platformMaterialRight = new THREE.MeshStandardMaterial({
         color: 0x00BFFF, // Mavi renk
-        transparent: true, // Şeffaflık aktif
     });
 
     // İki ayrı mesh oluşturun
@@ -472,9 +470,6 @@ export function startGame(againstAnotherPlayer = true, tournamentMode = false) {
         scoreOpposite = 0;
         document.querySelector('.self').innerHTML = "score";
         document.querySelector('.opposite').innerHTML = "score";
-        return;
-        //const denemeuchiman = document.querySelector(".startAgaintsAnotherPlayerGame");
-        //denemeuchiman.removeEventListener("click", startGameWithPlayer);
     }
 
     returnStartStation();
@@ -770,13 +765,13 @@ export function startGame(againstAnotherPlayer = true, tournamentMode = false) {
                 sphereVector.z = Math.cos(angle);
                 if (++scoreOpposite == 10) {
                     if (tournamentMode === true && againstAnotherPlayer === true && finalArray.length === 0) {
-                        startFirstGame(1)
+                        startFirstGame(1);
                         return;
                     } else if (tournamentMode == true && againstAnotherPlayer == true && finalArray.length == 1) {
-                        startSecondGame(1)
+                        startSecondGame(1);
                         return;
                     } else if (tournamentMode === true && againstAnotherPlayer === true && finalArray.length === 2) {
-                        startThirdGame(1)
+                        startThirdGame(1);
                         return;
                     } else {
                         document.querySelector(".topCenter").innerHTML = `${oppositeName} Won`;
