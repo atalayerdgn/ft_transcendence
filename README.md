@@ -1,4 +1,5 @@
 # **Ft_transcendence**
+'''
 
 **ft_transcendence** is a modern project that reimagines the classic Pong game with a focus on scalability, security, and advanced gameplay features. By leveraging microservices architecture and modern web technologies, we have created a robust and dynamic platform that goes beyond the traditional Pong experience.
 
@@ -63,7 +64,6 @@ The project is organized into several **major** and **minor** modules, each cont
   The game leverages **Three.js/WebGL** to implement advanced 3D graphics.  
   This creates a **visually immersive** and engaging gaming experience, elevating the classic Pong gameplay.
 
----
 
 ### **5. Accessibility Modules**
 
@@ -77,6 +77,7 @@ The project is organized into several **major** and **minor** modules, each cont
 ####
 These modules collectively deliver a **secure**, **scalable**, **visually stunning**, and **user-friendly** enhancement of the classic Pong game. The project sets a strong foundation for future enhancements and innovations while showcasing modern development techniques and architectures.
 
+'''
 
 # **Ft_transcendence - Setup Instructions**
 
