@@ -40,55 +40,40 @@ The project is organized into several **major** and **minor** modules, each cont
 ### **2. User Management Modules**
 
 - **Major Module: Standard User Management and Authentication**  
-  Features secure user registration, login, and profile management. Users can:  
-  - Set unique display names.  
-  - Upload avatars.  
-  - View match history.  
-  - Add friends and track their online status.  
+  Secure **user** registration, login, and social features like friends and match history. 
 
 - **Major Module: Implement Two-Factor Authentication (2FA) and JWT**  
-  Implements **2FA** for added security, allowing users to verify their identity using a secondary method like email or an authenticator app.  
-  **JSON Web Tokens (JWT)** are used to manage secure authentication and session validation.
+  Implement **2FA** for security and **JWT** for session management.
 
 ---
 
 ### **3. DevOps Modules**
 
 - **Major Module: Designing the Backend as Microservices**  
-  The backend is designed using a **microservices architecture**. Each service handles a specific functionality, promoting:  
-  - Modularity  
-  - Scalability  
-  - Independent deployment  
-  Services communicate seamlessly via **RESTful APIs**.
+  Modular design using **microservices**, promoting scalability and independent deployment. 
 
 ---
 
 ### **4. Graphics Modules**
 
 - **Major Module: Implementing Advanced 3D Techniques**  
-  The game leverages **Three.js/WebGL** to implement advanced 3D graphics.  
-  This creates a **visually immersive** and engaging gaming experience, elevating the classic Pong gameplay.
+  Using **Three.js/WebGL** for an immersive, visually engaging gaming experience.
 
 ---
 
 ### **5. Accessibility Modules**
 
 - **Minor Module: Support on All Devices**  
-  The platform is fully responsive, ensuring compatibility across desktops, tablets, and smartphones. It provides:  
-  - Consistent user experiences.  
-  - Adaptation to various screen sizes and orientations.  
-  - Support for touch, mouse, and keyboard inputs.
+  Fully **responsive** design for desktops, tablets, and smartphones, supporting touch, mouse, and keyboard.
 
 ---
 
 ####
-These modules collectively deliver a **secure**, **scalable**, **visually stunning**, and **user-friendly** enhancement of the classic Pong game. The project sets a strong foundation for future enhancements and innovations while showcasing modern development techniques and architectures.
+These modules provide a secure, scalable, and visually engaging Pong experience, laying the foundation for future enhancements and innovations.
 
 ---
 
 # **Ft_transcendence - Setup Instructions**
-
-### Follow the steps below to set up and run the project locally.
 
 ## **Requirements:**
 
