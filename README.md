@@ -2,7 +2,6 @@
 
 **ft_transcendence** is a modern project that reimagines the classic Pong game with a focus on scalability, security, and advanced gameplay features. By leveraging microservices architecture and modern web technologies, we have created a robust and dynamic platform that goes beyond the traditional Pong experience.
 
----
 
 ## **Project Overview**
 
@@ -16,13 +15,11 @@ To enhance user security, we added **Two-Factor Authentication (2FA)** and **SMT
 
 This project combines **scalability**, **security**, and **dynamic features** to deliver a robust and innovative platform.
 
----
 
 ## **Modules Overview**
 
 The project is organized into several **major** and **minor** modules, each contributing to a specific aspect of functionality, architecture, or usability. Below is a detailed summary:
 
----
 
 ### **1. Web Modules**
 
@@ -35,7 +32,6 @@ The project is organized into several **major** and **minor** modules, each cont
 - **Minor Module: Use a Database for the Backend**  
   **PostgreSQL** is utilized as the backend database to ensure data consistency, high performance, and seamless integration with the system's components.
 
----
 
 ### **2. User Management Modules**
 
@@ -50,7 +46,6 @@ The project is organized into several **major** and **minor** modules, each cont
   Implements **2FA** for added security, allowing users to verify their identity using a secondary method like email or an authenticator app.  
   **JSON Web Tokens (JWT)** are used to manage secure authentication and session validation.
 
----
 
 ### **3. DevOps Modules**
 
@@ -61,7 +56,6 @@ The project is organized into several **major** and **minor** modules, each cont
   - Independent deployment  
   Services communicate seamlessly via **RESTful APIs**.
 
----
 
 ### **4. Graphics Modules**
 
@@ -79,12 +73,10 @@ The project is organized into several **major** and **minor** modules, each cont
   - Adaptation to various screen sizes and orientations.  
   - Support for touch, mouse, and keyboard inputs.
 
----
 
 ####
 These modules collectively deliver a **secure**, **scalable**, **visually stunning**, and **user-friendly** enhancement of the classic Pong game. The project sets a strong foundation for future enhancements and innovations while showcasing modern development techniques and architectures.
 
----
 
 # **Ft_transcendence - Setup Instructions**
 
