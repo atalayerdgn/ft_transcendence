@@ -37,7 +37,7 @@ The project is organized into several **major** and **minor** modules, each cont
 
 ---
 
-### **2. User Management Modules**
+### **2. User Management and Security Modules**
 
 - **Major Module: Standard User Management and Authentication**  
   Secure **user** registration, login, and social features like friends and match history. 
@@ -45,6 +45,8 @@ The project is organized into several **major** and **minor** modules, each cont
 - **Major Module: Implement Two-Factor Authentication (2FA) and JWT**  
   Implement **2FA** for security and **JWT** for session management.
 
+- **Major: Remote Authentication**
+  Implements OAuth 2.0 with 42 authentication for secure login and token management.
 ---
 
 ### **3. DevOps Modules**
