@@ -83,3 +83,47 @@ The project is organized into several **major** and **minor** modules, each cont
 
 ####
 These modules collectively deliver a **secure**, **scalable**, **visually stunning**, and **user-friendly** enhancement of the classic Pong game. The project sets a strong foundation for future enhancements and innovations while showcasing modern development techniques and architectures.
+
+
+
+# **Ft_transcendence - Setup Instructions**
+
+### Follow the steps below to set up and run the project locally.
+
+## **Requirements:**
+
+Before you begin, ensure that you have the following tools installed:
+
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+
+## **Steps:**
+
+### 1. Clone the Repository
+
+Clone the repository to your local machine:
+
+    git clone https://github.com/Uchimann/ft_transcendence.git
+
+### 2. Navigate to the Project Directory
+
+Change to the project directory:
+
+    cd ft_transcendence
+
+### 3. Set Up Environment Variables
+
+Configure the necessary environment variables
+
+### 4. Build the Docker Containers
+
+Use Docker Compose to build and start the project:
+
+    docker-compose up --build
+
+### 5. Access the Application
+
+Once the build is complete, open your browser and go to the following address:
+
+    https://localhost:8008
+
