@@ -126,7 +126,3 @@ Use Docker Compose to build and start the project:
 Once the build is complete, open your browser and go to the following address:
 
     https://localhost:8008
-
-
-
-Bu proje için github readmesi yeterli midir sıralaması düzgün müdür türıçe olaarak cevapla
