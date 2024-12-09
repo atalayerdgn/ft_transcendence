@@ -84,7 +84,7 @@ The project is organized into several **major** and **minor** modules, each cont
 ####
 These modules collectively deliver a **secure**, **scalable**, **visually stunning**, and **user-friendly** enhancement of the classic Pong game. The project sets a strong foundation for future enhancements and innovations while showcasing modern development techniques and architectures.
 
-
+---
 
 # **Ft_transcendence - Setup Instructions**
 
