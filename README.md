@@ -3,8 +3,6 @@
 **ft_transcendence** is a modern project that reimagines the classic Pong game with a focus on scalability, security, and advanced gameplay features. By leveraging microservices architecture and modern web technologies, we have created a robust and dynamic platform that goes beyond the traditional Pong experience.
 
 
-https://github.com/user-attachments/assets/b75f45d3-2771-4cd7-acd0-a00569e0121c
-
 
 ---
 
