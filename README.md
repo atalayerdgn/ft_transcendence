@@ -1,11 +1,10 @@
 # **Ft_transcendence**
----
 
 **ft_transcendence** is a modern project that reimagines the classic Pong game with a focus on scalability, security, and advanced gameplay features. By leveraging microservices architecture and modern web technologies, we have created a robust and dynamic platform that goes beyond the traditional Pong experience.
 
 
 ## **Project Overview**
-
+---
 This project focuses on creating a modern and secure platform using advanced technologies and design principles. We built a REST API with the **Django framework**, following **Clean** and **Onion Architecture** to ensure a maintainable and scalable structure.
 
 We explored **microservices** to divide the system into smaller, independent components and used **Docker** for easy deployment. An **API Gateway** was implemented to route requests to the correct services, while **middleware** ensures security by validating **JWT tokens**.
@@ -18,7 +17,7 @@ This project combines **scalability**, **security**, and **dynamic features** to
 
 
 ## **Modules Overview**
-
+---
 The project is organized into several **major** and **minor** modules, each contributing to a specific aspect of functionality, architecture, or usability. Below is a detailed summary:
 
 
