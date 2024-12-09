@@ -46,7 +46,6 @@ The project is organized into several **major** and **minor** modules, each cont
   Implement **2FA** for security and **JWT** for session management.
 
 - **Major: Remote Authentication**
-  
   Implements OAuth 2.0 with 42 authentication for secure login and token management.
 ---
 
