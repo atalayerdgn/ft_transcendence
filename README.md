@@ -16,6 +16,8 @@ To enhance user security, we added **Two-Factor Authentication (2FA)** and **SMT
 
 This project combines **scalability**, **security**, and **dynamic features** to deliver a robust and innovative platform.
 
+---
+
 ## **Modules Overview**
 
 The project is organized into several **major** and **minor** modules, each contributing to a specific aspect of functionality, architecture, or usability. Below is a detailed summary:
@@ -77,9 +79,7 @@ The project is organized into several **major** and **minor** modules, each cont
   - Adaptation to various screen sizes and orientations.  
   - Support for touch, mouse, and keyboard inputs.
 
-
 ---
 
----
 ####
 These modules collectively deliver a **secure**, **scalable**, **visually stunning**, and **user-friendly** enhancement of the classic Pong game. The project sets a strong foundation for future enhancements and innovations while showcasing modern development techniques and architectures.
